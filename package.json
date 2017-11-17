@@ -1,0 +1,42 @@
+{
+  "name": "@folio/vendors",
+  "version": "0.1.0",
+  "description": "Description for ui-vendors",
+  "main": "src/index.js",
+  "repository": "",
+  "publishConfig": {
+    "registry": "https://repository.folio.org/repository/npm-folio/"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "stripescli serve --port=8082 --hasAllPerms",
+    "build": "",
+    "test": "",
+    "lint": "eslint ./",
+    "vagrant": "~/Sites/vagrant; vagrant up"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-stripes": "^1.0.0"
+  },
+  "dependencies": {
+    "@folio/stripes-components": "^1.8.0",
+    "@folio/stripes-form": "^0.8.0",
+    "@folio/stripes-smart-components": "^1.0.1",
+    "prop-types": "^15.5.10",
+    "query-string": "^5.0.0",
+    "react": "^15.6.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "stripes": {
+    "type": "app",
+    "displayName": "ui-vendors",
+    "route": "/vendors",
+    "hasSettings": true,
+    "okapiInterfaces": {},
+    "permissionSets": []
+  }
+}
