@@ -5,7 +5,8 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import MultiColumnList from '@folio/stripes-components/lib/MultiColumnList';
 import CheckBox from '@folio/stripes-components/lib/Checkbox';
 import FilterPaneSearch from '@folio/stripes-components/lib/FilterPaneSearch';
-import FilterGroups from '@folio/stripes-components/lib/FilterGroups/FilterGroups';
+import FilterGroups, { initialFilterState, onChangeFilter as commonChangeFilter } from '@folio/stripes-components/lib/FilterGroups/FilterGroups';
+import transitionToParams from '@folio/stripes-components/util/transitionToParams';
 // Components
 import PaneFilterSet from '../components/pane-filter-set'
 
@@ -14,15 +15,19 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // filters: { uninitialized: true },
-      // filters: initialFilterState(filterConfig, props.location.query.filters),
-      filters: {
-        'item.DVDs': true,
-        'item.Microfilm': true,
-        'location.Main Library': true
-      },
+      filters: { uninitialized: true },
+      // filters: initialFilterState(filterConfig, ),
+      // filters: {
+      //   'item.DVDs': true,
+      //   'item.Microfilm': true,
+      //   'location.Main Library': true
+      // },
       searchTerm: 'this is  string',
     };
+
+    // this.transitionToUrlReflectingFilters = transitionToUrlReflectingFilters.bind(this);
+    this.commonChangeFilter = commonChangeFilter.bind(this);  
+    this.transitionToParams = transitionToParams.bind(this);
   }
   
   render() {
@@ -73,7 +78,10 @@ export default class Home extends Component {
   }
   
   onChangeFilter = (e) => {
-    this.props.parentMutator.resultCount.replace(this.props.initialResultCount);
     this.commonChangeFilter(e);
+  }
+
+  updateFilters = (filters) => { // provided for onChangeFilter
+    this.transitionToParams({ filters: Object.keys(filters).filter(key => filters[key]).join(',') });
   }
 }

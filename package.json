@@ -15,8 +15,7 @@
     "start": "stripescli serve --port=8082 --hasAllPerms",
     "build": "",
     "test": "",
-    "lint": "eslint ./",
-    "vagrant": "~/Sites/vagrant; vagrant up"
+    "lint": "eslint ./"
   },
   "devDependencies": {
     "eslint": "^4.8.0",
