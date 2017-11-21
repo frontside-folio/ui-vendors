@@ -31,9 +31,8 @@ class Vendors extends Component {
     // </ul>
     return (
       <div>
-        
         <Switch>
-          <Route path={`${this.props.match.path}/`} exact component={HomePage} />
+          <Route path={`${this.props.match.path}/`} component={HomePage} />
           <Route path={`${this.props.match.path}/examples`} exact component={ExamplePage} />
         </Switch>
       </div>

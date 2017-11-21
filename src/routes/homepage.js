@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Route from 'react-router-dom/Route';
+import { withRouter } from 'react-router';
+import Link from 'react-router-dom/Link';
+
 import Paneset from '@folio/stripes-components/lib/Paneset';
 import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
@@ -9,14 +14,20 @@ import FilterGroups, { initialFilterState, onChangeFilter as commonChangeFilter 
 import transitionToParams from '@folio/stripes-components/util/transitionToParams';
 // Components and Pages
 import PaneFilterSet from '../components/pane-filter-set';
-import vendorDetailsPane from './vendor-details-pane';
+import VendorDetails from './vendor-details';
 
-export default class Home extends Component {
+class Home extends Component {
+  static propTypes = {
+    // react-route properties provided by withRouter
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
   constructor(props, context) {
     super(props, context);
-    console.log(context);
     this.state = {
-      filters: { uninitialized: true },
+      filters: { },
       // filters: initialFilterState(filterConfig, ),
       // filters: {
       //   'item.DVDs': true,
@@ -29,12 +40,15 @@ export default class Home extends Component {
 
     // In Filters
     // this.transitionToUrlReflectingFilters = transitionToUrlReflectingFilters.bind(this);
+    this.transitionToParams = values => this.props.parentMutator.query.update(values);
     this.commonChangeFilter = commonChangeFilter.bind(this);  
     this.transitionToParams = transitionToParams.bind(this);
     // In Listings
   }
   
   render() {
+    const { match, location, history } = this.props;
+
     const searchHeader = (<FilterPaneSearch
       searchFieldId='input-user-search'
       onChange={this.onChangeSearch.bind(this)}
@@ -86,15 +100,12 @@ export default class Home extends Component {
     const resultsFormatter = {
       author: item => `${item.author.firstName} ${item.author.lastName}`,
     };
-
-    // const vendorDetailsPane = (
-    //   <Route
-    //     path={`${this.props.match.path}/view/:id`}
-    //     render={props => <vendorDetails
-    //       paneWidth="44%"
-    //       {...props}
-    //   />}
-    // />);
+    const vendorDetailsPane = (
+      <Route
+        path={`${this.props.match.path}view/:id`}
+        render={props => <VendorDetails paneWidth="44%" {...props} />}
+      />  
+    );
 
     return (
       <Paneset>
@@ -105,7 +116,7 @@ export default class Home extends Component {
               onChangeFilter={this.onChangeFilter.bind(this)}
             />
         </Pane>
-        <Pane paneTitle="Data listing" defaultWidth="80%">
+        <Pane paneTitle="Data listing" defaultWidth="40%">
           <MultiColumnList
             autosize
             virtualize
@@ -117,19 +128,18 @@ export default class Home extends Component {
             // onHeaderClick={this.onSort}
             // onNeedMoreData={this.onNeedMore}
             // visibleColumns={this.props.visibleColumns}
-            sortedColumn="author"
-            sortOrder="descending"
-            sortDirection="descending"
+            sortedColumn="id"
+            sortOrder="ascending"
+            sortDirection="ascending"
             // isEmptyMessage={`No results found${maybeTerm}. Please check your ${maybeSpelling}filters.`}
             // columnMapping={this.props.columnMapping}
             // loading={resource ? resource.isPending : false}
-            
             // ariaLabel={`${objectNameUC} search results`}
             // rowFormatter={this.anchoredRowFormatter}
             // containerRef={(ref) => { this.resultsList = ref; }}
           />
         </Pane>
-        <vendorDetailsPane />
+        {vendorDetailsPane}
       </Paneset>
     );
   }
@@ -144,17 +154,18 @@ export default class Home extends Component {
     const query = e.target.value;
     this.setState({ searchTerm: query });
   }
-  
   onChangeFilter = (e) => {
     this.commonChangeFilter(e);
   }
-
   updateFilters = (filters) => { // provided for onChangeFilter
     this.transitionToParams({ filters: Object.keys(filters).filter(key => filters[key]).join(',') });
   }
-
   onSelectRow = (e, row) => {
     let getRowId = { id: row.id };
     this.setState({ selectedRow: getRowId });
+    this.transitionToParams({path : `${this.props.match.path}/view/:id`});
+    // console.log(this.transitionToParams);
   }
 }
+
+export default withRouter(Home);
