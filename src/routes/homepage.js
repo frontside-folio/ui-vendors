@@ -163,9 +163,8 @@ class Home extends Component {
   onSelectRow = (e, row) => {
     let getRowId = { id: row.id };
     this.setState({ selectedRow: getRowId });
-    this.transitionToParams({path : `${this.props.match.path}/view/:id`});
-    // console.log(this.transitionToParams);
+    this.props.history.push(`/vendors/view/${row.id}`);
   }
-}
+} 
 
 export default withRouter(Home);
