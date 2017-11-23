@@ -2,7 +2,7 @@
   "name": "@folio/vendors",
   "version": "0.1.0",
   "description": "Description for ui-vendors",
-  "main": "src/index.js",
+  "main": "index.js",
   "repository": "",
   "publishConfig": {
     "registry": "https://repository.folio.org/repository/npm-folio/"
@@ -29,6 +29,11 @@
     "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-router-dom": "^4.1.1"
+  },
+  "peerDependencies": {
+    "@folio/stripes-connect": "^2.7.0",
+    "@folio/stripes-core": "^2.7.0",
+    "@folio/stripes-logger": "^0.0.2"
   },
   "stripes": {
     "type": "app",
