@@ -1,0 +1,13 @@
+/* Changelog.css */
+.title {
+  width: 100%;
+  font-size: 15.5px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  margin-bottom: 4px;
+  padding-bottom: 2px;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 15px;
+  margin-top: 4px;
+}
