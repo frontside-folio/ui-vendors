@@ -17,6 +17,12 @@
     "test": "",
     "lint": "eslint ./"
   },
+  "permissionSets": [
+    {
+      "permissionName": "module.vendors.enabled",
+      "displayName": "UI: Vendors module is enabled"
+    }
+  ],
   "devDependencies": {
     "eslint": "^4.8.0",
     "eslint-config-stripes": "^1.0.0"
