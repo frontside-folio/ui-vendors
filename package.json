@@ -12,18 +12,14 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "start": "stripescli serve --port=8082 --hasAllPerms",
-    "build": "",
-    "test": "",
-    "lint": "eslint ./"
+    "start": "stripescli serve",
+    "start2": "stripescli serve --port=8082 --hasAllPerms",
+    "build": "stripescli build --output ./output",
+    "test": "stripescli test --run demo --show",
+    "lint": "eslint src"
   },
-  "permissionSets": [
-    {
-      "permissionName": "module.vendors.enabled",
-      "displayName": "UI: Vendors module is enabled"
-    }
-  ],
   "devDependencies": {
+    "babel-eslint": "^8.0.3",
     "eslint": "^4.8.0",
     "eslint-config-stripes": "^1.0.0"
   },
@@ -37,17 +33,15 @@
     "react-router-dom": "^4.1.1",
     "redux-form": "^7.2.0"
   },
-  "peerDependencies": {
-    "@folio/stripes-connect": "^2.7.0",
-    "@folio/stripes-core": "^2.7.0",
-    "@folio/stripes-logger": "^0.0.2"
-  },
   "stripes": {
     "type": "app",
     "displayName": "ui-vendors",
     "route": "/vendors",
     "hasSettings": true,
     "okapiInterfaces": {},
-    "permissionSets": []
+    "permissionSets": [{
+      "permissionName": "module.vendors.enabled",
+      "displayName" : "UI: Vendors module is enabled"
+    }]
   }
 }
