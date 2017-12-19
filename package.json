@@ -12,8 +12,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "start": "stripescli serve",
-    "start2": "stripescli serve --port=8082 --hasAllPerms",
+    "start": "stripescli serve --port=8082 --hasAllPerms",
     "build": "stripescli build --output ./output",
     "test": "stripescli test --run demo --show",
     "lint": "eslint src"
