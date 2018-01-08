@@ -30,7 +30,8 @@
     "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "redux-form": "^7.2.0"
+    "redux-form": "^7.2.0",
+    "uuid": "^3.1.0"
   },
   "stripes": {
     "type": "app",
@@ -38,9 +39,11 @@
     "route": "/vendors",
     "hasSettings": true,
     "okapiInterfaces": {},
-    "permissionSets": [{
-      "permissionName": "module.vendors.enabled",
-      "displayName" : "UI: Vendors module is enabled"
-    }]
+    "permissionSets": [
+      {
+        "permissionName": "module.vendors.enabled",
+        "displayName": "UI: Vendors module is enabled"
+      }
+    ]
   }
 }
