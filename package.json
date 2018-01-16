@@ -21,10 +21,11 @@
     "babel-eslint": "^8.0.3",
     "eslint": "^4.8.0",
     "eslint-config-stripes": "^1.0.0",
+    "firebase": "^4.8.2",
     "qrcode.react": "^0.7.2"
   },
   "dependencies": {
-    "@folio/stripes-components": "^1.8.0",
+    "@folio/stripes-components": "^2.0.0",
     "@folio/stripes-form": "^0.8.0",
     "@folio/stripes-smart-components": "^1.0.1",
     "prop-types": "^15.5.10",
