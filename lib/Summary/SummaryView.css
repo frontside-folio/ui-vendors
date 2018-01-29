@@ -1,11 +1,1 @@
-/* ContactInformationView */
-.rowHeader {
-  margin-bottom: 10px;
-  padding-top: 10px;
-  &>h4 {
-    margin-bottom: 15px;
-  }
-  & hr {
-    margin-bottom: 20px;
-  }
-}
+/* SummaryForm */
