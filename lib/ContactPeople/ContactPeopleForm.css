@@ -1,0 +1,14 @@
+/* ContactPeopleForm.css */
+.panels {
+  &>row:not(:frist-child) {
+    padding-bottom:.5rem;
+    border-radius: 2px;
+    overflow: hidden;
+    border-bottom: 2px solid #e3e3e3;
+  }
+
+  & h4 {
+    margin-top: 9px;
+    margin-top: 9px;
+  }
+}
