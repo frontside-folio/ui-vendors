@@ -11,26 +11,6 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "scripts": {
-    "start": "stripescli serve --port=8080 --hasAllPerms",
-    "build": "stripescli build --output ./output",
-    "test": "stripescli test --run demo --show",
-    "lint": "eslint src"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint": "^4.8.0",
-    "eslint-config-stripes": "^1.0.0",
-    "firebase": "^4.8.2",
-    "qrcode.react": "^0.7.2"
-  },
-  "dependencies": {
-    "prop-types": "^15.5.10",
-    "query-string": "^5.0.0",
-    "react": "^15.6.1",
-    "react-router-dom": "^4.1.1",
-    "uuid": "^3.1.0"
-  },
   "stripes": {
     "type": "app",
     "displayName": "ui-vendors",
@@ -43,5 +23,30 @@
         "displayName": "UI: Vendors module is enabled"
       }
     ]
+  },
+  "scripts": {
+    "start": "stripes serve --port=8080;",
+    "build": "stripes build --output ./output",
+    "test": "stripes test --run demo --show",
+    "lint": "eslint lib"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.8.0",
+    "eslint-config-stripes": "^1.0.0",
+    "firebase": "^4.8.2",
+    "qrcode.react": "^0.7.2"
+  },
+  "dependencies": {
+    "@folio/stripes-components": "^2.0.1000186",
+    "@folio/stripes-connect": "^3.0.0",
+    "@folio/stripes-core": "^2.7.0",
+    "@folio/stripes-logger": "^0.0.2",
+    "prop-types": "^15.5.10",
+    "query-string": "^5.0.0",
+    "react": "^16.0.0",
+    "react-router-dom": "^4.1.1",
+    "style-loader": "^0.20.1",
+    "uuid": "^3.1.0"
   }
 }
