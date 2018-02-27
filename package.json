@@ -25,7 +25,7 @@
     ]
   },
   "scripts": {
-    "start": "stripes serve --port=8080;",
+    "start": "stripes serve",
     "build": "stripes build --output ./output",
     "test": "stripes test --run demo --show",
     "lint": "eslint lib"
