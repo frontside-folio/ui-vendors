@@ -13,8 +13,9 @@
   },
   "stripes": {
     "type": "app",
-    "displayName": "ui-vendors",
+    "displayName": "Vendors",
     "route": "/vendors",
+    "home": "/vendors",
     "hasSettings": true,
     "okapiInterfaces": {},
     "permissionSets": [
