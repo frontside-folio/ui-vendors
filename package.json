@@ -13,10 +13,12 @@
   },
   "stripes": {
     "type": "app",
-    "displayName": "ui-vendors",
+    "displayName": "Vendors",
     "route": "/vendors",
     "hasSettings": true,
-    "okapiInterfaces": {},
+    "okapiInterfaces": {
+      "vendor": "1.0"
+    },
     "permissionSets": [
       {
         "permissionName": "module.vendors.enabled",
