@@ -19,6 +19,13 @@
     "hasSettings": true,
     "okapiInterfaces": {},
     "queryResource": "query",
+    "icons": [
+      {
+        "name": "app",
+        "alt": "Create, view and manage vendors",
+        "title": "Vendors"
+      }
+    ],
     "permissionSets": [{
         "permissionName": "contact_category.collection.get",
         "displayName": "contact-categories collection get",

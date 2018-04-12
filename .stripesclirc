@@ -1,4 +1,7 @@
 {
   "configFile": "stripes.config.js.local",
-  "port": 8083
+  "port": 8081,
+  "aliases": {
+    "@folio/finance": "../ui-finance"
+  }
 }
