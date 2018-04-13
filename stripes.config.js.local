@@ -11,8 +11,5 @@ module.exports = {
     disableAuth: false,
     hasAllPerms: true
     // softLogout: false
-  },
-  "aliases": {
-    "@folio/finance": "../ui-finance",
   }
 };
