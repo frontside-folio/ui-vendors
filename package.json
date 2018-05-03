@@ -161,8 +161,7 @@
     "@folio/eslint-config-stripes": "^1.1.0",
     "@folio/stripes-connect": "^3.1.1",
     "@folio/stripes-core": "^2.9.0",
-    "@folio/stripes-logger": "^0.0.2",
-    
+    "@folio/stripes-logger": "^0.0.2"
   },
   "dependencies": {
     "@folio/stripes-components": "^2.0.1000186",
