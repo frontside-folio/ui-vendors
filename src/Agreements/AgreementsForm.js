@@ -25,12 +25,12 @@ class AgreementsForm extends Component {
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={ () => fields.push({}) }>+ Add</Button>
+          <Button onClick={() => fields.push({})}>+ Add</Button>
         </Col>
       </Row>
     );
   }
-  
+
   renderSubForm = (elem, index, fields) => {
     return (
       <Row key={index}>
@@ -59,7 +59,7 @@ class AgreementsForm extends Component {
     return (
       <Row>
         <Col xs={12}>
-          <FieldArray label='Agreements' name='agreements' id='agreements' component={this.renderForm} />
+          <FieldArray label="Agreements" name="agreements" id="agreements" component={this.renderForm} />
         </Col>
       </Row>
     );

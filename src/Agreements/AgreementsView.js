@@ -1,31 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-import uuid from 'uuid';
-
-import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
-import queryString from 'query-string';
-import transitionToParams from '@folio/stripes-components/util/transitionToParams';
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
-import Button from '@folio/stripes-components/lib/Button';
-
-import LanguageList from "../Utils/Languages";
-import css from "./AgreementsView.css";
+import css from './AgreementsView.css';
 
 class AgreementsView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object,
-    parentMutator: PropTypes.object.isRequired,
-    ParentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
-      vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired,
-    })
+    initialValues: PropTypes.object
   }
 
   constructor(props) {
@@ -33,26 +15,8 @@ class AgreementsView extends React.Component {
     this.getAgreements = this.getAgreements.bind(this);
   }
 
-  render() {
-    const { initialValues } = this.props;
-    const dataVal = initialValues.agreements.length >= 1 ? initialValues.agreements : false;
-    if (dataVal) {
-      return (
-        <div style={{ width: '100%' }} className={css.horizontalLine}>
-          {dataVal.map(this.getAgreements)}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p>-- No agreements available --</p>
-        </div>
-      )
-    }
-  }
-
   getAgreements(val, key) {
-    const rowCount = (this.props.initialValues.contacts.length - 1) !== key ? true : false;
+    const rowCount = this.props.initialValues.contacts.length - 1 !== key;
     return (
       <Row key={key}>
         <Col xs={3}>
@@ -73,7 +37,25 @@ class AgreementsView extends React.Component {
           </div>
         }
       </Row>
-    )
+    );
+  }
+
+  render() {
+    const { initialValues } = this.props;
+    const dataVal = initialValues.agreements.length >= 1 ? initialValues.agreements : false;
+    if (dataVal) {
+      return (
+        <div style={{ width: '100%' }} className={css.horizontalLine}>
+          {dataVal.map(this.getAgreements)}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>-- No agreements available --</p>
+        </div>
+      );
+    }
   }
 }
 
