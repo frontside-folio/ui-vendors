@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-
-import { AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
+import { Field } from 'redux-form';
+import { AccordionSet, Accordion } from '@folio/stripes-components/lib/Accordion';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
@@ -14,15 +13,7 @@ import css from './EdiInformationForm.css';
 
 class EdiInformationForm extends Component {
   static propTypes = {
-    dropdown: PropTypes.shape({
-      dropdown_categories: PropTypes.array,
-      dropdown_contact_categories: PropTypes.array,
-      parentResources: PropTypes.shape({
-        vendorCategory: PropTypes.object,
-        vendorContactCategory: PropTypes.object,
-        dropdown: PropTypes.object.isRequired
-      }),
-    })
+    parentResources: PropTypes.object
   }
 
   constructor(props) {
@@ -31,18 +22,25 @@ class EdiInformationForm extends Component {
       subSections: {
         ediBasicSection: true,
         ftpDetailsSection: true,
-        schedulingSection: true,
+        schedulingSection: true
       }
-    }
+    };
     this.onToggleSubSection = this.onToggleSubSection.bind(this);
-    this.checkNow = this.checkNow.bind(this);
   }
- 
+
+  onToggleSubSection(newAccordionStatus) {
+    this.setState((curState) => {
+      const newState = _.cloneDeep(curState);
+      newState.subSections = newAccordionStatus;
+      return newState;
+    });
+  }
+
   render() {
     const { parentResources } = this.props;
-    const vendor_edi_code_dd = (parentResources.dropdown || {}).vendor_edi_code_dd || [];
-    const vendor_edi_code_type_dd = (parentResources.dropdown || {}).vendor_edi_code_type_dd || [];
-    const library_edi_code_dd = (parentResources.dropdown || {}).library_edi_code_dd || [];
+    const vendorEdiCodeDD = (parentResources.dropdown || {}).vendorEdiCodeDD || [];
+    const vendorEdiCodeTypeDD = (parentResources.dropdown || {}).vendorEdiCodeTypeDD || [];
+    const libraryEDICodeDD = (parentResources.dropdown || {}).libraryEDICodeDD || [];
     const library_edi_code_type_dd = (parentResources.dropdown || {}).library_edi_code_type_dd || [];
     const ftp_dd = (parentResources.dropdown || {}).ftp_dd || [];
     const transmission_mode_dd = (parentResources.dropdown || {}).transmission_mode_dd || [];
@@ -56,13 +54,13 @@ class EdiInformationForm extends Component {
               <Col xs={12} md={6}>
                 <Row>
                   <Col xs={12}>
-                    <Field label="Vendor EDI Code" name='edi.vendor_edi_code' id='vendor_edi_code' component={Select} dataOptions={vendor_edi_code_dd} fullWidth />
+                    <Field label="Vendor EDI Code" name='edi.vendor_edi_code' id='vendor_edi_code' component={Select} dataOptions={vendorEdiCodeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Vendor EDI Code Type" name='edi.vendor_edi_type' id='vendor_edi_type' component={Select} dataOptions={vendor_edi_code_type_dd} fullWidth />
+                    <Field label="Vendor EDI Code Type" name='edi.vendor_edi_type' id='vendor_edi_type' component={Select} dataOptions={vendorEdiCodeTypeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Library EDI Code" name='edi.lib_edi_code' id='lib_edi_code' component={Select} dataOptions={library_edi_code_dd} fullWidth />
+                    <Field label="Library EDI Code" name='edi.lib_edi_code' id='lib_edi_code' component={Select} dataOptions={libraryEDICodeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
                     <Field label="Library EDI Code Type" name='edi.lib_edi_code_type' id='lib_edi_type' component={Select} dataOptions={library_edi_code_type_dd} marginBottom0={true} fullWidth />
@@ -107,10 +105,10 @@ class EdiInformationForm extends Component {
                     <Field label="Server Address" name='edi.edi_ftp.server_address' id='edi_server_address' type="text" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Username" name='edi.edi_ftp.username' id='edi_username' type="text" component={TextField} autocomplete="nope" fullWidth />
+                    <Field label="Username" name='edi.edi_ftp.username' id='edi_username' type="text" component={TextField} autoComplete="nope" fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Password" name='edi.edi_ftp.password' id='edi_password' type="password" component={TextField} autocomplete="nope" fullWidth />
+                    <Field label="Password" name='edi.edi_ftp.password' id='edi_password' type="password" component={TextField} autoComplete="nope" fullWidth />
                   </Col>
                 </Row>
               </Col>
@@ -187,7 +185,7 @@ class EdiInformationForm extends Component {
                 </Row>
               </Col>
               <Col xs={12}>
-                <Button onClick={this.checkNow}>Check Now!</Button>
+                <Button>Check Now!</Button>
               </Col>
               <Col xs={12}>
                 <Field label="Notes" name="edi.edi_job.notes" id="edi_job.notes" component={TextArea} fullWidth />
@@ -197,18 +195,6 @@ class EdiInformationForm extends Component {
         </AccordionSet>
       </Col>
     );
-  }
-
-  onToggleSubSection({ label, id }) {
-    this.setState((curState) => {
-      let newState = _.cloneDeep(curState);
-      newState.subSections[id] = !curState.subSections[id];
-      return newState;
-    });
-  }
-
-  checkNow() {
-    console.log("check now button was pressed");
   }
 }
 

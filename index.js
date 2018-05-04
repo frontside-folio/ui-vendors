@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
-import Main from './lib/Main';
-import Settings from './lib/Settings';
+import Main from './src/Main';
+import Settings from './src/Settings';
 
 class Vendors extends Component {
   static propTypes = {
@@ -32,7 +32,7 @@ class Vendors extends Component {
             path={`${this.props.match.path}`}
             render={props => <this.connectedApp {...this.props} />}
           />
-        </Switch>
+        </Switch> 
       </div>
     );
   }
