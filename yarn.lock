@@ -2653,7 +2653,7 @@ readable-stream@^2.0.2, readable-stream@^2.2.2, readable-stream@^2.3.3:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-redux-form@^7.0.3:
+redux-form@^7.0.3, redux-form@^7.3.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.3.0.tgz#b92ef1639c86a6009b0821aacfc80ad8b5ac8c05"
   dependencies:

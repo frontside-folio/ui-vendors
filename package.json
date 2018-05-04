@@ -17,7 +17,6 @@
     "route": "/vendors",
     "home": "/vendors",
     "hasSettings": true,
-    "okapiInterfaces": {},
     "queryResource": "query",
     "icons": [
       {
@@ -175,6 +174,7 @@
     "prop-types": "^15.5.10",
     "query-string": "^5.0.0",
     "react-router-dom": "^4.1.1",
+    "redux-form": "^7.3.0",
     "style-loader": "^0.20.1",
     "uuid": "^3.1.0"
   },

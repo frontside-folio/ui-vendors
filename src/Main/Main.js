@@ -135,21 +135,21 @@ class Main extends Component {
             "value": "cash"
           }
         ],
-        vendor_edi_code_dd: [
+        vendorEdiCodeDD: [
           {
             "label": "-- Select --",
             "value": ""
           },
           { label: 'Code', value: 'code' },
         ],
-        vendor_edi_code_type_dd: [
+        vendorEdiCodeTypeDD: [
           { "label": "-- Select --", "value": "" },
           { label: '31B', value: '31b' },
           { label: '014', value: '014' },
           { label: '091', value: '091' },
           { label: '092', value: '092' },
         ],
-        library_edi_code_dd: [
+        libraryEDICodeDD: [
           { label: "-- Select --", value: "" },
           { label: 'Code', value: 'code' },
         ],
