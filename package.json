@@ -17,6 +17,9 @@
     "route": "/vendors",
     "home": "/vendors",
     "hasSettings": true,
+    "okapiInterfaces": {
+      "vendor": "1.0"
+    },
     "queryResource": "query",
     "icons": [
       {
