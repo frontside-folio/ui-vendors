@@ -30,6 +30,10 @@
     ],
     "permissionSets": [
       {
+        "permissionName": "module.vendors.enabled",
+        "displayName": "UI: Vendors module is enabled"
+      },
+      {
         "permissionName": "contact_category.collection.get",
         "displayName": "contact-categories collection get",
         "description": "Get a collection of categories for Contacts"
