@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Route from 'react-router-dom/Route';
-import _ from "lodash";
-import queryString from 'query-string';
+import _ from 'lodash';
 // Folio
-import Layer from '@folio/stripes-components/lib/Layer';
-import makeQueryFunction from '@folio/stripes-components/util/makeQueryFunction';
 import SearchAndSort from '@folio/stripes-smart-components/lib/SearchAndSort';
-import { filters2cql, initialFilterState, onChangeFilter as commonChangeFilter } from '@folio/stripes-components/lib/FilterGroups';
+import { filters2cql } from '@folio/stripes-components/lib/FilterGroups';
 import packageInfo from '../../package';
 // Components and Pages
 import PaneDetails from '../PaneDetails';
@@ -27,6 +23,12 @@ const filterConfig = [
 ];
 
 class Main extends Component {
+  static propTypes = {
+    mutator: PropTypes.object.isRequired,
+    resources: PropTypes.object.isRequired,
+    stripes: PropTypes.object
+  }
+
   static manifest = Object.freeze({
     query: {
       initialValue: {
@@ -107,82 +109,82 @@ class Main extends Component {
       initialValue: {
         payment_method_dd: [
           {
-            "label": "-- Select --",
-            "value": ""
+            'label': '-- Select --',
+            'value': ''
           },
           {
-            "label": "EFT",
-            "value": "eft"
+            'label': 'EFT',
+            'value': 'eft'
           },
           {
-            "label": "Bank Draft",
-            "value": "bank_draft"
+            'label': 'Bank Draft',
+            'value': 'bank_draft'
           },
           {
-            "label": "Paper Check",
-            "value": "paper_check"
+            'label': 'Paper Check',
+            'value': 'paper_check'
           },
           {
-            "label": "Credit Card/P-Card",
-            "value": "credit_card_p_card"
+            'label': 'Credit Card/P-Card',
+            'value': 'credit_card_p_card'
           },
           {
-            "label": "Deposit Account",
-            "value": "deposit_account"
+            'label': 'Deposit Account',
+            'value': 'deposit_account'
           },
           {
-            "label": "Cash",
-            "value": "cash"
+            'label': 'Cash',
+            'value': 'cash'
           }
         ],
         vendorEdiCodeDD: [
           {
-            "label": "-- Select --",
-            "value": ""
+            'label': '-- Select --',
+            'value': ''
           },
           { label: 'Code', value: 'code' },
         ],
         vendorEdiCodeTypeDD: [
-          { "label": "-- Select --", "value": "" },
+          { 'label': '-- Select --', 'value': '' },
           { label: '31B', value: '31b' },
           { label: '014', value: '014' },
           { label: '091', value: '091' },
           { label: '092', value: '092' },
         ],
         libraryEDICodeDD: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'Code', value: 'code' },
         ],
         library_edi_code_type_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: '31B', value: '31b' },
           { label: '014', value: '014' },
           { label: '091', value: '091' },
           { label: '092', value: '092' },
         ],
         ftp_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'SFTP', value: 'sftp' },
           { label: 'FTP', value: 'ftp' },
         ],
         transmission_mode_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'ASCII', value: 'ascii' },
           { label: 'Binary', value: 'binary' },
         ],
         connection_mode_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'Passive', value: 'passive' },
           { label: 'Active', value: 'active' },
         ],
         delivery_method_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'Online', value: 'online' },
           { label: 'FTP', value: 'ftp' },
           { label: 'Email', value: 'email' },
         ],
         format_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'Delimited', value: 'Delimited' },
           { label: 'Excel', value: 'excel' },
           { label: 'CSV', value: 'csv' },
@@ -192,7 +194,7 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         status_dd: [
-          { label: "-- Select --", value: "" },
+          { label: '-- Select --', value: '' },
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
@@ -201,16 +203,6 @@ class Main extends Component {
     }
   });
 
-  constructor(props) {
-    super(props);
-    const query = props.location.search ? queryString.parse(props.location.search) : {};
-    this.state = {
-      searchTerm: query.query || '',
-      sortOrder: query.sort || '',
-      filters: initialFilterState(filterConfig, query.filters),
-    };
-  }
-
   create = (ledgerdata) => {
     const { mutator } = this.props;
     mutator.records.POST(ledgerdata).then(newLedger => {
@@ -218,33 +210,20 @@ class Main extends Component {
         _path: `/vendors/view/${newLedger.id}`,
         layer: null
       });
-    })
+    });
   }
 
-  onNeedMore() {
-    if (!_.isUndefined(this.props)) {
-      if (!_.isNull(this.props.resources.resultCount)) {
-        const props = this.props;
-        var num = props.resources.localRes.resultCount + RESULT_COUNT_INCREMENT;
-        props.mutator.localRes.update({ resultCount: num });
-      }
-    }
-  }
-  
   render() {
     const props = this.props;
-    const { onSelectRow, disableRecordCreation, onComponentWillUnmount } = this.props;
-    const initialPath = (_.get(packageInfo, ['stripes', 'home']));
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
       'Description': data => _.get(data, ['description'], ''),
       'Vendor Status': data => _.toString(_.get(data, ['vendor_status'], ''))
-    }
+    };
     const getRecords = (this.props.resources || {}).records || [];
-    const urlQuery = queryString.parse(this.props.location.search || '');
     return (
-      <div style={{width: '100%'}} className={css.panepadding}>
+      <div style={{ width: '100%' }} className={css.panepadding}>
         {
           getRecords &&
           <SearchAndSort
@@ -256,7 +235,6 @@ class Main extends Component {
             resultsFormatter={resultsFormatter}
             initialFilters={this.constructor.manifest.query.initialValue.filters}
             viewRecordComponent={ViewVendor}
-            onSelectRow={onSelectRow}
             onCreate={this.create}
             editRecordComponent={PaneDetails}
             newRecordInitialValues={{}}
@@ -264,16 +242,15 @@ class Main extends Component {
             resultCountIncrement={RESULT_COUNT_INCREMENT}
             finishedResourceName="perms"
             viewRecordPerms="vendor.item.get"
-            newRecordPerms="vendor.item.post,login.item.post,perms.vendor.item.post"
+            newRecordPerms="vendor.item.post,login.item.post,vendor.item.post"
             parentResources={this.props.resources}
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
             stripes={this.stripes}
-            onComponentWillUnmount={onComponentWillUnmount}
           />
         }
       </div>
-    )
+    );
   }
 }
 

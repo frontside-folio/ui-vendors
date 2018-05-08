@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Field, FieldArray } from 'redux-form';
-
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
@@ -14,9 +12,11 @@ import { Required } from '../Utils/Validate';
 
 class AccountsForm extends Component {
   static propTypes = {
-    dropdown: PropTypes.shape({
-      payment_method_dd: PropTypes.array.isRequired,
-      status_dd: PropTypes.array.isRequired
+    parentResources: PropTypes.shape({
+      dropdown: PropTypes.shape({
+        payment_method_dd: PropTypes.array.isRequired,
+        status_dd: PropTypes.array.isRequired
+      })
     })
   }
 
@@ -24,17 +24,6 @@ class AccountsForm extends Component {
     super(props);
     this.renderForm = this.renderForm.bind(this);
     this.renderSubForm = this.renderSubForm.bind(this);
-  }
-
-  render() {
-    return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray label="Accounts" name="accounts" id="accounts" component={this.renderForm} />
-          <br />
-        </Col>
-      </Row>
-    );
   }
 
   renderForm = ({ fields }) => {
@@ -101,6 +90,17 @@ class AccountsForm extends Component {
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">
             Remove
           </Button>
+        </Col>
+      </Row>
+    );
+  }
+
+  render() {
+    return (
+      <Row>
+        <Col xs={12}>
+          <FieldArray label="Accounts" name="accounts" id="accounts" component={this.renderForm} />
+          <br />
         </Col>
       </Row>
     );
