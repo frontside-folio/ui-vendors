@@ -1,35 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-import uuid from 'uuid';
-
-import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
-import queryString from 'query-string';
-import transitionToParams from '@folio/stripes-components/util/transitionToParams';
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
-import Button from '@folio/stripes-components/lib/Button';
-
-import LanguageList from "../Utils/Languages";
-import css from "./EdiInformationView.css";
+import css from './EdiInformationView.css';
 
 class EdiInformationView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object,
-    parentMutator: PropTypes.object.isRequired,
-    ParentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
-      vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired,
-    })
-  }
-
-  constructor(props) {
-    super(props);
+    initialValues: PropTypes.object
   }
 
   render() {
@@ -50,10 +28,10 @@ class EdiInformationView extends React.Component {
                 <KeyValue label="Vendor EDI Type" value={_.get(dataVal, ['vendor_edi_type'], '')} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Library EDI Code" value={_.get(dataVal, ['lib_edi_code'], '')} />
+                <KeyValue label="Library EDI Code" value={_.get(dataVal, ['lib_edi_code'], '')} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Library EDI Type" value={_.get(dataVal, ['lib_edi_type'], '')} />
+                <KeyValue label="Library EDI Type" value={_.get(dataVal, ['lib_edi_type'], '')} />
               </Col>
               <Col xs={3}>
                 <KeyValue label="Prorate Tax" value={_.toString(_.get(dataVal, ['prorate_tax']))} />
@@ -105,7 +83,7 @@ class EdiInformationView extends React.Component {
                 <KeyValue label="FTP Connection Mode" value={_.get(dataVal, ['edi_ftp.ftp_conn_mode'])} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="FTP Port" value={_.toString(_.get(dataVal, ['edi_ftp.ftp_port']))} />
+                <KeyValue label="FTP Port" value={_.toString(_.get(dataVal, ['edi_ftp.ftp_port']))} />
               </Col>
               <Col xs={6}>
                 <KeyValue label="Order Directory" value={_.get(dataVal, ['edi_ftp.order_directory'])} />
@@ -127,16 +105,16 @@ class EdiInformationView extends React.Component {
                 <h4 className={css.title}>FTP Details</h4>
               </Col>
               <Col xs={3}>
-              <KeyValue label="Schedule EDI" value={_.toString(_.get(dataVal, ['edi_job.schedule_edi']))} />
+                <KeyValue label="Schedule EDI" value={_.toString(_.get(dataVal, ['edi_job.schedule_edi']))} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Date" value={_.get(dataVal, ['edi_job.date'], '')} />
+                <KeyValue label="Date" value={_.get(dataVal, ['edi_job.date'], '')} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Time" value={_.get(dataVal, ['edi_job.time'], '')} />
+                <KeyValue label="Time" value={_.get(dataVal, ['edi_job.time'], '')} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Monday" value={_.toString(_.get(dataVal, ['edi_job.is_monday']))} />
+                <KeyValue label="Monday" value={_.toString(_.get(dataVal, ['edi_job.is_monday']))} />
               </Col>
               <Col xs={3}>
                 <KeyValue label="Tuesday" value={_.toString(_.get(dataVal, ['edi_job.is_tuesday']))} />
@@ -160,13 +138,13 @@ class EdiInformationView extends React.Component {
                 <KeyValue label="Send to Emails" value={_.get(dataVal, ['edi_job.send_to_emails'], '')} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Notify All EDI" value={_.toString(_.get(dataVal, ['edi_job.notify_all_edi']))} />
+                <KeyValue label="Notify All EDI" value={_.toString(_.get(dataVal, ['edi_job.notify_all_edi']))} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Notify Invoice Only" value={_.toString(_.get(dataVal, ['edi_job.notify_invoice_only']))} />
+                <KeyValue label="Notify Invoice Only" value={_.toString(_.get(dataVal, ['edi_job.notify_invoice_only']))} />
               </Col>
               <Col xs={3}>
-              <KeyValue label="Notify Error Only" value={_.toString(_.get(dataVal, ['edi_job.notify_error_only']))} />
+                <KeyValue label="Notify Error Only" value={_.toString(_.get(dataVal, ['edi_job.notify_error_only']))} />
               </Col>
             </Row>
           }
@@ -178,7 +156,7 @@ class EdiInformationView extends React.Component {
           <p>-- No Edi information available --</p>
           <br />
         </div>
-      )
+      );
     }
   }
 }

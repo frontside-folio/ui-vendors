@@ -155,24 +155,24 @@ class Main extends Component {
           { label: '-- Select --', value: '' },
           { label: 'Code', value: 'code' },
         ],
-        library_edi_code_type_dd: [
+        libraryEdiCodeTypeDD: [
           { label: '-- Select --', value: '' },
           { label: '31B', value: '31b' },
           { label: '014', value: '014' },
           { label: '091', value: '091' },
           { label: '092', value: '092' },
         ],
-        ftp_dd: [
+        ftpDD: [
           { label: '-- Select --', value: '' },
           { label: 'SFTP', value: 'sftp' },
           { label: 'FTP', value: 'ftp' },
         ],
-        transmission_mode_dd: [
+        transmissionModeDD: [
           { label: '-- Select --', value: '' },
           { label: 'ASCII', value: 'ascii' },
           { label: 'Binary', value: 'binary' },
         ],
-        connection_mode_dd: [
+        connectionModeDD: [
           { label: '-- Select --', value: '' },
           { label: 'Passive', value: 'passive' },
           { label: 'Active', value: 'active' },
