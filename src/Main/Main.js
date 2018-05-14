@@ -214,7 +214,6 @@ class Main extends Component {
   }
 
   render() {
-    const props = this.props;
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
