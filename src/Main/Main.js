@@ -177,13 +177,13 @@ class Main extends Component {
           { label: 'Passive', value: 'passive' },
           { label: 'Active', value: 'active' },
         ],
-        delivery_method_dd: [
+        deliveryMethodDD: [
           { label: '-- Select --', value: '' },
           { label: 'Online', value: 'online' },
           { label: 'FTP', value: 'ftp' },
           { label: 'Email', value: 'email' },
         ],
-        format_dd: [
+        formatDD: [
           { label: '-- Select --', value: '' },
           { label: 'Delimited', value: 'Delimited' },
           { label: 'Excel', value: 'excel' },

@@ -1,19 +1,11 @@
 import React from 'react';
-import Route from 'react-router-dom/Route';
 import PropTypes from 'prop-types';
-// @Folio
-import Paneset from '@folio/stripes-components/lib/Paneset';
+import _ from 'lodash';
 import Pane from '@folio/stripes-components/lib/Pane';
 import PaneMenu from '@folio/stripes-components/lib/PaneMenu';
 import Button from '@folio/stripes-components/lib/Button';
-import Icon from '@folio/stripes-components/lib/Icon';
 import stripesForm from '@folio/stripes-form';
-import { ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import TextField from '@folio/stripes-components/lib/TextField';
-// Local Components
 import { FormVendor } from '../VendorViews';
-// Utils
 import Convert from '../Utils/Convert';
 
 class PaneDetails extends React.Component {
@@ -32,15 +24,10 @@ class PaneDetails extends React.Component {
     }),
     parentMutator: PropTypes.object
   }
-  
+
   constructor(props) {
     super(props);
-    this.state = {
-      paramID: []
-    }
     this.deleteVendor = this.deleteVendor.bind(this);
-    // Get Data and Categories
-    // this.initVal = this.initVal.bind(this);
     this.getContactCategory = this.getContactCategory.bind(this);
     this.getContactCategory = this.getContactCategory.bind(this);
   }
@@ -73,6 +60,57 @@ class PaneDetails extends React.Component {
     );
   }
 
+  getCategory() {
+    const { parentResources } = this.props;
+    const data = (parentResources.vendorCategory || {}).records || [];
+    if (!data || data.length === 0) return null;
+    const newData = Convert.convertValueToLabel(data);
+    return newData;
+  }
+
+  getContactCategory() {
+    const { parentResources } = this.props;
+    const data = (parentResources.vendorContactCategory || {}).records || [];
+    if (!data || data.length === 0) return null;
+    const newData = Convert.convertValueToLabel(data);
+    return newData;
+  }
+
+  getCurrencies() {
+    const arr = ['USD', 'CAD', 'GBP', 'EUR'];
+    const dropdownDurrencies = Convert.ArrayToObject(arr);
+    return dropdownDurrencies;
+  }
+
+  convertValueToLabel(resourcesPath) {
+    const newArray = [];
+    const resCat = resourcesPath;
+    const arrLength = resCat.records.length - 1;
+    if (arrLength >= 1) {
+      const arr = resCat.records;
+      // Convert value to label & id to value
+      Object.keys(arr).map((key) => {
+        const obj = {
+          label: arr[key].value,
+          value: arr[key].id
+        };
+        newArray.push(obj);
+        return newArray;
+      });
+    }
+    return newArray;
+  }
+
+  deleteVendor(ID) {
+    const { parentMutator } = this.props;
+    parentMutator.records.DELETE({ id: ID }).then(() => {
+      parentMutator.query.update({
+        _path: '/vendor',
+        layer: null
+      });
+    });
+  }
+
   render() {
     const { initialValues } = this.props;
     const firstMenu = this.getAddFirstMenu();
@@ -93,70 +131,7 @@ class PaneDetails extends React.Component {
           />
         </Pane>
       </form>
-    )
-  }
-
-  panePreloader() { 
-    const res = this.props.resources;
-    if (res.localRes !== undefined && res.localRes !== null) {
-      return res.localRes.panePreloader;
-    } else {
-      console.log('check this local data');
-      return true;
-    }
-  }
-
-  getCategory() {
-    const { parentResources } = this.props;
-    const data = (parentResources.vendorCategory || {}).records || [];
-    if (!data || data.length === 0) return null;
-    let newData = Convert.convertValueToLabel(data);
-    return newData;
-  }
-  
-  getContactCategory() {
-    const { parentResources } = this.props;
-    const data = (parentResources.vendorContactCategory || {}).records || [];
-    if (!data || data.length === 0) return null;
-    let newData = Convert.convertValueToLabel(data);
-    return newData;
-  }
-
-  getCurrencies() {
-    var arr = ['USD', 'CAD', 'GBP', 'EUR'];
-    var dropdown_currencies = Convert.ArrayToObject(arr);
-    return dropdown_currencies;
-  }
-
-  convertValueToLabel(resources_path) {
-    let newArray = [];
-    const resCat = resources_path;
-    const arrLength = resCat.records.length - 1;
-    if (arrLength >= 1) {
-      const arr = resCat.records;
-      // Convert value to label & id to value
-      Object.keys(arr).map((key) => {
-        let obj = {
-          label: arr[key].value,
-          value: arr[key].id
-        };
-        newArray.push(obj);
-        if (Number(key) === arrLength) {
-          return newArray;
-        }
-      });
-    }
-    return newArray;
-  }
-
-  deleteVendor(ID) {
-    const { parentMutator } = this.props;
-    parentMutator.records.DELETE({ id: ID }).then(() => {
-      parentMutator.query.update({
-        _path: `/vendor`,
-        layer: null
-      });
-    });
+    );
   }
 }
 

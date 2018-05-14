@@ -1,1 +1,1 @@
-export { default } from './PaneDetails.js';
+export { default } from './PaneDetails';
