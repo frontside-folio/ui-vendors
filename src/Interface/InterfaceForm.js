@@ -13,8 +13,8 @@ import Checkbox from '@folio/stripes-components/lib/Checkbox';
 
 class InterfaceForm extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
     dropdown_contact_categories: PropTypes.array,
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,

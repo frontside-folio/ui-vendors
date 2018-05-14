@@ -20,9 +20,9 @@ import { AddressInfo, PhoneNumbers, EmailAddresses, Urls } from "./ContactInfoFo
 
 class ContactInformationForm extends React.Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array,
   };
 
   constructor(props) {

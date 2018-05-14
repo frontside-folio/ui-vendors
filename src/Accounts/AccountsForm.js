@@ -33,13 +33,13 @@ class AccountsForm extends Component {
           }
           {fields.map(this.renderSubForm)}
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px'}}>
+        <Col xs={12} style={{ paddingTop: '10px' }}>
           <Button onClick={() => fields.push({})}>+ Add</Button>
         </Col>
       </Row>
-    )
+    );
   }
-  
+
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
     const payment_method_dd = (parentResources.dropdown || {}).payment_method_dd || [];

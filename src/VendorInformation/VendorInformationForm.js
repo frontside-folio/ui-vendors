@@ -12,9 +12,9 @@ import css from './VendorInformationForm.css';
 
 class VendorInformationForm extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array,
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
@@ -32,7 +32,7 @@ class VendorInformationForm extends Component {
   }
 
   render() {
-    const { parentResources, dropdown_currencies } = this.props;
+    const { parentResources, dropdownCurrencies } = this.props;
     const payment_method_dd = (parentResources.dropdown || {}).payment_method_dd || [];
 
     return (
@@ -58,7 +58,7 @@ class VendorInformationForm extends Component {
               <Field label="Material Supplier" name='material_supplier' id='material_supplier' component={Checkbox}  />
             </Col>
             <Col xs={12}>
-              <Field label="Vendor Currencies" name='vendor_currencies' id='vendor_currencies' component={Select} dataOptions={dropdown_currencies} style={{ height: '80px' }} fullWidth multiple />
+              <Field label="Vendor Currencies" name='vendor_currencies' id='vendor_currencies' component={Select} dataOptions={dropdownCurrencies} style={{ height: '80px' }} fullWidth multiple />
             </Col>
           </Row>
         </Col>

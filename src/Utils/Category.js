@@ -1,7 +1,6 @@
-// this.props.dropdown_categories
-const parseCategories = function(val, dropdown_categories) {
+const parseCategories = function(val, dropdownCategories) {
   var arr = [];
-  var dropdownCategories = dropdown_categories;
+  var dropdownCategories = dropdownCategories;
   val.forEach(function (val1, key1) {
     dropdownCategories.forEach(function (val2, key2) {
       if (val1 === val2.value) {

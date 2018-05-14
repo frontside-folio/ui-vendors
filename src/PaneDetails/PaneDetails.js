@@ -85,9 +85,9 @@ class PaneDetails extends React.Component {
       <form id="form-vendor">
         <Pane defaultWidth="100%" firstMenu={firstMenu} lastMenu={lastMenu} paneTitle={paneTitle}>
           <FormVendor
-            dropdown_currencies={this.getCurrencies()}
-            dropdown_categories={this.getCategory()}
-            dropdown_contact_categories={this.getContactCategory()}
+            dropdownCurrencies={this.getCurrencies()}
+            dropdownCategories={this.getCategory()}
+            dropdownContactCategories={this.getContactCategory()}
             deleteVendor={this.deleteVendor}
             {...this.props}
           />

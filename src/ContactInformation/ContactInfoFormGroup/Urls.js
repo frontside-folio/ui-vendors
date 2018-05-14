@@ -15,9 +15,9 @@ import { Required } from '../../Utils/Validate';
 
 class Url extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array
   };
 
   constructor(props) {
@@ -61,7 +61,7 @@ class Url extends Component {
           <Field label="Description" name={`${elem}.url.description`} id={`${elem}.url.description`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdown_categories} multiple />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} multiple />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />

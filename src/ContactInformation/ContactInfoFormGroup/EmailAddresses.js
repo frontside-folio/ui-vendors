@@ -15,9 +15,9 @@ import { Required } from '../../Utils/Validate';
 
 class EmailAddresses extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array
   };
 
   constructor(props) {
@@ -66,7 +66,7 @@ class EmailAddresses extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdown_categories} style={{ height: '80px' }} multiple />
+          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

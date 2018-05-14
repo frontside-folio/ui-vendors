@@ -15,9 +15,9 @@ import css from './ContactPeopleForm.css';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array,
   };
 
   constructor(props) {
@@ -131,7 +131,7 @@ class ContactPeopleForm extends Component {
           <Field label="Default Language" name={`${elem}.contact_person.language`} id={`${elem}.contact_person.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdown_contact_categories} multiple />
+          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdownContactCategories} multiple />
         </Col>
         <Col xs={12} md={6}>
           <Field label="Notes" name={`${elem}.contact_person.notes`} id={`${elem}.contact_person.notes`} component={TextArea} style={{height: '79px'}} fullWidth />

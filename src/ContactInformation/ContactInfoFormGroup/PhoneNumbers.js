@@ -15,9 +15,9 @@ import { Required } from '../../Utils/Validate';
 
 class PhoneNumbers extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array
+    dropdownCurrencies: PropTypes.array,
+    dropdownCategories: PropTypes.array,
+    dropdownContactCategories: PropTypes.array
   };
 
   constructor(props) {
@@ -25,7 +25,6 @@ class PhoneNumbers extends Component {
     this.state = {
       selectLanguage: LanguageList
     }
-
     this.renderSubPhoneNumbers = this.renderSubPhoneNumbers.bind(this);
   }
 
@@ -70,7 +69,7 @@ class PhoneNumbers extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdown_categories} style={{ height: '80px' }} multiple={true} />
+     C   <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple={true} />
         </Col>
         <Col xs={12} md={3} mdOffset={6} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">
@@ -82,4 +81,4 @@ class PhoneNumbers extends Component {
   }
 }
 
-export default PhoneNumbers
+export default PhoneNumbers;

@@ -13,7 +13,7 @@ import css from "../ContactInformationView.css";
 class ContactInformationView extends React.Component {
   static propTypes = {
     initialValues: PropTypes.object,
-    dropdown_categories: PropTypes.array
+    dropdownCategories: PropTypes.array
   };
 
   constructor(props) {
@@ -33,7 +33,7 @@ class ContactInformationView extends React.Component {
 
   getEmail(val, key) {
     const rowCount = (this.props.dataVal.length - 1) !== key ? true : false;
-    const categories = val.categories && this.props.dropdown_categories ? this.props.parseCategories(val.categories, this.props.dropdown_categories) : null;
+    const categories = val.categories && this.props.dropdownCategories ? this.props.parseCategories(val.categories, this.props.dropdownCategories) : null;
     const email = () => {
       var emailDescription = `${_.get(val, 'email.description', '')}`;
       if (emailDescription.trim().length >= 1) {
