@@ -6,8 +6,6 @@ import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-import {BrowserRouter} from 'react-router-dom';
-
 import { Required } from '../Utils/Validate';
 
 class AccountsForm extends Component {
