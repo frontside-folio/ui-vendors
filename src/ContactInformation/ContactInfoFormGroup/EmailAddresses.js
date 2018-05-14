@@ -1,58 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-
+import { Field } from 'redux-form';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
-import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-
-import LanguageList from "../../Utils/Languages";
+import LanguageList from '../../Utils/Languages';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
 class EmailAddresses extends Component {
   static propTypes = {
-    dropdownCurrencies: PropTypes.array,
-    dropdownCategories: PropTypes.array,
-    dropdownContactCategories: PropTypes.array
+    dropdownCategories: PropTypes.Array,
+    fields: PropTypes.Object
   };
 
   constructor(props) {
     super(props);
     this.state = {
       selectLanguage: LanguageList
-    }
-
+    };
     this.renderSubEmailAddresses = this.renderSubEmailAddresses.bind(this);
   }
 
-  render() {
-    const { fields } = this.props;
-    return (
-      <Row>
-        {fields.length === 0 &&
-          <Col xs={6}>
-            <div><em>- Please add email -</em></div>
-          </Col>
-        }
-        {fields.length !== 0 &&
-          <Col xs={6}>
-            <h6>Email Address</h6>
-          </Col>
-        }
-        <Col xs={12}>
-          {fields.map(this.renderSubEmailAddresses)}
-        </Col>
-        <Col xs={12} style={{ paddingTop: '10px'}}>
-          <Button onClick={() => fields.push({})}>+ Add Email</Button>
-        </Col>
-      </Row>
-    )
-  }
-  
   renderSubEmailAddresses = (elem, index, fields) => {
     return (
       <Row key={index} className={css.panels}>
@@ -76,6 +46,30 @@ class EmailAddresses extends Component {
       </Row>
     );
   }
+
+  render() {
+    const { fields } = this.props;
+    return (
+      <Row>
+        {fields.length === 0 &&
+          <Col xs={6}>
+            <div><em>- Please add email -</em></div>
+          </Col>
+        }
+        {fields.length !== 0 &&
+          <Col xs={6}>
+            <h6>Email Address</h6>
+          </Col>
+        }
+        <Col xs={12}>
+          {fields.map(this.renderSubEmailAddresses)}
+        </Col>
+        <Col xs={12} style={{ paddingTop: '10px' }}>
+          <Button onClick={() => fields.push({})}>+ Add Email</Button>
+        </Col>
+      </Row>
+    );
+  }
 }
 
-export default EmailAddresses
+export default EmailAddresses;

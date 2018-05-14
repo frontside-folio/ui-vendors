@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
+import { FieldArray } from 'redux-form';
 
 import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
 import queryString from 'query-string';
 import transitionToParams from '@folio/stripes-components/util/transitionToParams';
 import Paneset from '@folio/stripes-components/lib/Paneset';

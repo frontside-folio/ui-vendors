@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row } from '@folio/stripes-components/lib/LayoutGrid';
 import { AddressInfoView, PhoneNumbersView, EmailView, UrlsView } from './ContactInfoViewGroup';
 import { parseCategories } from '../Utils/Category';
 
-class ContactInformationView extends React.Component {
+class ContactInformationView extends Component {
   static propTypes = {
     initialValues: PropTypes.object,
     parentResources: PropTypes.shape({
@@ -19,9 +19,9 @@ class ContactInformationView extends React.Component {
     const dataVal = initialValues || false;
     const dropdownCategories = (parentResources.dropdown || {}).dropdownCategories || [];
     return (
-      <div style={{width: '100%'}}>
+      <div style={{ width: '100%' }}>
         <Row>
-          {dataVal && 
+          { dataVal &&
             <div style={{ width: '100%' }}>
               <AddressInfoView dataVal={initialValues.addresses} parseCategories={parseCategories} dropdownCategories={dropdownCategories} />
               <PhoneNumbersView dataVal={initialValues.phone_numbers} parseCategories={parseCategories} dropdownCategories={dropdownCategories} />
