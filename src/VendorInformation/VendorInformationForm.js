@@ -33,7 +33,7 @@ class VendorInformationForm extends Component {
 
   render() {
     const { parentResources, dropdownCurrencies } = this.props;
-    const payment_method_dd = (parentResources.dropdown || {}).payment_method_dd || [];
+    const paymentMethodDD = (parentResources.dropdown || {}).paymentMethodDD || [];
 
     return (
       <Row className={css.vendorInfo}>
@@ -43,7 +43,7 @@ class VendorInformationForm extends Component {
               <Field label="ERP Code" name='erp_code' id='erp_code' component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Payment Method" name='payment_method' id='payment_method' component={Select} dataOptions={payment_method_dd} fullWidth />
+              <Field label="Payment Method" name='payment_method' id='payment_method' component={Select} dataOptions={paymentMethodDD} fullWidth />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
               <Field label="Access Provider" name='access_provider' id='access_provider' component={Checkbox} marginBottom0={true}  />

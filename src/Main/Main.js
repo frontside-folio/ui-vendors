@@ -107,7 +107,7 @@ class Main extends Component {
     },
     dropdown: {
       initialValue: {
-        payment_method_dd: [
+        paymentMethodDD: [
           {
             'label': '-- Select --',
             'value': ''
@@ -193,7 +193,7 @@ class Main extends Component {
           { label: 'HTML', value: 'html' },
           { label: 'Other', value: 'other' },
         ],
-        status_dd: [
+        statusDD: [
           { label: '-- Select --', value: '' },
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },

@@ -12,8 +12,8 @@ class AccountsForm extends Component {
   static propTypes = {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
-        payment_method_dd: PropTypes.array.isRequired,
-        status_dd: PropTypes.array.isRequired
+        paymentMethodDD: PropTypes.array.isRequired,
+        statusDD: PropTypes.array.isRequired
       })
     })
   }
@@ -42,8 +42,8 @@ class AccountsForm extends Component {
 
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const payment_method_dd = (parentResources.dropdown || {}).payment_method_dd || [];
-    const status_dd = (parentResources.dropdown || {}).status_dd || [];
+    const paymentMethodDD = (parentResources.dropdown || {}).paymentMethodDD || [];
+    const statusDD = (parentResources.dropdown || {}).statusDD || [];
     return (
       <Row key={index}>
         <Col xs={12} md={6}>
@@ -61,14 +61,14 @@ class AccountsForm extends Component {
               <Field label="Acct. Payable Sys. No" name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Payment Method" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={payment_method_dd} validate={[Required]} component={Select} fullWidth />
+              <Field label="Payment Method" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth />
             </Col>
           </Row>
         </Col>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="Account Status" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={status_dd} validate={[Required]} component={Select} fullWidth />
+              <Field label="Account Status" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Contact Info" name={`${elem}.contact_info`} id={`${elem}.contact_info`} component={TextField} fullWidth />
