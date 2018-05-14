@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row } from '@folio/stripes-components/lib/LayoutGrid';
 import { AddressInfoView, PhoneNumbersView, EmailView, UrlsView } from './ContactInfoViewGroup';
-import { parseCategories } from '../Utils/Category';
+import parseCategories from '../Utils/Category';
 
 class ContactInformationView extends Component {
   static propTypes = {
