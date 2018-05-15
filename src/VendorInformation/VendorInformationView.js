@@ -1,35 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-import uuid from 'uuid';
-
-import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
-import queryString from 'query-string';
-import transitionToParams from '@folio/stripes-components/util/transitionToParams';
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
-import Button from '@folio/stripes-components/lib/Button';
-
-import LanguageList from "../Utils/Languages";
-import css from "./VendorInformationView.css";
+import css from './VendorInformationView.css';
 
 class VendorInformationView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object,
-    parentMutator: PropTypes.object.isRequired,
-    ParentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
-      vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired,
-    })
-  }
-
-  constructor(props) {
-    super(props);
+    initialValues: PropTypes.object
   }
 
   render() {
@@ -85,7 +63,7 @@ class VendorInformationView extends React.Component {
           </Col>
           <Col xs={12}>
             <h4 className={css.title}>Tax</h4>
-          </Col>            
+          </Col>
           <Col xs={3}>
             <KeyValue label="Tax ID" value={_.get(dataVal, ['tax_id'], '')} />
           </Col>
@@ -102,10 +80,9 @@ class VendorInformationView extends React.Component {
         <div>
           <p>-- No agreements available --</p>
         </div>
-      )
+      );
     }
   }
-
 }
 
 export default VendorInformationView;

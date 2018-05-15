@@ -177,7 +177,7 @@
     "@folio/stripes-form": "^0.8.2",
     "@folio/stripes-smart-components": "^1.4.0",
     "eslint": "^4.8.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
     "query-string": "^5.0.0",
     "react-router-dom": "^4.1.1",

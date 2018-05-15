@@ -49,7 +49,7 @@ class AccountsForm extends Component {
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth /> 
+              <Field label="name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Vendor Account Number" name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />

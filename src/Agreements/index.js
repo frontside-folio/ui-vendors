@@ -1,6 +1,5 @@
-import AgreementsForm from './AgreementsForm.js';
-import AgreementsView from './AgreementsView.js';
+import AgreementsForm from './AgreementsForm';
+import AgreementsView from './AgreementsView';
 
 export { AgreementsForm, AgreementsView };
-
 
