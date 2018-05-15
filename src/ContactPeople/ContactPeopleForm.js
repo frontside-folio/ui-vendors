@@ -1,43 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Field, FieldArray } from 'redux-form';
-
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-
-import LanguageList from "../Utils/Languages";
+import LanguageList from '../Utils/Languages';
 import { Required } from '../Utils/Validate';
 import css from './ContactPeopleForm.css';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {
     super(props);
     this.state = {
       selectLanguage: LanguageList
-    }
+    };
     this.renderCreateContact = this.renderCreateContact.bind(this);
     this.renderSubCreateContact = this.renderSubCreateContact.bind(this);
-  }
-
-  render() {
-    return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray label="Contacts" name="contacts" id="contacts" component={this.renderCreateContact} />
-          <br />
-        </Col>
-      </Row>
-    );
   }
 
   renderCreateContact = ({ fields }) => {
@@ -51,15 +35,14 @@ class ContactPeopleForm extends Component {
           }
           {fields.map(this.renderSubCreateContact)}
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px'}}>
+        <Col xs={12} style={{ paddingTop: '10px' }}>
           <Button onClick={() => fields.push({})}>+ Add</Button>
         </Col>
       </Row>
-    )
+    );
   }
-  
+
   renderSubCreateContact = (elem, index, fields) => {
-    const rowCount = (fields.length - 1) !== index ? true : false;
     return (
       <Row key={index}>
         <Col xs={12}>
@@ -131,15 +114,26 @@ class ContactPeopleForm extends Component {
           <Field label="Default Language" name={`${elem}.contact_person.language`} id={`${elem}.contact_person.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdown_contact_categories} multiple />
+          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdownContactCategories} multiple />
         </Col>
         <Col xs={12} md={6}>
-          <Field label="Notes" name={`${elem}.contact_person.notes`} id={`${elem}.contact_person.notes`} component={TextArea} style={{height: '79px'}} fullWidth />
+          <Field label="Notes" name={`${elem}.contact_person.notes`} id={`${elem}.contact_person.notes`} component={TextArea} style={{ height: '79px' }} fullWidth />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">
             Remove
           </Button>
+        </Col>
+      </Row>
+    );
+  }
+
+  render() {
+    return (
+      <Row>
+        <Col xs={12}>
+          <FieldArray label="Contacts" name="contacts" id="contacts" component={this.renderCreateContact} />
+          <br />
         </Col>
       </Row>
     );

@@ -6,16 +6,14 @@ import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-import {BrowserRouter} from 'react-router-dom';
-
 import { Required } from '../Utils/Validate';
 
 class AccountsForm extends Component {
   static propTypes = {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
-        payment_method_dd: PropTypes.array.isRequired,
-        status_dd: PropTypes.array.isRequired
+        paymentMethodDD: PropTypes.array.isRequired,
+        statusDD: PropTypes.array.isRequired
       })
     })
   }
@@ -35,23 +33,23 @@ class AccountsForm extends Component {
           }
           {fields.map(this.renderSubForm)}
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px'}}>
+        <Col xs={12} style={{ paddingTop: '10px' }}>
           <Button onClick={() => fields.push({})}>+ Add</Button>
         </Col>
       </Row>
-    )
+    );
   }
-  
+
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const payment_method_dd = (parentResources.dropdown || {}).payment_method_dd || [];
-    const status_dd = (parentResources.dropdown || {}).status_dd || [];
+    const paymentMethodDD = (parentResources.dropdown || {}).paymentMethodDD || [];
+    const statusDD = (parentResources.dropdown || {}).statusDD || [];
     return (
       <Row key={index}>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth /> 
+              <Field label="name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Vendor Account Number" name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
@@ -63,14 +61,14 @@ class AccountsForm extends Component {
               <Field label="Acct. Payable Sys. No" name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Payment Method" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={payment_method_dd} validate={[Required]} component={Select} fullWidth />
+              <Field label="Payment Method" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth />
             </Col>
           </Row>
         </Col>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="Account Status" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={status_dd} validate={[Required]} component={Select} fullWidth />
+              <Field label="Account Status" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Contact Info" name={`${elem}.contact_info`} id={`${elem}.contact_info`} component={TextField} fullWidth />

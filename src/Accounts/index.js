@@ -1,6 +1,5 @@
-import AccountsForm from './AccountsForm.js';
-import AccountsView from './AccountsView.js';
+import AccountsForm from './AccountsForm';
+import AccountsView from './AccountsView';
 
 export { AccountsForm, AccountsView };
-
 

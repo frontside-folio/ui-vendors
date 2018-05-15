@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Field, FieldArray } from 'redux-form';
-
 import { Accordion } from '@folio/stripes-components/lib/Accordion';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
@@ -13,34 +11,20 @@ import Checkbox from '@folio/stripes-components/lib/Checkbox';
 
 class InterfaceForm extends Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
       dropdown: PropTypes.object.isRequired
-    }),
+    })
   }
 
   constructor(props) {
     super(props);
     this.state = {
       open: true
-    }
+    };
     this.renderForm = this.renderForm.bind(this);
     this.renderSubForm = this.renderSubForm.bind(this);
-  }
-
-  render() {
-    return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray label="Interface" name="interfaces" id="interfaces" component={this.renderForm} />
-          <br />
-        </Col>
-      </Row>
-    );
   }
 
   renderForm = ({ fields }) => {
@@ -54,19 +38,19 @@ class InterfaceForm extends Component {
           }
           {fields.map(this.renderSubForm)}
         </Col>
-        <Col xs={12}  style={{ paddingTop: '10px'}}>
+        <Col xs={12} style={{ paddingTop: '10px' }}>
           <Button onClick={() => fields.push({})}>+ Add</Button>
         </Col>
       </Row>
-    )
+    );
   }
-  
+
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const rowCount = (fields.length - 1) !== index ? true : false;
-    const format_dd = (parentResources.dropdown || {}).format_dd || [];
-    const delivery_method_dd = (parentResources.dropdown || {}).delivery_method_dd || [];
-    
+    const rowCount = (fields.length - 1) !== index;
+    const formatDD = (parentResources.dropdown || {}).formatDD || [];
+    const deliveryMethodDD = (parentResources.dropdown || {}).deliveryMethodDD || [];
+
     return (
       <Row key={index}>
         <Col xs={12} md={6}>
@@ -99,13 +83,13 @@ class InterfaceForm extends Component {
                 <Col xs={12}>
                   <Row>
                     <Col xs={12}>
-                      <Field label="Available" name={`${elem}.available`} id={`${elem}.available`} component={Checkbox}  />
+                      <Field label="Available" name={`${elem}.available`} id={`${elem}.available`} component={Checkbox} />
                     </Col>
                     <Col xs={12}>
-                      <Field label="Delivery Method" name={`${elem}.delivery_method`} id={`${elem}.delivery_method`} component={Select} fullWidth dataOptions={delivery_method_dd} />
+                      <Field label="Delivery Method" name={`${elem}.delivery_method`} id={`${elem}.delivery_method`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
                     </Col>
                     <Col xs={12}>
-                      <Field label="Format" name={`${elem}.format`} id={`${elem}.format`} component={Select} fullWidth dataOptions={format_dd} />
+                      <Field label="Format" name={`${elem}.format`} id={`${elem}.format`} component={Select} fullWidth dataOptions={formatDD} />
                     </Col>
                     <Col xs={12}>
                       <Field label="Locally Stored" name={`${elem}.locally_stored`} id={`${elem}.locally_stored`} component={TextField} fullWidth />
@@ -135,6 +119,17 @@ class InterfaceForm extends Component {
             <br />
           </div>
         }
+      </Row>
+    );
+  }
+
+  render() {
+    return (
+      <Row>
+        <Col xs={12}>
+          <FieldArray label="Interface" name="interfaces" id="interfaces" component={this.renderForm} />
+          <br />
+        </Col>
       </Row>
     );
   }

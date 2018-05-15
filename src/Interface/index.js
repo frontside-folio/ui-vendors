@@ -1,6 +1,4 @@
-import InterfaceForm from './InterfaceForm.js';
-import InterfaceView from './InterfaceView.js';
+import InterfaceForm from './InterfaceForm';
+import InterfaceView from './InterfaceView';
 
 export { InterfaceForm, InterfaceView };
-
-

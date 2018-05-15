@@ -1,34 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-
-import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
-import queryString from 'query-string';
-import transitionToParams from '@folio/stripes-components/util/transitionToParams';
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
+import { FieldArray } from 'redux-form';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import KeyValue from '@folio/stripes-components/lib/KeyValue';
-import Button from '@folio/stripes-components/lib/Button';
-import TextField from '@folio/stripes-components/lib/TextField';
-import TextArea from '@folio/stripes-components/lib/TextArea';
-import Select from '@folio/stripes-components/lib/Select';
-import AddressEditList from '@folio/stripes-components/lib/structures/AddressFieldGroup/AddressEdit/AddressEditList';
-import { AddressInfo, PhoneNumbers, EmailAddresses, Urls } from "./ContactInfoFormGroup";
+import { AddressInfo, PhoneNumbers, EmailAddresses, Urls } from './ContactInfoFormGroup';
 
 class ContactInformationForm extends React.Component {
   static propTypes = {
-    dropdown_currencies: PropTypes.array,
-    dropdown_categories: PropTypes.array,
-    dropdown_contact_categories: PropTypes.array,
+    dropdownCurrencies: PropTypes.arrayOf(PropTypes.object),
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object)
   };
-
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-  }
 
   render() {
     return (
@@ -52,7 +33,6 @@ class ContactInformationForm extends React.Component {
       </Row>
     );
   }
- 
 }
 
 export default ContactInformationForm;

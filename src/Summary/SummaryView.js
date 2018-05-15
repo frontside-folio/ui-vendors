@@ -1,44 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Field, FieldArray } from 'redux-form';
-import uuid from 'uuid';
-
-import Route from 'react-router-dom/Route';
-import { withRouter } from 'react-router';
-import queryString from 'query-string';
-import transitionToParams from '@folio/stripes-components/util/transitionToParams';
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import MultiColumnList from '@folio/stripes-components/lib/MultiColumnList';
-import Button from '@folio/stripes-components/lib/Button';
-import AddressView from '@folio/stripes-components/lib/structures/AddressFieldGroup/AddressView';
-
-import LanguageList from "../Utils/Languages";
-import css from "./SummaryView.css";
+import css from './SummaryView.css';
 
 class SummaryView extends React.Component {
   static propTypes = {
     initialValues: PropTypes.object,
-    parentMutator: PropTypes.object.isRequired,
-    ParentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
-      vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired,
-    })
-  }
-
-  constructor(props) {
-    super(props);
   }
 
   render() {
-    // console.log(this.props.initialValues);
     const { initialValues } = this.props;
-    const dataVal = initialValues ? initialValues : [];
-    const columnWidths = { 'value': '50%', 'description': '50%'};
+    const dataVal = initialValues || [];
+    const columnWidths = { 'value': '50%', 'description': '50%' };
     const columnMapping = {
       'value': 'name',
       'description': 'description'
@@ -65,7 +41,6 @@ class SummaryView extends React.Component {
           <h4>Vendor Names</h4>
           <MultiColumnList contentData={initialValues.aliases} columnWidths={columnWidths} columnMapping={columnMapping} />
         </Col>
- 
       </Row>
     );
   }

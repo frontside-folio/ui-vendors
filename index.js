@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'react-router-dom/Link';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 import Main from './src/Main';
@@ -32,7 +31,7 @@ class Vendors extends Component {
             path={`${this.props.match.path}`}
             render={props => <this.connectedApp {...this.props} />}
           />
-        </Switch> 
+        </Switch>
       </div>
     );
   }

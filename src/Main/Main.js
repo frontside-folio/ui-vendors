@@ -107,7 +107,7 @@ class Main extends Component {
     },
     dropdown: {
       initialValue: {
-        payment_method_dd: [
+        paymentMethodDD: [
           {
             'label': '-- Select --',
             'value': ''
@@ -155,35 +155,35 @@ class Main extends Component {
           { label: '-- Select --', value: '' },
           { label: 'Code', value: 'code' },
         ],
-        library_edi_code_type_dd: [
+        libraryEdiCodeTypeDD: [
           { label: '-- Select --', value: '' },
           { label: '31B', value: '31b' },
           { label: '014', value: '014' },
           { label: '091', value: '091' },
           { label: '092', value: '092' },
         ],
-        ftp_dd: [
+        ftpDD: [
           { label: '-- Select --', value: '' },
           { label: 'SFTP', value: 'sftp' },
           { label: 'FTP', value: 'ftp' },
         ],
-        transmission_mode_dd: [
+        transmissionModeDD: [
           { label: '-- Select --', value: '' },
           { label: 'ASCII', value: 'ascii' },
           { label: 'Binary', value: 'binary' },
         ],
-        connection_mode_dd: [
+        connectionModeDD: [
           { label: '-- Select --', value: '' },
           { label: 'Passive', value: 'passive' },
           { label: 'Active', value: 'active' },
         ],
-        delivery_method_dd: [
+        deliveryMethodDD: [
           { label: '-- Select --', value: '' },
           { label: 'Online', value: 'online' },
           { label: 'FTP', value: 'ftp' },
           { label: 'Email', value: 'email' },
         ],
-        format_dd: [
+        formatDD: [
           { label: '-- Select --', value: '' },
           { label: 'Delimited', value: 'Delimited' },
           { label: 'Excel', value: 'excel' },
@@ -193,7 +193,7 @@ class Main extends Component {
           { label: 'HTML', value: 'html' },
           { label: 'Other', value: 'other' },
         ],
-        status_dd: [
+        statusDD: [
           { label: '-- Select --', value: '' },
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
@@ -214,7 +214,6 @@ class Main extends Component {
   }
 
   render() {
-    const props = this.props;
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),

@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import uuid from 'uuid';
-
-import Paneset from '@folio/stripes-components/lib/Paneset';
-import Pane from '@folio/stripes-components/lib/Pane';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import KeyValue from "@folio/stripes-components/lib/KeyValue";
-import AddressView from '@folio/stripes-components/lib/structures/AddressFieldGroup/AddressView';
-import css from "../ContactInformationView.css";
+import KeyValue from '@folio/stripes-components/lib/KeyValue';
+import css from '../ContactInformationView.css';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object,
-    dropdown_categories: PropTypes.array
+    dataVal: PropTypes.arrayOf(PropTypes.object),
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {
@@ -21,27 +16,16 @@ class ContactInformationView extends React.Component {
     this.getEmail = this.getEmail.bind(this);
   }
 
-  render() {
-    const { dataVal } = this.props;
-    return (
-      <Col xs={12} className={css.rowHeader}>
-        <h4>Email Address</h4>
-        {dataVal.map(this.getEmail)}
-      </Col>
-    );
-  }
-
   getEmail(val, key) {
-    const rowCount = (this.props.dataVal.length - 1) !== key ? true : false;
-    const categories = val.categories && this.props.dropdown_categories ? this.props.parseCategories(val.categories, this.props.dropdown_categories) : null;
+    const rowCount = (this.props.dataVal.length - 1) !== key;
     const email = () => {
-      var emailDescription = `${_.get(val, 'email.description', '')}`;
+      const emailDescription = `${_.get(val, 'email.description', '')}`;
       if (emailDescription.trim().length >= 1) {
         return `${_.get(val, 'email.value', '')} - ${emailDescription}`;
       } else {
         return `${_.get(val, 'email.value', '')}`;
       }
-    }
+    };
 
     return (
       <Row key={key}>
@@ -49,7 +33,7 @@ class ContactInformationView extends React.Component {
           <KeyValue label="Email" value={email()} />
         </Col>
         <Col xs={4}>
-          <KeyValue label="Categories" value={categories} />
+          <KeyValue label="Categories" value={this.props.dropdownCategories} />
         </Col>
         <Col xs={3}>
           <KeyValue label="Language" value={_.get(val, 'language', '')} />
@@ -60,7 +44,17 @@ class ContactInformationView extends React.Component {
           </div>
         }
       </Row>
-    )
+    );
+  }
+
+  render() {
+    const { dataVal } = this.props;
+    return (
+      <Col xs={12} className={css.rowHeader}>
+        <h4>Email Address</h4>
+        {dataVal.map(this.getEmail)}
+      </Col>
+    );
   }
 }
 
