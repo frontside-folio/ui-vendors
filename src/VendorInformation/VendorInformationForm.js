@@ -11,7 +11,7 @@ import css from './VendorInformationForm.css';
 
 class VendorInformationForm extends Component {
   static propTypes = {
-    dropdownCurrencies: PropTypes.Array,
+    dropdownCurrencies: PropTypes.arrayOf(PropTypes.object),
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
@@ -43,13 +43,13 @@ class VendorInformationForm extends Component {
               <Field label="Payment Method" name="payment_method" id="payment_method" component={Select} dataOptions={paymentMethodDD} fullWidth />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label="Access Provider" name="access_provider" id="access_provider" component={Checkbox} marginBottom0="true" />
+              <Field label="Access Provider" name="access_provider" id="access_provider" component={Checkbox} />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label="Governmental" name="governmental" id="governmental" component={Checkbox} marginBottom0="true" />
+              <Field label="Governmental" name="governmental" id="governmental" component={Checkbox} />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label="Licensor" name="licensor" id="licensor" component={Checkbox} marginBottom0="true" />
+              <Field label="Licensor" name="licensor" id="licensor" component={Checkbox} />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
               <Field label="Material Supplier" name="material_supplier" id="material_supplier" component={Checkbox} />
@@ -93,7 +93,7 @@ class VendorInformationForm extends Component {
                   <Field label="Tax Percentage" name="tax_percentage" id="tax_percentage" type="number" component={TextField} fullWidth />
                 </Col>
                 <Col xs={12} md={4} style={{ paddingTop: '20px' }}>
-                  <Field label="Liable for VAT" name="liable_for_vat" id="liable_for_vat" component={Checkbox} inline={false} marginBottom0="true" />
+                  <Field label="Liable for VAT" name="liable_for_vat" id="liable_for_vat" component={Checkbox} inline={false} />
                 </Col>
               </Row>
             </Accordion>

@@ -8,9 +8,8 @@ class ContactInformationView extends Component {
   static propTypes = {
     initialValues: PropTypes.object,
     parentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
-      vendorContactCategory: PropTypes.object,
       dropdown: PropTypes.object.isRequired,
+      dropdownCategories: PropTypes.arrayOf(PropTypes.object)
     })
   };
 

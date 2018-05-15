@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
-import { parseCategories } from '../Utils/Category';
+import parseCategories from '../Utils/Category';
 import css from './ContactPeopleView.css';
 
 class ContactPeopleView extends React.Component {

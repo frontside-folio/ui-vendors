@@ -12,7 +12,7 @@ import css from './ContactPeopleForm.css';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
-    dropdownContactCategories: PropTypes.Array
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {

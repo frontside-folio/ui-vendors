@@ -11,8 +11,8 @@ import { Required } from '../../Utils/Validate';
 
 class PhoneNumbers extends Component {
   static propTypes = {
-    dropdownCategories: PropTypes.Array,
-    fields: PropTypes.Object
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    fields: PropTypes.object
   };
 
   constructor(props) {

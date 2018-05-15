@@ -11,7 +11,7 @@ import { Required } from '../../Utils/Validate';
 
 class AddressInfo extends Component {
   static propTypes = {
-    dropdownCategories: PropTypes.Array,
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 

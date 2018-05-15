@@ -13,8 +13,8 @@ import { Required } from '../../Utils/Validate';
 
 class Url extends Component {
   static propTypes = {
-    dropdownCategories: PropTypes.Array,
-    fields: PropTypes.Object
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    fields: PropTypes.object
   };
 
   constructor(props) {

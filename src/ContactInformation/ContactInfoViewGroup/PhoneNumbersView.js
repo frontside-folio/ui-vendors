@@ -7,8 +7,8 @@ import css from '../ContactInformationView.css';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
-    dataVal: PropTypes.Object,
-    dropdownCategories: PropTypes.Array
+    dataVal: PropTypes.arrayOf(PropTypes.object),
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {

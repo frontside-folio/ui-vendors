@@ -6,7 +6,7 @@ import PaneMenu from '@folio/stripes-components/lib/PaneMenu';
 import Button from '@folio/stripes-components/lib/Button';
 import stripesForm from '@folio/stripes-form';
 import { FormVendor } from '../VendorViews';
-import Convert from '../Utils/Convert';
+import { arrayToObject, convertValueToLabel } from '../Utils/Convert';
 
 class PaneDetails extends React.Component {
   static propTypes = {
@@ -29,7 +29,7 @@ class PaneDetails extends React.Component {
     super(props);
     this.deleteVendor = this.deleteVendor.bind(this);
     this.getContactCategory = this.getContactCategory.bind(this);
-    this.getContactCategory = this.getContactCategory.bind(this);
+    this.getCurrencies = this.getCurrencies.bind(this);
   }
   getAddFirstMenu() {
     const { onCancel } = this.props;
@@ -64,7 +64,7 @@ class PaneDetails extends React.Component {
     const { parentResources } = this.props;
     const data = (parentResources.vendorCategory || {}).records || [];
     if (!data || data.length === 0) return null;
-    const newData = Convert.convertValueToLabel(data);
+    const newData = convertValueToLabel(data);
     return newData;
   }
 
@@ -72,13 +72,13 @@ class PaneDetails extends React.Component {
     const { parentResources } = this.props;
     const data = (parentResources.vendorContactCategory || {}).records || [];
     if (!data || data.length === 0) return null;
-    const newData = Convert.convertValueToLabel(data);
+    const newData = convertValueToLabel(data);
     return newData;
   }
 
   getCurrencies() {
     const arr = ['USD', 'CAD', 'GBP', 'EUR'];
-    const dropdownDurrencies = Convert.ArrayToObject(arr);
+    const dropdownDurrencies = arrayToObject(arr);
     return dropdownDurrencies;
   }
 

@@ -6,9 +6,9 @@ import { AddressInfo, PhoneNumbers, EmailAddresses, Urls } from './ContactInfoFo
 
 class ContactInformationForm extends React.Component {
   static propTypes = {
-    dropdownCurrencies: PropTypes.Array,
-    dropdownCategories: PropTypes.Array,
-    dropdownContactCategories: PropTypes.Array
+    dropdownCurrencies: PropTypes.arrayOf(PropTypes.object),
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object)
   };
 
   render() {

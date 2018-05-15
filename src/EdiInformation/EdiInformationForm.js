@@ -63,13 +63,13 @@ class EdiInformationForm extends Component {
                     <Field label="Library EDI Code" name="edi.lib_edi_code" id="lib_edi_code" component={Select} dataOptions={libraryEDICodeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Library EDI Code Type" name="edi.lib_edi_code_type" id="lib_edi_type" component={Select} marginBottom0="true" dataOptions={libraryEdiCodeTypeDD} fullWidth />
+                    <Field label="Library EDI Code Type" name="edi.lib_edi_code_type" id="lib_edi_type" component={Select} dataOptions={libraryEdiCodeTypeDD} fullWidth />
                   </Col>
                   <Col xs={12} className={css.EDIInfoCheckbox}>
-                    <Field label="Prorate Tax" name="edi.prorate_tax" id="prorate_tax" marginBottom0="true" component={Checkbox} />
+                    <Field label="Prorate Tax" name="edi.prorate_tax" id="prorate_tax" component={Checkbox} />
                   </Col>
                   <Col xs={12} className={css.EDIInfoCheckbox}>
-                    <Field label="Prorate Service Fees/Shipping" name="edi.prorate_fees" id="prorate_fees" marginBottom0="true" component={Checkbox} />
+                    <Field label="Prorate Service Fees/Shipping" name="edi.prorate_fees" id="prorate_fees" component={Checkbox} />
                   </Col>
                 </Row>
               </Col>
@@ -79,12 +79,12 @@ class EdiInformationForm extends Component {
                     <Field label="EDI Naming Convention" name="edi.edi_naming_convention" id="edi_naming_convention" component={Select} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Send Account Number" name="edi.send_acct_num" id="send_acct_num" component={Checkbox} marginBottom0="false" />
+                    <Field label="Send Account Number" name="edi.send_acct_num" id="send_acct_num" component={Checkbox} />
                   </Col>
                   <Col xs={12}>
                     <p>What Messages are expected for this Vendor?</p>
-                    <Field label="Order" name="edi.support_order" id="support_order" component={Checkbox} marginBottom0="true" />
-                    <Field label="Invoice" name="edi.support_invoice" id="support_invoice" component={Checkbox} marginBottom0="true" />
+                    <Field label="Order" name="edi.support_order" id="support_order" component={Checkbox} />
+                    <Field label="Invoice" name="edi.support_invoice" id="support_invoice" component={Checkbox} />
                   </Col>
                 </Row>
               </Col>
@@ -138,7 +138,7 @@ class EdiInformationForm extends Component {
               <Col xs={12} md={6}>
                 <Row>
                   <Col xs={12} className={css.EDIInfoCheckbox}>
-                    <Field label="Schedule" name="edi.edi_job.schedule_edi" id="schedule_edi" component={Checkbox} marginBottom0="true" />
+                    <Field label="Schedule" name="edi.edi_job.schedule_edi" id="schedule_edi" component={Checkbox} />
                   </Col>
                   <Col xs={12}>
                     <Field label="Date" name="edi.edi_job.date" id="edi_edi_job.date" type="date" component={TextField} fullWidth />
@@ -150,15 +150,15 @@ class EdiInformationForm extends Component {
                     <p style={{ fontSize: '.8rem', fontWeight: 'bold' }}>Weekly:</p>
                     <Row>
                       <Col xs={12} md={6} className={css.EDIInfoCheckbox}>
-                        <Field label="Monday" name="edi.edi_job.is_monday" id="is_monday" component={Checkbox} inline={false} marginBottom0="true" />
-                        <Field label="Tuesday" name="edi.edi_job.is_tuesday" id="is_tuesday" component={Checkbox} inline={false} marginBottom0="true" />
-                        <Field label="Wednesday" name="edi.edi_job.is_wednesday" id="is_wednesday" component={Checkbox} inline={false} marginBottom0="true" />
-                        <Field label="Thursday" name="edi.edi_job.is_thursday" id="is_thursday" component={Checkbox} inline={false} marginBottom0="true" />
+                        <Field label="Monday" name="edi.edi_job.is_monday" id="is_monday" component={Checkbox} inline={false} />
+                        <Field label="Tuesday" name="edi.edi_job.is_tuesday" id="is_tuesday" component={Checkbox} inline={false} />
+                        <Field label="Wednesday" name="edi.edi_job.is_wednesday" id="is_wednesday" component={Checkbox} inline={false} />
+                        <Field label="Thursday" name="edi.edi_job.is_thursday" id="is_thursday" component={Checkbox} inline={false} />
                       </Col>
                       <Col xs={12} md={6} className={css.EDIInfoCheckbox}>
-                        <Field label="Friday" name="edi.edi_job.is_friday" id="is_friday" component={Checkbox} inline={false} marginBottom0="true" />
-                        <Field label="Saturday" name="edi.edi_job.is_saturday" id="is_saturday" component={Checkbox} inline={false} marginBottom0="true" />
-                        <Field label="Sunday" name="edi.edi_job.is_sunday" id="is_sunday" component={Checkbox} inline={false} marginBottom0="true" />
+                        <Field label="Friday" name="edi.edi_job.is_friday" id="is_friday" component={Checkbox} inline={false} />
+                        <Field label="Saturday" name="edi.edi_job.is_saturday" id="is_saturday" component={Checkbox} inline={false} />
+                        <Field label="Sunday" name="edi.edi_job.is_sunday" id="is_sunday" component={Checkbox} inline={false} />
                       </Col>
                     </Row>
                     <br />
@@ -174,13 +174,13 @@ class EdiInformationForm extends Component {
                     <Field label="Send To" name="edi.edi_job.send_to_emails" id="send_to_emails" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="All EDI Transactions" name="edi.edi_job.notify_all_edi" id="notify_all_edi" component={Checkbox} marginBottom0="true" />
+                    <Field label="All EDI Transactions" name="edi.edi_job.notify_all_edi" id="notify_all_edi" component={Checkbox} />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Invoice Only" name="edi.edi_job.notify_invoice_only" id="notify_invoice_only" component={Checkbox} marginBottom0="true" />
+                    <Field label="Invoice Only" name="edi.edi_job.notify_invoice_only" id="notify_invoice_only" component={Checkbox} />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Errors Only" name="edi.edi_job.notify_error_only" id="notify_error_only" component={Checkbox} marginBottom0="true" />
+                    <Field label="Errors Only" name="edi.edi_job.notify_error_only" id="notify_error_only" component={Checkbox} />
                   </Col>
                 </Row>
               </Col>
