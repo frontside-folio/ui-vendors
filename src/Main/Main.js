@@ -232,7 +232,6 @@ class Main extends Component {
             filterConfig={filterConfig}
             visibleColumns={['Name', 'Code', 'Description', 'Vendor Status']}
             resultsFormatter={resultsFormatter}
-            initialFilters={this.constructor.manifest.query.initialValue.filters}
             viewRecordComponent={ViewVendor}
             onCreate={this.create}
             editRecordComponent={PaneDetails}
