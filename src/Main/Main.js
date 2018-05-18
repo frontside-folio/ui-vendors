@@ -234,13 +234,13 @@ class Main extends Component {
             resultsFormatter={resultsFormatter}
             viewRecordComponent={ViewVendor}
             onCreate={this.create}
-            editRecordComponent={PaneDetails}
+            // editRecordComponent={PaneDetails}
             newRecordInitialValues={{}}
             initialResultCount={INITIAL_RESULT_COUNT}
             resultCountIncrement={RESULT_COUNT_INCREMENT}
             finishedResourceName="perms"
             viewRecordPerms="vendor.item.get"
-            newRecordPerms="vendor.item.post,login.item.post,vendor.item.post"
+            newRecordPerms="vendor.item.post,login.item.post"
             parentResources={this.props.resources}
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
