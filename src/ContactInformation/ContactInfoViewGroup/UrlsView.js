@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import css from '../ContactInformationView.css';
+import parseCategories from '../../Utils/Category';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class ContactInformationView extends React.Component {
 
   getUrls(val, key) {
     const rowCount = this.props.dataVal.length - 1 !== key;
+    const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
     const url = () => {
       const urlDescription = `${_.get(val, 'url.description', '')}`;
       if (urlDescription.trim().length >= 1) {
@@ -33,7 +35,7 @@ class ContactInformationView extends React.Component {
           <KeyValue label="Url" value={url()} />
         </Col>
         <Col xs={4}>
-          <KeyValue label="Categories" value={this.props.dropdownCategories} />
+          <KeyValue label="Categories" value={categories} />
         </Col>
         <Col xs={3}>
           <KeyValue label="Language" value={_.get(val, 'language', '')} />

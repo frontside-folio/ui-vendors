@@ -7,6 +7,7 @@ import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 import LanguageList from '../Utils/Languages';
+import CountryList from '../Utils/Country';
 import { Required } from '../Utils/Validate';
 import css from './ContactPeopleForm.css';
 
@@ -18,7 +19,8 @@ class ContactPeopleForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectLanguage: LanguageList
+      selectLanguage: LanguageList,
+      selectCountry: CountryList
     };
     this.renderCreateContact = this.renderCreateContact.bind(this);
     this.renderSubCreateContact = this.renderSubCreateContact.bind(this);
@@ -74,7 +76,7 @@ class ContactPeopleForm extends Component {
           <Field label="Region" name={`${elem}.contact_person.address.stateRegion`} id={`${elem}.contact_person.address.stateRegion`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={4}>
-          <Field label="Country" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="Country" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={Select} dataOptions={this.state.selectCountry} fullWidth />
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />

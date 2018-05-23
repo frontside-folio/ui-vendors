@@ -8,19 +8,12 @@ import packageInfo from '../../package';
 // Components and Pages
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
+import { Filters } from '../Utils/FilterConfig';
 import css from './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
-
-const filterConfig = [
-  {
-    label: 'Vendor Status',
-    name: 'vendor_status',
-    cql: 'vendor_status',
-    values: ['Active', 'Pending', 'Inactive']
-  }
-];
+const filterConfig = Filters();
 
 class Main extends Component {
   static propTypes = {
@@ -58,10 +51,12 @@ class Main extends Component {
             const resourceData = args[2];
             const sortMap = {
               Name: 'name',
-              Code: 'code'
+              Code: 'code',
+              Description: 'description',
+              endor_status: 'vendor_status',
             };
 
-            let cql = `(name="${resourceData.query.query}*")`;
+            let cql = `name="${resourceData.query.query}*" or code="${resourceData.query.query}*" or language="${resourceData.query.query}*" or aliases="${resourceData.query.query}*" or erp_code="${resourceData.query.query}*" or tax_id="${resourceData.query.query}*" or interfaces="${resourceData.query.query}*"`;
             const filterCql = filters2cql(filterConfig, resourceData.query.filters);
             if (filterCql) {
               if (cql) {
@@ -108,34 +103,15 @@ class Main extends Component {
     dropdown: {
       initialValue: {
         paymentMethodDD: [
-          {
-            'label': '-- Select --',
-            'value': ''
-          },
-          {
-            'label': 'EFT',
-            'value': 'eft'
-          },
-          {
-            'label': 'Bank Draft',
-            'value': 'bank_draft'
-          },
-          {
-            'label': 'Paper Check',
-            'value': 'paper_check'
-          },
-          {
-            'label': 'Credit Card/P-Card',
-            'value': 'credit_card_p_card'
-          },
-          {
-            'label': 'Deposit Account',
-            'value': 'deposit_account'
-          },
-          {
-            'label': 'Cash',
-            'value': 'cash'
-          }
+          { label: '-- Select --', value: '' },
+          { label: 'Cash', value: 'cash' },
+          { label: 'Credit Card/P-Card', value: 'credit_card_p_card' },
+          { label: 'EFT', value: 'eft' },
+          { label: 'Deposit Account', value: 'deposit_account' },
+          { label: 'Physical Check', value: 'physical_check' },
+          { label: 'Bank Draft', value: 'bank_draft' },
+          { label: 'Internal Transfer', value: 'internal transfer' },
+          { label: 'Other', value: 'other' },
         ],
         vendorEdiCodeDD: [
           {
@@ -174,20 +150,21 @@ class Main extends Component {
         ],
         connectionModeDD: [
           { label: '-- Select --', value: '' },
-          { label: 'Passive', value: 'passive' },
           { label: 'Active', value: 'active' },
+          { label: 'Passive', value: 'passive' },
         ],
         deliveryMethodDD: [
           { label: '-- Select --', value: '' },
           { label: 'Online', value: 'online' },
           { label: 'FTP', value: 'ftp' },
           { label: 'Email', value: 'email' },
+          { label: 'Other', value: 'other' },
         ],
         formatDD: [
           { label: '-- Select --', value: '' },
-          { label: 'Delimited', value: 'Delimited' },
+          { label: 'Counter', value: 'Counter' },
+          { label: 'Delimited', value: 'delimited' },
           { label: 'Excel', value: 'excel' },
-          { label: 'CSV', value: 'csv' },
           { label: 'PDF', value: 'pdf' },
           { label: 'ASCII', value: 'ascii' },
           { label: 'HTML', value: 'html' },
@@ -198,7 +175,25 @@ class Main extends Component {
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
-        ]
+        ],
+        categoriesDD: [
+          { label: 'Accounting', value: 'Accounting' },
+          { label: 'Books', value: 'Books' },
+          { label: 'Customer Service', value: 'Customer Service' },
+          { label: 'Databases', value: 'Databases' },
+          { label: 'Ebooks', value: 'Ebooks' },
+          { label: 'Econtent', value: 'Econtent' },
+          { label: 'General', value: 'General' },
+          { label: 'Journals', value: 'Journals' },
+          { label: 'Licenses', value: 'Licenses' },
+          { label: 'Primary', value: 'Primary' },
+          { label: 'Sales', value: 'Sales' },
+          { label: 'Serials', value: 'Serials' },
+          { label: 'Returns', value: 'Returns' },
+          { label: 'Shipments', value: 'Shipments' },
+          { label: 'Payments', value: 'Payments' },
+          { label: 'Other', value: 'Other' },
+        ],
       }
     }
   });
@@ -232,7 +227,6 @@ class Main extends Component {
             filterConfig={filterConfig}
             visibleColumns={['Name', 'Code', 'Description', 'Vendor Status']}
             resultsFormatter={resultsFormatter}
-            initialFilters={this.constructor.manifest.query.initialValue.filters}
             viewRecordComponent={ViewVendor}
             onCreate={this.create}
             editRecordComponent={PaneDetails}
@@ -241,7 +235,7 @@ class Main extends Component {
             resultCountIncrement={RESULT_COUNT_INCREMENT}
             finishedResourceName="perms"
             viewRecordPerms="vendor.item.get"
-            newRecordPerms="vendor.item.post,login.item.post,vendor.item.post"
+            newRecordPerms="vendor.item.post,login.item.post"
             parentResources={this.props.resources}
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
