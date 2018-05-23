@@ -62,7 +62,8 @@ class PaneDetails extends React.Component {
 
   getCategory() {
     const { parentResources } = this.props;
-    const data = (parentResources.vendorCategory || {}).records || [];
+    // const data = (parentResources.vendorCategory || {}).records || [];
+    const data = (parentResources.dropdown || {}).categoriesDD || [];
     if (!data || data.length === 0) return null;
     const newData = convertValueToLabel(data);
     return newData;
@@ -70,7 +71,8 @@ class PaneDetails extends React.Component {
 
   getContactCategory() {
     const { parentResources } = this.props;
-    const data = (parentResources.vendorContactCategory || {}).records || [];
+    // const data = (parentResources.vendorContactCategory || {}).records || [];
+    const data = (parentResources.dropdown || {}).categoriesDD || [];
     if (!data || data.length === 0) return null;
     const newData = convertValueToLabel(data);
     return newData;
@@ -124,7 +126,8 @@ class PaneDetails extends React.Component {
         <Pane defaultWidth="100%" firstMenu={firstMenu} lastMenu={lastMenu} paneTitle={paneTitle}>
           <FormVendor
             dropdownCurrencies={this.getCurrencies()}
-            dropdownCategories={this.getCategory()}
+            // dropdownCategories={this.getCategory()} //Data from database
+            dropdownCategories={this.getCategory()} //Hard coded value
             dropdownContactCategories={this.getContactCategory()}
             deleteVendor={this.deleteVendor}
             {...this.props}

@@ -27,7 +27,7 @@ class PhoneNumbers extends Component {
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
-          <Field label="Country Code" name={`${elem}.phone_number.country_code`} id={`${elem}.phone_number.country_code`} component={TextField} fullWidth />
+          <Field label="Country Code" name={`${elem}.phone_number.country_code`} id={`${elem}.phone_number.country_code`} component={Select} dataOptions={this.state.selectCountry} fullWidth />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Area Code" name={`${elem}.phone_number.area_code`} id={`${elem}.phone_number.area_code`} component={TextField} fullWidth />

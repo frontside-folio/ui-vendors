@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import css from '../ContactInformationView.css';
+import parseCategories from '../../Utils/Category';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class ContactInformationView extends React.Component {
 
   getPhoneNumbers(val, key) {
     const rowCount = (this.props.dataVal.length - 1) !== key;
+    const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
     const phonenumber = `${_.get(val, 'phone_number.country_code', '')} ${_.get(val, 'phone_number.area_code', '')} ${_.get(val, 'phone_number.phone_number', '')}`;
     return (
       <Row key={key}>
@@ -25,7 +27,7 @@ class ContactInformationView extends React.Component {
           <KeyValue label="Phone Number" value={phonenumber} />
         </Col>
         <Col xs={4}>
-          <KeyValue label="Categories" value={this.props.dropdownCategories} />
+          <KeyValue label="Categories" value={categories} />
         </Col>
         <Col xs={3}>
           <KeyValue label="Language" value={_.get(val, 'language', '')} />

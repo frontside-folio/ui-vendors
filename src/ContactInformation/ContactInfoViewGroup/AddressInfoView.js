@@ -4,12 +4,12 @@ import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import css from '../ContactInformationView.css';
+import parseCategories from '../../Utils/Category';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
     dataVal: PropTypes.arrayOf(PropTypes.object),
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    parseCategories: PropTypes.func
   };
 
   constructor(props) {
@@ -19,9 +19,8 @@ class ContactInformationView extends React.Component {
 
   getAddress(val, key) {
     const rowCount = (this.props.dataVal.length - 1) !== key;
-    const categories = val.categories && this.props.dropdownCategories ? this.props.parseCategories(val.categories, this.props.dropdownCategories) : null;
+    const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
     const address = `${_.get(val, 'address.city', '')}  ${_.get(val, 'address.stateRegion', '')} ${_.get(val, 'address.country', '')} ${_.get(val, 'address.zipCode', '')}`;
-
     return (
       <Row key={key}>
         <Col xs={5}>

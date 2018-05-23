@@ -56,7 +56,7 @@ class Main extends Component {
               endor_status: 'vendor_status',
             };
 
-            let cql = `(name="${resourceData.query.query}*" or code="${resourceData.query.query}*" or language="${resourceData.query.query}*" or alias.value="${resourceData.query.query}*" or alias.description="${resourceData.query.query}*" or erp_code="${resourceData.query.query}*" or tax_id="${resourceData.query.query}*" or interfaces="${resourceData.query.query}*")`;
+            let cql = `name="${resourceData.query.query}*" or code="${resourceData.query.query}*" or language="${resourceData.query.query}*" or aliases="${resourceData.query.query}*" or erp_code="${resourceData.query.query}*" or tax_id="${resourceData.query.query}*" or interfaces="${resourceData.query.query}*"`;
             const filterCql = filters2cql(filterConfig, resourceData.query.filters);
             if (filterCql) {
               if (cql) {
@@ -177,7 +177,6 @@ class Main extends Component {
           { label: 'Pending', value: 'Pending' },
         ],
         categoriesDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Accounting', value: 'Accounting' },
           { label: 'Books', value: 'Books' },
           { label: 'Customer Service', value: 'Customer Service' },
@@ -230,7 +229,7 @@ class Main extends Component {
             resultsFormatter={resultsFormatter}
             viewRecordComponent={ViewVendor}
             onCreate={this.create}
-            // editRecordComponent={PaneDetails}
+            editRecordComponent={PaneDetails}
             newRecordInitialValues={{}}
             initialResultCount={INITIAL_RESULT_COUNT}
             resultCountIncrement={RESULT_COUNT_INCREMENT}
