@@ -127,7 +127,7 @@ class PaneDetails extends React.Component {
           <FormVendor
             dropdownCurrencies={this.getCurrencies()}
             // dropdownCategories={this.getCategory()} //Data from database
-            dropdownCategories={this.getCategory()} //Hard coded value
+            dropdownCategories={this.getCategory()} // Hard coded value
             dropdownContactCategories={this.getContactCategory()}
             deleteVendor={this.deleteVendor}
             {...this.props}
