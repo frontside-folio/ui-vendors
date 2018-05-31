@@ -21,6 +21,8 @@ import { EdiInformationView } from '../EdiInformation';
 import { InterfaceView } from '../Interface';
 import { AccountsView } from '../Accounts';
 import PaneDetails from '../PaneDetails';
+import ViewBarcodeScanner from './ViewBarcodeScanner';
+
 
 class ViewVendor extends Component {
   static propTypes = {
