@@ -103,6 +103,10 @@ class ViewVendor extends Component {
           title="Edit Vendor"
         />
       </IfPermission> </PaneMenu>);
+    
+    return (
+      <ViewBarcodeScanner />
+    )
 
     if (!initialValues) {
       return (
