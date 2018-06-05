@@ -23,24 +23,6 @@ const Filters = () => {
   const cqlCountry = ConvertArrayToCQL(CountryList);
   return [
     {
-      label: 'Stats Available',
-      name: 'available',
-      cql: 'interfaces',
-      values: ['true', 'false']
-    },
-    {
-      label: 'Vendor Status',
-      name: 'vendor_status',
-      cql: 'vendor_status',
-      values: ['Active', 'Pending', 'Inactive']
-    },
-    {
-      label: 'Payment Method',
-      name: 'payment_method',
-      cql: 'payment_method',
-      values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account']
-    },
-    {
       label: 'Address Category',
       name: 'category',
       cql: 'addresses',
@@ -63,7 +45,28 @@ const Filters = () => {
       name: 'language',
       cql: 'language',
       values: cqlLanguage
-    }
+    },
+    {
+      label: 'Payment Method',
+      name: 'payment_method',
+      cql: 'payment_method',
+      values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account']
+    },
+    {
+      label: 'Stats Available',
+      name: 'available',
+      cql: 'interfaces',
+      values: [
+        { name: 'Yes', cql: 'true' },
+        { name: 'No', cql: 'false' }
+      ]
+    },
+    {
+      label: 'Vendor Status',
+      name: 'vendor_status',
+      cql: 'vendor_status',
+      values: ['Active', 'Pending', 'Inactive']
+    },
   ];
 };
 
