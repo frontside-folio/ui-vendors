@@ -19,7 +19,7 @@ class SummaryForm extends React.Component {
     return (
       <Row>
         <Col xs={6}>
-          <h6>Vendor Names</h6>
+          <h6>Alternative Names</h6>
         </Col>
         <Col xs={12}>
           {fields.length === 0 &&
@@ -40,7 +40,7 @@ class SummaryForm extends React.Component {
         <Col xs={5}>
           <Field label="AKA" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
-        <Col xs={6}>
+        <Col xs={5}>
           <Field label="description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
         </Col>
         <Col xs={1}>

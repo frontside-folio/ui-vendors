@@ -23,7 +23,7 @@ class AddressInfoView extends React.Component {
     const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
     let addresses = () => {
       if (key >= 1) return val.address;
-      val.address.primary = true;
+      val.address.primaryAddress = true;
       return val.address;
     };
 

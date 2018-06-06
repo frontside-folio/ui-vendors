@@ -40,9 +40,6 @@ class ContactInformationView extends React.Component {
         <Col xs={3}>
           <KeyValue label="Language" value={_.get(val, 'language', '')} />
         </Col>
-        <Col xs={12}>
-          <KeyValue label="Notes" value={_.get(val, 'notes', '')} />
-        </Col>
         {rowCount &&
           <div style={{ width: '100%' }}>
             <hr />

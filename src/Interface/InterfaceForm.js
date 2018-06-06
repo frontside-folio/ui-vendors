@@ -27,6 +27,12 @@ class InterfaceForm extends Component {
     this.renderSubForm = this.renderSubForm.bind(this);
   }
 
+  togglePassword() {
+    this.setState({
+      showPassword: !this.state.showPassword,
+    });
+  }
+
   renderForm = ({ fields }) => {
     return (
       <Row>
@@ -69,8 +75,17 @@ class InterfaceForm extends Component {
               <Field label="Username" name={`${elem}.username`} id={`${elem}.username`} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Password" name={`${elem}.password`} id={`${elem}.password`} type="password" component={TextField} fullWidth />
-            </Col>
+                    <Row>
+                      <Col xs={10}>
+                        <Field label="Password" name={`${elem}.password`} id={`${elem}.password`} type={this.state.showPassword ? 'text' : 'password'} component={TextField} autoComplete="nope" fullWidth />
+                      </Col>
+                      <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
+                        <Button id={`${elem}.toggle_pw_btn`} onClick={() => updateTest()}>
+                          { this.state.showPassword ? 'hide' : 'show' }
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Col>
             <Col xs={12}>
               <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
             </Col>
