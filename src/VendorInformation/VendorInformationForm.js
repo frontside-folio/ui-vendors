@@ -37,9 +37,6 @@ class VendorInformationForm extends Component {
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="ERP Code" name="erp_code" id="erp_code" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
               <Field label="Payment Method" name="payment_method" id="payment_method" component={Select} dataOptions={paymentMethodDD} fullWidth />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>

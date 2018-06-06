@@ -26,13 +26,13 @@ const Filters = () => {
       label: 'Address Category',
       name: 'category',
       cql: 'addresses',
-      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Other']
+      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Techincal Support', 'Other']
     },
     {
       label: 'Contact People Category',
       name: 'category',
       cql: 'contacts',
-      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Other']
+      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Techincal Support', 'Other']
     },
     {
       label: 'Country',
@@ -65,7 +65,7 @@ const Filters = () => {
       label: 'Vendor Status',
       name: 'vendor_status',
       cql: 'vendor_status',
-      values: ['Active', 'Pending', 'Inactive']
+      values: ['Active', 'Inactive', 'Pending']
     },
   ];
 };

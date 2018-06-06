@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
+import BoolToCheckbox from '../Utils/BoolToCheckbox';
 import css from './EdiInformationView.css';
 
 class EdiInformationView extends React.Component {
@@ -34,22 +35,34 @@ class EdiInformationView extends React.Component {
                 <KeyValue label="Library EDI Type" value={_.get(dataVal, ['lib_edi_type'], '')} />
               </Col>
               <Col xs={3}>
-                <KeyValue label="Prorate Tax" value={_.toString(_.get(dataVal, ['prorate_tax']))} />
+                <KeyValue label="Prorate Tax">
+                  <BoolToCheckbox name="Prorate Tax" value={_.get(dataVal, ['prorate_tax'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label="Prorate Fees" value={_.toString(_.get(dataVal, ['prorate_fees']))} />
+                <KeyValue label="Prorate Fees">
+                  <BoolToCheckbox name="Prorate Fees" value={_.get(dataVal, ['prorate_fees'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label="EDI Naming Convention" value={_.get(dataVal, ['edi_naming_convention'])} />
+                <KeyValue label="EDI Naming Convention">
+                  <BoolToCheckbox name="EDI Naming Convention" value={_.get(dataVal, ['edi_naming_convention'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label="Send Account Number" value={_.toString(_.get(dataVal, ['send_acct_num']))} />
+                <KeyValue label="Send Account Number">
+                  <BoolToCheckbox name="Send Account Number" value={_.get(dataVal, ['send_acct_num'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label="Support Order" value={_.toString(_.get(dataVal, ['support_order']))} />
+                <KeyValue label="Support Order">
+                  <BoolToCheckbox name="Support Order" value={_.get(dataVal, ['support_order'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
-                <KeyValue label="Support Invoice" value={_.toString(_.get(dataVal, ['support_invoice']))} />
+                <KeyValue label="Support Invoice">
+                  <BoolToCheckbox name="Support Invoice" value={_.get(dataVal, ['support_invoice'])} />
+                </KeyValue>
               </Col>
               <Col xs={3}>
                 <KeyValue label="Notes" value={_.get(dataVal, ['notes'], '')} />

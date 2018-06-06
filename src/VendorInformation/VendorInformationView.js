@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
+import BoolToCheckbox from '../Utils/BoolToCheckbox';
 import css from './VendorInformationView.css';
 
 class VendorInformationView extends React.Component {
@@ -17,22 +18,27 @@ class VendorInformationView extends React.Component {
       return (
         <Row className={css.horizontalLine}>
           <Col xs={3}>
-            <KeyValue label="ERP Code" value={_.get(dataVal, ['erp_code'], '')} />
-          </Col>
-          <Col xs={3}>
             <KeyValue label="Payment Method" value={_.get(dataVal, ['payment_method'], '')} />
           </Col>
           <Col xs={3}>
-            <KeyValue label="Access Provider" value={_.toString(_.get(dataVal, ['access_provider']))} />
+            <KeyValue label="Access Provider" value={_.toString(_.get(dataVal, ['access_provider']))}>
+              <BoolToCheckbox name="Access Provider" value={_.get(dataVal, ['access_provider'])} />
+            </KeyValue>
           </Col>
           <Col xs={3}>
-            <KeyValue label="Governmental" value={_.toString(_.get(dataVal, ['governmental']))} />
+            <KeyValue label="Governmental" value={_.toString(_.get(dataVal, ['governmental']))}>
+              <BoolToCheckbox name="Governmental" value={_.get(dataVal, ['governmental'])} />
+            </KeyValue>
           </Col>
           <Col xs={3}>
-            <KeyValue label="Licensor" value={_.toString(_.get(dataVal, ['licensor']))} />
+            <KeyValue label="Licensor" value={_.toString(_.get(dataVal, ['licensor']))}>
+              <BoolToCheckbox name="Licensor" value={_.get(dataVal, ['licensor'])} />
+            </KeyValue>
           </Col>
           <Col xs={3}>
-            <KeyValue label="Material Supplier" value={_.toString(_.get(dataVal, ['material_supplier']))} />
+            <KeyValue label="Material Supplier">
+              <BoolToCheckbox name="Material Supplier" value={_.get(dataVal, ['material_supplier'])} />
+            </KeyValue>
           </Col>
           <Col xs={3}>
             <KeyValue label="vendor_currencies" value={_.toString(_.map(dataVal.vendor_currencies))} />

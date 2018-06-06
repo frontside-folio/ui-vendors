@@ -22,16 +22,19 @@ class SummaryView extends React.Component {
 
     return (
       <Row>
-        <Col xs={3}>
+        <Col xs={4}>
           <KeyValue label="Name" value={_.get(dataVal, 'name', '')} />
         </Col>
-        <Col xs={3}>
+        <Col xs={4}>
           <KeyValue label="Code" value={_.get(dataVal, 'code', '')} />
         </Col>
-        <Col xs={3}>
+        <Col xs={4}>
+          <KeyValue label="ERP Code" value={_.get(dataVal, ['erp_code'], '')} />
+        </Col>
+        <Col xs={4}>
           <KeyValue label="Vendor Status" value={_.get(dataVal, 'vendor_status', '')} />
         </Col>
-        <Col xs={3}>
+        <Col xs={4}>
           <KeyValue label="Default Language" value={_.get(dataVal, 'language', '')} />
         </Col>
         <Col xs={12}>
