@@ -8,7 +8,8 @@ import TextField from '@folio/stripes-components/lib/TextField';
 class TogglePassword extends Component {
   static propTypes = {
     name: PropTypes.string,
-    id: PropTypes.string
+    id: PropTypes.string,
+    buttonID: PropTypes.string
   }
 
   constructor(props) {
