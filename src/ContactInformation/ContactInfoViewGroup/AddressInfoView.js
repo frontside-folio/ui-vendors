@@ -21,7 +21,7 @@ class AddressInfoView extends React.Component {
   getAddress(val, key) {
     const rowCount = (this.props.dataVal.length - 1) !== key;
     const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
-    let addresses = () => {
+    const addresses = () => {
       if (key >= 1) return val.address;
       val.address.primaryAddress = true;
       return val.address;
@@ -36,7 +36,6 @@ class AddressInfoView extends React.Component {
       'country',
     ];
 
-    // {/*addressObject={address()}/>*/}
     return (
       <Row key={key}>
         <Col xs={12}>

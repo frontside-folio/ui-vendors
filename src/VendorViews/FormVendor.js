@@ -79,7 +79,7 @@ class FormVendor extends Component {
             <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
           </Col>
           <Col xs={12} md={8}>
-          <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
+            <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
               <Accordion label="Summary" id="summarySection">
                 <SummaryForm {...this.props} />
                 <br />

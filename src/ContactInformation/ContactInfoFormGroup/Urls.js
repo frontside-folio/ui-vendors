@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
-import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 
 import LanguageList from '../../Utils/Languages';

@@ -160,4 +160,3 @@ class ViewVendor extends Component {
 }
 
 export default ViewVendor;
-``
