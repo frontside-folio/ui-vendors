@@ -81,6 +81,10 @@ class ViewVendor extends Component {
   }
 
   update(data) {
+    data.addresses.map((item) => {
+      delete item.address.primaryAddress;
+      return item;
+    });
     this.props.parentMutator.records.PUT(data).then(() => {
       this.props.onCloseEdit();
     });
