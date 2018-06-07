@@ -19,6 +19,7 @@ class EdiInformationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showPassword: false,
       subSections: {
         ediBasicSection: true,
         ftpDetailsSection: true,
@@ -26,6 +27,13 @@ class EdiInformationForm extends Component {
       }
     };
     this.onToggleSubSection = this.onToggleSubSection.bind(this);
+    this.togglePassword = this.togglePassword.bind(this);
+  }
+
+  togglePassword() {
+    this.setState({
+      showPassword: !this.state.showPassword,
+    });
   }
 
   onToggleSubSection(newAccordionStatus) {
@@ -108,7 +116,16 @@ class EdiInformationForm extends Component {
                     <Field label="Username" name="edi.edi_ftp.username" id="edi_username" type="text" component={TextField} autoComplete="nope" fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Password" name="edi.edi_ftp.password" id="edi_password" type="password" component={TextField} autoComplete="nope" fullWidth />
+                    <Row>
+                      <Col xs={10}>
+                        <Field label="Password" name="edi.edi_ftp.password" id="edi_password" type={this.state.showPassword ? 'text' : 'password'} component={TextField} autoComplete="nope" fullWidth />
+                      </Col>
+                      <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
+                        <Button id="toggle_pw_btn" onClick={() => this.togglePassword()}>
+                          { this.state.showPassword ? 'hide' : 'show' }
+                        </Button>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Col>

@@ -28,13 +28,13 @@ class FormVendor extends Component {
     super(props);
     this.state = {
       sections: {
-        summarySection: true,
+        summarySection: false,
         contactInformationSection: false,
         contactPeopleSection: false,
         agreementsSection: false,
         vendorInformationSection: false,
         EDIInformationSection: false,
-        interfaceSection: false,
+        interfaceSection: true,
         accountsSection: false,
       }
     };
@@ -74,48 +74,54 @@ class FormVendor extends Component {
     const showDeleteButton = initialValues.id || false;
     return (
       <div id="form-add-new-vendor">
-        <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
-        <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-          <Accordion label="Summary" id="summarySection">
-            <SummaryForm {...this.props} />
-            <br />
-          </Accordion>
-          <Accordion label="Contact Information" id="contactInformationSection">
-            <ContactInformationForm {...this.props} />
-            <br />
-          </Accordion>
-          <Accordion label="Contact People" id="contactPeopleSection">
-            <ContactPeopleForm {...this.props} />
-            <br />
-          </Accordion>
-          <Accordion label="Agreements" id="agreementsSection">
-            <AgreementsForm {...this.props} />
-            <br />
-          </Accordion>
-          <Accordion label="Vendor Information" id="vendorInformationSection">
-            <VendorInformationForm {...this.props} />
-            <br />
-          </Accordion>
-          <Accordion label="EDI Information" id="EDIInformationSection">
-            <EdiInformationForm {...this.props} />
-          </Accordion>
-          <Accordion label="Interface" id="interfaceSection">
-            <InterfaceForm {...this.props} />
-          </Accordion>
-          <Accordion label="Accounts" id="accountsSection">
-            <AccountsForm {...this.props} />
-          </Accordion>
-        </AccordionSet>
-        <IfPermission perm="vendor.item.delete">
-          <Row end="xs">
-            <Col xs={12}>
-              {
-                showDeleteButton &&
-                <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>Remove</Button>
-              }
-            </Col>
-          </Row>
-        </IfPermission>
+        <Row center="xs" style={{ textAlign: 'left' }}>
+          <Col xs={12} md={8}>
+            <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
+          </Col>
+          <Col xs={12} md={8}>
+            <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
+              <Accordion label="Summary" id="summarySection">
+                <SummaryForm {...this.props} />
+                <br />
+              </Accordion>
+              <Accordion label="Contact Information" id="contactInformationSection">
+                <ContactInformationForm {...this.props} />
+                <br />
+              </Accordion>
+              <Accordion label="Contact People" id="contactPeopleSection">
+                <ContactPeopleForm {...this.props} />
+                <br />
+              </Accordion>
+              <Accordion label="Agreements" id="agreementsSection">
+                <AgreementsForm {...this.props} />
+                <br />
+              </Accordion>
+              <Accordion label="Vendor Information" id="vendorInformationSection">
+                <VendorInformationForm {...this.props} />
+                <br />
+              </Accordion>
+              <Accordion label="EDI Information" id="EDIInformationSection">
+                <EdiInformationForm {...this.props} />
+              </Accordion>
+              <Accordion label="Interface" id="interfaceSection">
+                <InterfaceForm {...this.props} />
+              </Accordion>
+              <Accordion label="Accounts" id="accountsSection">
+                <AccountsForm {...this.props} />
+              </Accordion>
+            </AccordionSet>
+            <IfPermission perm="vendor.item.delete">
+              <Row end="xs">
+                <Col xs={12}>
+                  {
+                    showDeleteButton &&
+                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>Remove</Button>
+                  }
+                </Col>
+              </Row>
+            </IfPermission>
+          </Col>
+        </Row>
       </div>
     );
   }

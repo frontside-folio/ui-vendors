@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import css from './InterfaceView.css';
+import BoolToCheckbox from '../Utils/BoolToCheckbox';
 
 class AgreementsView extends React.Component {
   static propTypes = {
@@ -38,7 +39,10 @@ class AgreementsView extends React.Component {
           <h4 className={css.title}>Statistics</h4>
         </Col>
         <Col xs={3}>
-          <KeyValue label="Available" value={_.toString(_.get(val, ['available']))} />
+          {/* label="Available"  */}
+          <KeyValue label="Available">
+            <BoolToCheckbox name="Available" value={_.get(val, ['available'])} />
+          </KeyValue>
         </Col>
         <Col xs={3}>
           <KeyValue label="Delivery Method" value={_.get(val, ['delivery_method'], '')} />

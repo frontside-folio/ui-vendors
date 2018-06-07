@@ -8,12 +8,13 @@ import packageInfo from '../../package';
 // Components and Pages
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
-import { Filters } from '../Utils/FilterConfig';
+import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
 import css from './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const filterConfig = Filters();
+const searchableIndexes = SearchableIndexes;
 
 class Main extends Component {
   static propTypes = {
@@ -56,7 +57,10 @@ class Main extends Component {
               endor_status: 'vendor_status',
             };
 
-            let cql = `name="${resourceData.query.query}*" or code="${resourceData.query.query}*" or language="${resourceData.query.query}*" or aliases="${resourceData.query.query}*" or erp_code="${resourceData.query.query}*" or tax_id="${resourceData.query.query}*" or interfaces="${resourceData.query.query}*"`;
+            const index = resourceData.query.qindex ? resourceData.query.qindex : 'all';
+            const searchableIndex = searchableIndexes.find(idx => idx.value === index);
+
+            let cql = searchableIndex.makeQuery(resourceData.query.query);
             const filterCql = filters2cql(filterConfig, resourceData.query.filters);
             if (filterCql) {
               if (cql) {
@@ -208,6 +212,11 @@ class Main extends Component {
     });
   }
 
+  onChangeIndex = (e) => {
+    const qindex = e.target.value;
+    this.props.mutator.query.update({ qindex });
+  }
+
   render() {
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
@@ -240,6 +249,10 @@ class Main extends Component {
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
             stripes={this.stripes}
+            searchableIndexes={searchableIndexes}
+            selectedIndex={_.get(this.props.resources.query, 'qindex')}
+            searchableIndexesPlaceholder={null}
+            onChangeIndex={this.onChangeIndex}
           />
         }
       </div>

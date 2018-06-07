@@ -9,7 +9,10 @@ import css from './ContactPeopleView.css';
 class ContactPeopleView extends React.Component {
   static propTypes = {
     initialValues: PropTypes.object,
-    dropdownContactCategories: PropTypes.object
+    parentResources: PropTypes.shape({
+      dropdown: PropTypes.object.isRequired,
+      dropdownCategories: PropTypes.arrayOf(PropTypes.object)
+    })
   }
 
   constructor(props) {
@@ -19,7 +22,8 @@ class ContactPeopleView extends React.Component {
 
   getContacts(val, key) {
     const rowCount = (this.props.initialValues.contacts.length - 1) !== key;
-    const categories = val.categories && this.props.dropdownContactCategories ? parseCategories(val.categories, this.props.dropdownContactCategories) : null;
+    const dropdownCategories = (this.props.parentResources.dropdown || {}).categoriesDD || [];
+    const categories = val.categories && dropdownCategories ? parseCategories(val.categories, dropdownCategories) : null;
     const fullName = `${_.get(val, 'contact_person.prefix', '')} ${_.get(val, 'contact_person.first_name', '')} ${_.get(val, 'contact_person.last_name', '')}`;
     const phoneNumber = `${_.get(val, 'contact_person.phone_number.country_code', '')} ${_.get(val, 'contact_person.phone_number.area_code', '')} ${_.get(val, 'contact_person.phone_number.phone_number', '')}`;
     const language = `${_.get(val, 'contact_person.language', '')}`;
