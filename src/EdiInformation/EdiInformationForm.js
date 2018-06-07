@@ -10,6 +10,7 @@ import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
 import css from './EdiInformationForm.css';
+import TogglePassword from '../Utils/TogglePassword';
 
 class EdiInformationForm extends Component {
   static propTypes = {
@@ -116,16 +117,7 @@ class EdiInformationForm extends Component {
                     <Field label="Username" name="edi.edi_ftp.username" id="edi_username" type="text" component={TextField} autoComplete="nope" fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Row>
-                      <Col xs={10}>
-                        <Field label="Password" name="edi.edi_ftp.password" id="edi_password" type={this.state.showPassword ? 'text' : 'password'} component={TextField} autoComplete="nope" fullWidth />
-                      </Col>
-                      <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
-                        <Button id="toggle_pw_btn" onClick={() => this.togglePassword()}>
-                          { this.state.showPassword ? 'hide' : 'show' }
-                        </Button>
-                      </Col>
-                    </Row>
+                    <TogglePassword name="edi.edi_ftp.password" id="edi_password" buttonID="edi_password.button" />
                   </Col>
                 </Row>
               </Col>
