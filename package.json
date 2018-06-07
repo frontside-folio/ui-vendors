@@ -14,6 +14,7 @@
   "stripes": {
     "type": "app",
     "displayName": "Vendors",
+    "moduleName": "Vendors",
     "route": "/vendors",
     "home": "/vendors",
     "hasSettings": true,
