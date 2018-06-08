@@ -5,8 +5,6 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import Select from '@folio/stripes-components/lib/Select';
-import LanguageList from '../../Utils/Languages';
-import CountryList from '../../Utils/Country';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
@@ -19,8 +17,8 @@ class AddressInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectCountry: CountryList,
-      selectLanguage: LanguageList
+      selectCountry: [],
+      selectLanguage: []
     };
     this.renderSubAddress = this.renderSubAddress.bind(this);
   }

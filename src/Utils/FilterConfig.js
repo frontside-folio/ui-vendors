@@ -1,6 +1,3 @@
-// import LanguageList from './Languages';
-// import CountryList from './Country';
-
 const ConvertArrayToCQL = (arg) => {
   const newArray = [];
   const arr = arg;
@@ -19,9 +16,7 @@ const ConvertArrayToCQL = (arg) => {
 };
 
 const Filters = () => {
-  // const cqlLanguage = ConvertArrayToCQL(LanguageList);
-  // const cqlCountry = ConvertArrayToCQL(CountryList);
-  return [
+   return [
     {
       label: 'Address Category',
       name: 'category',

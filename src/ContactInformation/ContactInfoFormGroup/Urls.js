@@ -5,8 +5,6 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import Select from '@folio/stripes-components/lib/Select';
-
-import LanguageList from '../../Utils/Languages';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
@@ -19,7 +17,7 @@ class Url extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectLanguage: LanguageList
+      selectLanguage: []
     };
     this.renderSubUrl = this.renderSubUrl.bind(this);
   }

@@ -10,6 +10,8 @@ import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
 import css from './Main.css';
+import LanguageList from '../Utils/Languages';
+import CountryList from '../Utils/Country';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
@@ -199,7 +201,9 @@ class Main extends Component {
           { label: 'Other', value: 'Other' },
         ],
       }
-    }
+    },
+    CountryList: { initialValue: CountryList },
+    LanguageList: { initialValue: LanguageList }
   });
 
   create = (ledgerdata) => {

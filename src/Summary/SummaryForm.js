@@ -5,7 +5,6 @@ import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-import LanguageList from '../Utils/Languages';
 import { Required } from '../Utils/Validate';
 
 class SummaryForm extends React.Component {
@@ -57,7 +56,7 @@ class SummaryForm extends React.Component {
       { label: 'Active', value: 'active' },
       { label: 'Inactive', value: 'inactive' }
     ];
-    const defaultLanguageOptions = LanguageList;
+    const defaultLanguageOptions = [];
 
     return (
       <Row>

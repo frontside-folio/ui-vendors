@@ -6,8 +6,6 @@ import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
-import LanguageList from '../Utils/Languages';
-import CountryList from '../Utils/Country';
 import { Required } from '../Utils/Validate';
 import css from './ContactPeopleForm.css';
 
@@ -19,8 +17,8 @@ class ContactPeopleForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectLanguage: LanguageList,
-      selectCountry: CountryList
+      selectLanguage: [],
+      selectCountry: []
     };
     this.renderCreateContact = this.renderCreateContact.bind(this);
     this.renderSubCreateContact = this.renderSubCreateContact.bind(this);
