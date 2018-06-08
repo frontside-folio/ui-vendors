@@ -12,6 +12,7 @@ import { Required } from '../../Utils/Validate';
 class PhoneNumbers extends Component {
   static propTypes = {
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
@@ -24,6 +25,7 @@ class PhoneNumbers extends Component {
   }
 
   renderSubPhoneNumbers = (elem, index, fields) => {
+    const { dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -36,7 +38,7 @@ class PhoneNumbers extends Component {
           <Field label="Phone Number" name={`${elem}.phone_number.phone_number`} id={`${elem}.phone_number.phone_number`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
+        <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} multiple="true" fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} />
