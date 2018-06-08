@@ -8,7 +8,7 @@ import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
-import TogglePassword from '../Utils/TogglePassword';
+// import TogglePassword from '../Utils/TogglePassword';
 
 class InterfaceForm extends Component {
   static propTypes = {

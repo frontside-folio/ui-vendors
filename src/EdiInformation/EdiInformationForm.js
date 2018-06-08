@@ -10,7 +10,7 @@ import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
 import css from './EdiInformationForm.css';
-import TogglePassword from '../Utils/TogglePassword';
+// import TogglePassword from '../Utils/TogglePassword';
 
 class EdiInformationForm extends Component {
   static propTypes = {
@@ -20,7 +20,6 @@ class EdiInformationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false,
       subSections: {
         ediBasicSection: true,
         ftpDetailsSection: true,
@@ -28,13 +27,6 @@ class EdiInformationForm extends Component {
       }
     };
     this.onToggleSubSection = this.onToggleSubSection.bind(this);
-    this.togglePassword = this.togglePassword.bind(this);
-  }
-
-  togglePassword() {
-    this.setState({
-      showPassword: !this.state.showPassword,
-    });
   }
 
   onToggleSubSection(newAccordionStatus) {
