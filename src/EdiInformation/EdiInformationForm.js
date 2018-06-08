@@ -10,7 +10,7 @@ import TextArea from '@folio/stripes-components/lib/TextArea';
 import Select from '@folio/stripes-components/lib/Select';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
 import css from './EdiInformationForm.css';
-// import TogglePassword from '../Utils/TogglePassword';
+import TogglePassword from '../Utils/TogglePassword';
 
 class EdiInformationForm extends Component {
   static propTypes = {
