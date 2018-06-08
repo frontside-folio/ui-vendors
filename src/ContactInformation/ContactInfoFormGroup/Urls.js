@@ -11,6 +11,7 @@ import { Required } from '../../Utils/Validate';
 class Url extends Component {
   static propTypes = {
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
@@ -23,6 +24,7 @@ class Url extends Component {
   }
 
   renderSubUrl = (elem, index, fields) => {
+    const { dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -35,7 +37,7 @@ class Url extends Component {
           <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} multiple />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
+        <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

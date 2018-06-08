@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
@@ -8,6 +9,10 @@ import Select from '@folio/stripes-components/lib/Select';
 import { Required } from '../Utils/Validate';
 
 class SummaryForm extends React.Component {
+  static propTypes = {
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+  };
+
   constructor(props) {
     super(props);
     this.renderList = this.renderList.bind(this);
@@ -50,13 +55,13 @@ class SummaryForm extends React.Component {
   }
 
   render() {
+    const { dropdownLanguages } = this.props;
     const statusOptions = [
       { label: 'Select Status', value: '' },
       { label: 'Pending', value: 'pending' },
       { label: 'Active', value: 'active' },
       { label: 'Inactive', value: 'inactive' }
     ];
-    const defaultLanguageOptions = [];
 
     return (
       <Row>
@@ -67,7 +72,7 @@ class SummaryForm extends React.Component {
           <Field label="Code" name="code" id="code" component={TextField} fullWidth />
           <Field label="ERP Code" name="erp_code" id="erp_code" component={TextField} fullWidth />
           <Field label="Status" name="vendor_status" id="vendor_status" component={Select} fullWidth dataOptions={statusOptions} />
-          <Field label="Default Language" name="language" id="language" component={Select} fullWidth dataOptions={defaultLanguageOptions} />
+          <Field label="Default Language" name="language" id="language" component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={6}>
           <Field label="Vendor Description" name="description" id="description" component={TextArea} style={{ width: '100%', height: '139px' }} />

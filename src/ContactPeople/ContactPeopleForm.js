@@ -11,15 +11,12 @@ import css from './ContactPeopleForm.css';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
-    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object)
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectLanguage: [],
-      selectCountry: []
-    };
     this.renderCreateContact = this.renderCreateContact.bind(this);
     this.renderSubCreateContact = this.renderSubCreateContact.bind(this);
   }
@@ -43,6 +40,8 @@ class ContactPeopleForm extends Component {
   }
 
   renderSubCreateContact = (elem, index, fields) => {
+    const { dropdownCountry, dropdownLanguages } = this.props;
+
     return (
       <Row key={index}>
         <Col xs={12}>
@@ -74,7 +73,7 @@ class ContactPeopleForm extends Component {
           <Field label="Region" name={`${elem}.contact_person.address.stateRegion`} id={`${elem}.contact_person.address.stateRegion`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={4}>
-          <Field label="Country" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={Select} dataOptions={this.state.selectCountry} fullWidth />
+          <Field label="Country" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={Select} dataOptions={dropdownCountry} fullWidth />
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
@@ -111,7 +110,7 @@ class ContactPeopleForm extends Component {
           <hr style={{ borderColor: '#f0f0f0' }} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.contact_person.language`} id={`${elem}.contact_person.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
+          <Field label="Default Language" name={`${elem}.contact_person.language`} id={`${elem}.contact_person.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdownContactCategories} multiple />
