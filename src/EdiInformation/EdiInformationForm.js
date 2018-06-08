@@ -20,7 +20,6 @@ class EdiInformationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false,
       subSections: {
         ediBasicSection: true,
         ftpDetailsSection: true,
@@ -28,13 +27,6 @@ class EdiInformationForm extends Component {
       }
     };
     this.onToggleSubSection = this.onToggleSubSection.bind(this);
-    this.togglePassword = this.togglePassword.bind(this);
-  }
-
-  togglePassword() {
-    this.setState({
-      showPassword: !this.state.showPassword,
-    });
   }
 
   onToggleSubSection(newAccordionStatus) {

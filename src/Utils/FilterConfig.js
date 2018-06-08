@@ -1,5 +1,5 @@
-import LanguageList from './Languages';
-import CountryList from './Country';
+// import LanguageList from './Languages';
+// import CountryList from './Country';
 
 const ConvertArrayToCQL = (arg) => {
   const newArray = [];
@@ -19,8 +19,8 @@ const ConvertArrayToCQL = (arg) => {
 };
 
 const Filters = () => {
-  const cqlLanguage = ConvertArrayToCQL(LanguageList);
-  const cqlCountry = ConvertArrayToCQL(CountryList);
+  // const cqlLanguage = ConvertArrayToCQL(LanguageList);
+  // const cqlCountry = ConvertArrayToCQL(CountryList);
   return [
     {
       label: 'Address Category',
@@ -38,13 +38,13 @@ const Filters = () => {
       label: 'Country',
       name: 'country',
       cql: 'addresses',
-      values: cqlCountry
+      values: []
     },
     {
       label: 'Languages',
       name: 'language',
       cql: 'language',
-      values: cqlLanguage
+      values: []
     },
     {
       label: 'Payment Method',
