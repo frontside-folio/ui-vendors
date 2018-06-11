@@ -1,22 +1,5 @@
-const ConvertArrayToCQL = (arg) => {
-  const newArray = [];
-  const arr = arg;
-  Object.keys(arr).map((key) => {
-    if (key > 0) {
-      const obj = {
-        name: arr[key].label,
-        cql: arr[key].value
-      };
-      newArray.push(obj);
-      return newArray;
-    }
-    return newArray;
-  });
-  return newArray;
-};
-
 const Filters = () => {
-   return [
+  return [
     {
       label: 'Address Category',
       name: 'category',
@@ -76,4 +59,4 @@ const SearchableIndexes = [
   { label: 'Interfaces', value: 'interfaces', makeQuery: term => `(interfaces="${term}*")` }
 ];
 
-export { Filters, ConvertArrayToCQL, SearchableIndexes };
+export { Filters, SearchableIndexes };

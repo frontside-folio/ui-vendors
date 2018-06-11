@@ -10,7 +10,8 @@ import { Required } from '../Utils/Validate';
 
 class SummaryForm extends React.Component {
   static propTypes = {
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    parentResources: PropTypes.object,
+    dropdown: PropTypes.arrayOf(PropTypes.object),
   };
 
   constructor(props) {
@@ -55,7 +56,7 @@ class SummaryForm extends React.Component {
   }
 
   render() {
-    const { dropdownLanguages } = this.props;
+    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
     const statusOptions = [
       { label: 'Select Status', value: '' },
       { label: 'Pending', value: 'pending' },

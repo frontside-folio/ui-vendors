@@ -10,8 +10,9 @@ import { Required } from '../../Utils/Validate';
 
 class EmailAddresses extends Component {
   static propTypes = {
+    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    dropdown: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
@@ -21,7 +22,7 @@ class EmailAddresses extends Component {
   }
 
   renderSubEmailAddresses = (elem, index, fields) => {
-    const { dropdownLanguages } = this.props;
+    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
 
     return (
       <Row key={index} className={css.panels}>

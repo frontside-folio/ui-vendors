@@ -10,10 +10,12 @@ import { Required } from '../../Utils/Validate';
 
 class AddressInfo extends Component {
   static propTypes = {
+    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdownCountry: PropTypes.arrayOf(PropTypes.object),
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
-    fields: PropTypes.object
+    dropdown: PropTypes.shape({
+      dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+      dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
+    })
   };
 
   constructor(props) {
@@ -22,7 +24,9 @@ class AddressInfo extends Component {
   }
 
   renderSubAddress = (elem, index, fields) => {
-    const { dropdownCountry, dropdownLanguages } = this.props;
+    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
+    const dropdownCountry = (this.props.parentResources.dropdown || {}).dropdownCountry || [];
+
     return (
       <Row key={index} className={css.panels}>
         <br />

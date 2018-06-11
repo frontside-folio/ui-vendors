@@ -10,21 +10,22 @@ import { Required } from '../../Utils/Validate';
 
 class PhoneNumbers extends Component {
   static propTypes = {
+    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
-    fields: PropTypes.object
+    dropdown: PropTypes.shape({
+      dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+      dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
+    })
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectLanguage: []
-    };
     this.renderSubPhoneNumbers = this.renderSubPhoneNumbers.bind(this);
   }
 
   renderSubPhoneNumbers = (elem, index, fields) => {
-    const { dropdownLanguages } = this.props;
+    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
+    const dropdownCountry = (this.props.parentResources.dropdown || {}).dropdownCountry || [];
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -37,10 +38,10 @@ class PhoneNumbers extends Component {
           <Field label="Phone Number" name={`${elem}.phone_number.phone_number`} id={`${elem}.phone_number.phone_number`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-        <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
+          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} multiple="true" fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={6} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

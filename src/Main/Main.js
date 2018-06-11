@@ -202,9 +202,33 @@ class Main extends Component {
         ],
       }
     },
-    CountryList: { initialValue: CountryList },
-    LanguageList: { initialValue: LanguageList }
+    CountryList: [],
+    LanguageList: []
   });
+
+  componentWillUpdate() {
+    const fcCountry = filterConfig.find(group => group.name === 'country');
+    const fcLangugage = filterConfig.find(group => group.name === 'language');
+    const fcCountryLength = fcCountry.values.length;
+    const fcLangugageLength = fcLangugage.values.length;
+
+    if (fcCountryLength === 0) {
+      const CL = CountryList.map(item => ({ name: item.label, cql: item.value }));
+      fcCountry.values = CL;
+    }
+    if (fcLangugageLength === 0) {
+      const LL = LanguageList.map(item => ({ name: item.label, cql: item.value }));
+      fcCountry.values = LL;
+    }
+
+    // Update Country List and Language List
+    const propsCL = this.props.resources.CountryList || [];
+    const propsLL = this.props.resources.LanguageList || [];
+    if (!propsCL.length && !propsLL.length) {
+      this.props.mutator.CountryList.replace(CountryList);
+      this.props.mutator.LanguageList.replace(LanguageList);
+    }
+  }
 
   create = (ledgerdata) => {
     const { mutator } = this.props;
