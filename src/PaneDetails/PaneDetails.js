@@ -30,6 +30,8 @@ class PaneDetails extends React.Component {
     this.deleteVendor = this.deleteVendor.bind(this);
     this.getContactCategory = this.getContactCategory.bind(this);
     this.getCurrencies = this.getCurrencies.bind(this);
+    this.getCountryList = this.getCountryList.bind(this);
+    this.getLanguageList = this.getLanguageList.bind(this);
   }
   getAddFirstMenu() {
     const { onCancel } = this.props;
@@ -76,6 +78,20 @@ class PaneDetails extends React.Component {
     if (!data || data.length === 0) return null;
     const newData = convertValueToLabel(data);
     return newData;
+  }
+
+  getCountryList() {
+    const { parentResources } = this.props;
+    const data = parentResources.CountryList || [];
+    if (!data || data.length === 0) return null;
+    return Object.values(data);
+  }
+
+  getLanguageList() {
+    const { parentResources } = this.props;
+    const data = parentResources.LanguageList || [];
+    if (!data || data.length === 0) return null;
+    return Object.values(data);
   }
 
   getCurrencies() {
@@ -129,6 +145,8 @@ class PaneDetails extends React.Component {
             // dropdownCategories={this.getCategory()} //Data from database
             dropdownCategories={this.getCategory()} // Hard coded value
             dropdownContactCategories={this.getContactCategory()}
+            dropdownCountry={this.getCountryList()}
+            dropdownLanguages={this.getLanguageList()}
             deleteVendor={this.deleteVendor}
             {...this.props}
           />

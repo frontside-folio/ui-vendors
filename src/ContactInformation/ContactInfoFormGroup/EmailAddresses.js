@@ -5,25 +5,23 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import Select from '@folio/stripes-components/lib/Select';
-import LanguageList from '../../Utils/Languages';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
 class EmailAddresses extends Component {
   static propTypes = {
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectLanguage: LanguageList
-    };
     this.renderSubEmailAddresses = this.renderSubEmailAddresses.bind(this);
   }
 
   renderSubEmailAddresses = (elem, index, fields) => {
+    const { dropdownCategories, dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -33,10 +31,10 @@ class EmailAddresses extends Component {
           <Field label="Description" name={`${elem}.email.description`} id={`${elem}.email.description`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.state.selectLanguage} />
+          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple />
+          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={dropdownCategories} style={{ height: '80px' }} multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

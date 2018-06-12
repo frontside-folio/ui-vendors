@@ -5,27 +5,25 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import Select from '@folio/stripes-components/lib/Select';
-import LanguageList from '../../Utils/Languages';
-import CountryList from '../../Utils/Country';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
 class AddressInfo extends Component {
   static propTypes = {
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    dropdownCountry: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectCountry: CountryList,
-      selectLanguage: LanguageList
-    };
     this.renderSubAddress = this.renderSubAddress.bind(this);
   }
 
   renderSubAddress = (elem, index, fields) => {
+    const { dropdownCategories, dropdownLanguages, dropdownCountry } = this.props;
+
     return (
       <Row key={index} className={css.panels}>
         <br />
@@ -45,13 +43,13 @@ class AddressInfo extends Component {
           <Field label="Postal Code" name={`${elem}.address.zipCode`} id={`${elem}.address.zipCode`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Country" name={`${elem}.address.country`} id={`${elem}.address.country`} component={Select} dataOptions={this.state.selectCountry} validate={[Required]} fullWidth />
+          <Field label="Country" name={`${elem}.address.country`} id={`${elem}.address.country`} component={Select} dataOptions={dropdownCountry} validate={[Required]} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={this.state.selectLanguage} fullWidth />
+          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} fullWidth multiple />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} dataOptions={dropdownCategories} style={{ height: '80px' }} fullWidth multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">Remove</Button>

@@ -1,26 +1,4 @@
-// import LanguageList from './Languages';
-// import CountryList from './Country';
-
-const ConvertArrayToCQL = (arg) => {
-  const newArray = [];
-  const arr = arg;
-  Object.keys(arr).map((key) => {
-    if (key > 0) {
-      const obj = {
-        name: arr[key].label,
-        cql: arr[key].value
-      };
-      newArray.push(obj);
-      return newArray;
-    }
-    return newArray;
-  });
-  return newArray;
-};
-
 const Filters = () => {
-  // const cqlLanguage = ConvertArrayToCQL(LanguageList);
-  // const cqlCountry = ConvertArrayToCQL(CountryList);
   return [
     {
       label: 'Address Category',
@@ -81,4 +59,4 @@ const SearchableIndexes = [
   { label: 'Interfaces', value: 'interfaces', makeQuery: term => `(interfaces="${term}*")` }
 ];
 
-export { Filters, ConvertArrayToCQL, SearchableIndexes };
+export { Filters, SearchableIndexes };
