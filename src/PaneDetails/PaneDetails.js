@@ -84,14 +84,14 @@ class PaneDetails extends React.Component {
     const { parentResources } = this.props;
     const data = parentResources.CountryList || [];
     if (!data || data.length === 0) return null;
-    return data;
+    return Object.values(data);
   }
 
   getLanguageList() {
     const { parentResources } = this.props;
     const data = parentResources.LanguageList || [];
     if (!data || data.length === 0) return null;
-    return data;
+    return Object.values(data);
   }
 
   getCurrencies() {

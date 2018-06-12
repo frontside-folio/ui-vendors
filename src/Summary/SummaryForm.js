@@ -10,8 +10,7 @@ import { Required } from '../Utils/Validate';
 
 class SummaryForm extends React.Component {
   static propTypes = {
-    parentResources: PropTypes.object,
-    dropdown: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {
@@ -56,7 +55,6 @@ class SummaryForm extends React.Component {
   }
 
   render() {
-    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
     const statusOptions = [
       { label: 'Select Status', value: '' },
       { label: 'Pending', value: 'pending' },
@@ -73,7 +71,7 @@ class SummaryForm extends React.Component {
           <Field label="Code" name="code" id="code" component={TextField} fullWidth />
           <Field label="ERP Code" name="erp_code" id="erp_code" component={TextField} fullWidth />
           <Field label="Status" name="vendor_status" id="vendor_status" component={Select} fullWidth dataOptions={statusOptions} />
-          <Field label="Default Language" name="language" id="language" component={Select} fullWidth dataOptions={dropdownLanguages} />
+          <Field label="Default Language" name="language" id="language" component={Select} fullWidth dataOptions={this.props.dropdownLanguages} />
         </Col>
         <Col xs={12} md={6}>
           <Field label="Vendor Description" name="description" id="description" component={TextArea} style={{ width: '100%', height: '139px' }} />
