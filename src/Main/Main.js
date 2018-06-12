@@ -208,17 +208,17 @@ class Main extends Component {
 
   componentWillUpdate() {
     const fcCountry = filterConfig.find(group => group.name === 'country');
-    const fcLangugage = filterConfig.find(group => group.name === 'language');
+    const fcLanguage = filterConfig.find(group => group.name === 'language');
     const fcCountryLength = fcCountry.values.length;
-    const fcLangugageLength = fcLangugage.values.length;
+    const fcLanguageLength = fcLanguage.values.length;
 
     if (fcCountryLength === 0) {
       const CL = CountryList.map(item => ({ name: item.label, cql: item.value }));
       fcCountry.values = CL;
     }
-    if (fcLangugageLength === 0) {
+    if (fcLanguageLength === 0) {
       const LL = LanguageList.map(item => ({ name: item.label, cql: item.value }));
-      fcCountry.values = LL;
+      fcLanguage.values = LL;
     }
 
     // Update Country List and Language List
