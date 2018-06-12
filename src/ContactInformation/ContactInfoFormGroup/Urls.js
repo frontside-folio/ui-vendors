@@ -21,6 +21,7 @@ class Url extends Component {
   }
 
   renderSubUrl = (elem, index, fields) => {
+    const { dropdownCategories, dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -30,10 +31,10 @@ class Url extends Component {
           <Field label="Description" name={`${elem}.url.description`} id={`${elem}.url.description`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} multiple />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} dataOptions={dropdownCategories} style={{ height: '80px' }} fullWidth multiple />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={this.props.dropdownLanguages} />
+          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

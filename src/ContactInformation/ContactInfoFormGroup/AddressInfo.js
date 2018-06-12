@@ -10,14 +10,10 @@ import { Required } from '../../Utils/Validate';
 
 class AddressInfo extends Component {
   static propTypes = {
-    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdown: PropTypes.shape({
-      dropdownCountry: PropTypes.arrayOf(PropTypes.object),
-      dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
-    }),
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+    fields: PropTypes.object
   };
 
   constructor(props) {
@@ -26,6 +22,8 @@ class AddressInfo extends Component {
   }
 
   renderSubAddress = (elem, index, fields) => {
+    const { dropdownCategories, dropdownLanguages, dropdownCountry } = this.props;
+
     return (
       <Row key={index} className={css.panels}>
         <br />
@@ -45,13 +43,13 @@ class AddressInfo extends Component {
           <Field label="Postal Code" name={`${elem}.address.zipCode`} id={`${elem}.address.zipCode`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Country" name={`${elem}.address.country`} id={`${elem}.address.country`} component={Select} dataOptions={this.props.dropdownCountry} validate={[Required]} fullWidth />
+          <Field label="Country" name={`${elem}.address.country`} id={`${elem}.address.country`} component={Select} dataOptions={dropdownCountry} validate={[Required]} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={this.props.dropdownLanguages} fullWidth />
+          <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} fullWidth multiple />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} dataOptions={dropdownCategories} style={{ height: '80px' }} fullWidth multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">Remove</Button>

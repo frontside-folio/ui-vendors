@@ -10,12 +10,9 @@ import { Required } from '../../Utils/Validate';
 
 class PhoneNumbers extends Component {
   static propTypes = {
-    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdown: PropTypes.shape({
-      dropdownCountry: PropTypes.arrayOf(PropTypes.object),
-      dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
-    })
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    fields: PropTypes.object
   };
 
   constructor(props) {
@@ -24,12 +21,11 @@ class PhoneNumbers extends Component {
   }
 
   renderSubPhoneNumbers = (elem, index, fields) => {
-    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
-    const dropdownCountry = (this.props.parentResources.dropdown || {}).dropdownCountry || [];
+    const { dropdownCategories, dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
-          <Field label="Country Code" name={`${elem}.phone_number.country_code`} id={`${elem}.phone_number.country_code`} component={Select} dataOptions={this.state.selectCountry} fullWidth />
+          <Field label="Country Code" name={`${elem}.phone_number.country_code`} id={`${elem}.phone_number.country_code`} type="number" component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Area Code" name={`${elem}.phone_number.area_code`} id={`${elem}.phone_number.area_code`} component={TextField} fullWidth />
@@ -41,7 +37,7 @@ class PhoneNumbers extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple />
+          <Field label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={dropdownCategories} style={{ height: '80px' }} multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={6} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">

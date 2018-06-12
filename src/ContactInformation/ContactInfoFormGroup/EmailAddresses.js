@@ -10,9 +10,8 @@ import { Required } from '../../Utils/Validate';
 
 class EmailAddresses extends Component {
   static propTypes = {
-    parentResources: PropTypes.object,
     dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-    dropdown: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
@@ -22,8 +21,7 @@ class EmailAddresses extends Component {
   }
 
   renderSubEmailAddresses = (elem, index, fields) => {
-    const dropdownLanguages = (this.props.parentResources.dropdown || {}).dropdownLanguages || [];
-
+    const { dropdownCategories, dropdownLanguages } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
@@ -36,7 +34,7 @@ class EmailAddresses extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={this.props.dropdownCategories} style={{ height: '80px' }} multiple />
+          <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth dataOptions={dropdownCategories} style={{ height: '80px' }} multiple />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">
