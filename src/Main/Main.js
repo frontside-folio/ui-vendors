@@ -202,33 +202,9 @@ class Main extends Component {
         ],
       }
     },
-    CountryList: [],
-    LanguageList: []
+    CountryList: { initialValue: CountryList },
+    LanguageList: { initialValue: LanguageList }
   });
-
-  componentWillUpdate() {
-    const fcCountry = filterConfig.find(group => group.name === 'country');
-    const fcLangugage = filterConfig.find(group => group.name === 'language');
-    const fcCountryLength = fcCountry.values.length;
-    const fcLangugageLength = fcLangugage.values.length;
-
-    if (fcCountryLength === 0) {
-      const CL = CountryList.map(item => ({ name: item.label, cql: item.value }));
-      fcCountry.values = CL;
-    }
-    if (fcLangugageLength === 0) {
-      const LL = LanguageList.map(item => ({ name: item.label, cql: item.value }));
-      fcCountry.values = LL;
-    }
-
-    // Update Country List and Language List
-    const propsCL = this.props.resources.CountryList || [];
-    const propsLL = this.props.resources.LanguageList || [];
-    if (!propsCL.length && !propsLL.length) {
-      this.props.mutator.CountryList.replace(CountryList);
-      this.props.mutator.LanguageList.replace(LanguageList);
-    }
-  }
 
   create = (ledgerdata) => {
     const { mutator } = this.props;
@@ -277,10 +253,10 @@ class Main extends Component {
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
             stripes={this.stripes}
-            searchableIndexes={searchableIndexes}
-            selectedIndex={_.get(this.props.resources.query, 'qindex')}
-            searchableIndexesPlaceholder={null}
-            onChangeIndex={this.onChangeIndex}
+            // searchableIndexes={searchableIndexes}
+            // selectedIndex={_.get(this.props.resources.query, 'qindex')}
+            // searchableIndexesPlaceholder={null}
+            // onChangeIndex={this.onChangeIndex}
           />
         }
       </div>
