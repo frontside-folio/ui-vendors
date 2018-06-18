@@ -19,20 +19,26 @@ class MultiSelect extends Component {
     this.renderSubForm = this.renderSubForm.bind(this);
     this.updateState = this.updateState.bind(this);
     this.onRemove = this.onRemove.bind(this);
-    this.initializeNew = this.initializeNew.bind(this);
-    this.initializeEdit = this.initializeEdit.bind(this);
+    this.initialized = this.initialized.bind(this);
+    this.initNew = this.initNew.bind(this);
+    this.initEdit = this.initEdit.bind(this);
   }
 
   componentDidMount() {
     const { name, isEditPage, initialValues } = this.props;
+    this.initialized();
+  }
+
+  initialized() {
+    const { isEditPage } = this.props;
     if (isEditPage) {
-      this.initializeEdit();
+      this.initEdit();
     } else {
-      this.initializeNew();
+      this.initNew();
     }
   }
 
-  initializeNew() {
+  initNew() {
     const { name, dataState, dropdownCategories, updateMultiState } = this.props;
     const obj = Object.assign({ [name]: {
       selected: [],
@@ -41,23 +47,29 @@ class MultiSelect extends Component {
     updateMultiState(obj);
   }
 
-  initializeEdit() {
+  initEdit() {
     const { name, dataState, dropdownCategories, updateMultiState, initialValues } = this.props;
     // Parse name to be able to get inside intialValues
     const nameSp1 = name.split('[');
     const nameSp2 = nameSp1[1].split(']');
     const parentName = nameSp1[0];
     const index = Number(nameSp2[0]);
-    const categories = initialValues[parentName][index].categories;
-    // Filter currect categories
-    const baseCat = dropdownCategories;
-    const newCategories = baseCat.filter(item => !categories.includes(item));
-    // Update state
-    const obj = Object.assign({ [name]: {
-      selected: [],
-      categories: newCategories
-    } }, dataState);
-    updateMultiState(obj);
+    const parentPath = initialValues[parentName][index];
+    if (!parentPath) {
+      // Check if categories doesn't exist, create new;
+      this.initNew();
+    } else {
+      // Filter currect categories
+      const categories = parentPath.categories;
+      const baseCat = dropdownCategories;
+      const newCategories = baseCat.filter(item => !categories.includes(item));
+      // Update state
+      const obj = Object.assign({ [name]: {
+        selected: [],
+        categories: newCategories
+      } }, dataState);
+      updateMultiState(obj);
+    }
   }
 
   updateState = (item, fields, i) => {
