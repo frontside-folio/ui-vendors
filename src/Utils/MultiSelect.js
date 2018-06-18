@@ -49,27 +49,15 @@ class MultiSelect extends Component {
     const parentName = nameSp1[0];
     const index = Number(nameSp2[0]);
     const categories = initialValues[parentName][index].categories;
-    // console.log(parentName);
-    // console.log(index);
-    // const nameSp2 = nameSp1.split("]");
-    // console.log(nameSp2);
-    // console.log(initialValues[]);
-    // console.log(initialValues[newName]);
-    // const obj = Object.assign({ [name]: {
-    //   selected: [],
-    //   categories: dropdownCategories
-    // } }, dataState);
-    // updateMultiState(obj);
-    // console.log(name);
+    // Filter currect categories
     const baseCat = dropdownCategories;
-    const newArr = baseCat.filter(item => !categories.includes(item));
-    // categories.map(curItem => {
-    //   return baseCat.map((cat, i) => {
-    //     if (cat !== curItem) return baseCat;
-    //     return delete baseCat[i];
-    //   });
-    // });
-    console.log(newArr);
+    const newCategories = baseCat.filter(item => !categories.includes(item));
+    // Update state
+    const obj = Object.assign({ [name]: {
+      selected: [],
+      categories: newCategories
+    } }, dataState);
+    updateMultiState(obj);
   }
 
   updateState = (item, fields, i) => {
