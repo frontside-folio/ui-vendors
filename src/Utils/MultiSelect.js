@@ -43,8 +43,9 @@ class MultiSelect extends Component {
 
   initializeEdit() {
     const { name, dataState, dropdownCategories, updateMultiState, initialValues } = this.props;
-    const nameSp1 = name.split("[");
-    const nameSp2 = nameSp1[1].split("]");
+    // Parse name to be able to get inside intialValues
+    const nameSp1 = name.split('[');
+    const nameSp2 = nameSp1[1].split(']');
     const parentName = nameSp1[0];
     const index = Number(nameSp2[0]);
     const categories = initialValues[parentName][index].categories;
@@ -60,14 +61,15 @@ class MultiSelect extends Component {
     // } }, dataState);
     // updateMultiState(obj);
     // console.log(name);
-    // const baseCat = dropdownCategories;
-    // const currCat = fields.getAll();
-    // currCat.map(currItem => {
-    //   const index = baseCat.indexOf(currItem);
-    //   baseCat.splice(index, 1);
-    //   console.log(baseCat);
+    const baseCat = dropdownCategories;
+    const newArr = baseCat.filter(item => !categories.includes(item));
+    // categories.map(curItem => {
+    //   return baseCat.map((cat, i) => {
+    //     if (cat !== curItem) return baseCat;
+    //     return delete baseCat[i];
+    //   });
     // });
-    // console.log(baseCat);
+    console.log(newArr);
   }
 
   updateState = (item, fields, i) => {
