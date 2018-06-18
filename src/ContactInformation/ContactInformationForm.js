@@ -12,13 +12,14 @@ class ContactInformationForm extends React.Component {
   };
 
   render() {
+    const { initialValues } = this.props;
     return (
       <Row>
         <Col xs={12}>
-          <FieldArray label="Addess" name="addresses" id="addresses_address" component={AddressInfo} {...this.props} />
+          <FieldArray label="Addess" name="addresses" id="addresses_address" initialValues={initialValues} component={AddressInfo} {...this.props} />
           <br />
         </Col>
-        <Col xs={12}>
+        {/* <Col xs={12}>
           <FieldArray label="Phone Numbers" name="phone_numbers" id="phone_numbers" component={PhoneNumbers} {...this.props} />
           <br />
         </Col>
@@ -29,7 +30,7 @@ class ContactInformationForm extends React.Component {
         <Col xs={12}>
           <FieldArray label="urls" name="urls" id="urls" component={Urls} {...this.props} />
           <br />
-        </Col>
+        </Col> */}
       </Row>
     );
   }

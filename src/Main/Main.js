@@ -183,22 +183,22 @@ class Main extends Component {
           { label: 'Pending', value: 'Pending' },
         ],
         categoriesDD: [
-          { label: 'Accounting', value: 'Accounting' },
-          { label: 'Books', value: 'Books' },
-          { label: 'Customer Service', value: 'Customer Service' },
-          { label: 'Databases', value: 'Databases' },
-          { label: 'Ebooks', value: 'Ebooks' },
-          { label: 'Econtent', value: 'Econtent' },
-          { label: 'General', value: 'General' },
-          { label: 'Journals', value: 'Journals' },
-          { label: 'Licenses', value: 'Licenses' },
-          { label: 'Primary', value: 'Primary' },
-          { label: 'Sales', value: 'Sales' },
-          { label: 'Serials', value: 'Serials' },
-          { label: 'Returns', value: 'Returns' },
-          { label: 'Shipments', value: 'Shipments' },
-          { label: 'Payments', value: 'Payments' },
-          { label: 'Other', value: 'Other' },
+          'Accounting',
+          'Books',
+          'Customer Service',
+          'Databases',
+          'Ebooks',
+          'Econtent',
+          'General',
+          'Journals',
+          'Licenses',
+          'Primary',
+          'Sales',
+          'Serials',
+          'Returns',
+          'Shipments',
+          'Payments',
+          'Other'
         ],
       }
     },
@@ -207,6 +207,7 @@ class Main extends Component {
   });
 
   create = (ledgerdata) => {
+    console.log(ledgerdata);
     const { mutator } = this.props;
     mutator.records.POST(ledgerdata).then(newLedger => {
       mutator.query.update({

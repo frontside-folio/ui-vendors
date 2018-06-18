@@ -12,20 +12,38 @@ import { Required } from '../../Utils/Validate';
 
 class AddressInfo extends Component {
   static propTypes = {
-    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
+    dropdownCategories: PropTypes.Array,
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+    initialValues: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object
   };
 
   constructor(props) {
     super(props);
+    this.state = {
+      dataState: []
+    };
     this.renderSubAddress = this.renderSubAddress.bind(this);
+    this.updateMultiState = this.updateMultiState.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+  }
+
+  updateMultiState = (dataState) => {
+    this.setState({ dataState });
+  }
+
+  onRemove = (name, fields, index) => {
+    const dataState = this.state.dataState;
+    const obj = Object.assign({}, dataState);
+    delete obj[name];
+    this.setState({ dataState: obj});
+    fields.remove(index);
   }
 
   renderSubAddress = (elem, index, fields) => {
-    const { dropdownCategories, dropdownLanguages, dropdownCountry } = this.props;
-
+    const { dropdownCategories, dropdownLanguages, dropdownCountry, initialValues } = this.props;
+    const isEditPage = initialValues.id ? true : false;
     return (
       <Row key={index} className={css.panels}>
         <br />
@@ -51,10 +69,10 @@ class AddressInfo extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <MultiSelect label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} dataOptions={dropdownCategories} />
+          <MultiSelect label="Categories" name={`${elem}.categories`} id={`${elem}.categories`} dropdownCategories={dropdownCategories} dataState={this.state.dataState} updateMultiState={this.updateMultiState} isEditPage={isEditPage} initialValues={initialValues} />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
-          <Button onClick={() => fields.remove(index)} buttonStyle="danger">Remove</Button>
+          <Button onClick={() => this.onRemove(`${elem}.categories`, fields, index)} buttonStyle="danger">Remove</Button>
         </Col>
         <br />
       </Row>
