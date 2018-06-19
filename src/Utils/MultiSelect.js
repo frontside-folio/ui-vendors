@@ -2,13 +2,19 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
+import { Dropdown } from '@folio/stripes-components/lib/Dropdown';
+import { DropdownMenu } from '@folio/stripes-components/lib/DropdownMenu';
 import Button from '@folio/stripes-components/lib/Button';
+import css from './css/MultiSelect.css';
+
 
 class MultiSelect extends Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     label: PropTypes.string,
+    initialValues: PropTypes.object,
+    dropdownCategories: PropTypes.arrayOf(PropTypes.object),
     dataOptions: PropTypes.arrayOf(PropTypes.object),
   }
 
@@ -85,7 +91,14 @@ class MultiSelect extends Component {
   }
 
   onRemove = (data, fields, i) => {
-    fields.remove(i);
+    const { name, dataState, dropdownCategories, updateMultiState } = this.props;
+    fields.remove(i); // remove item
+    // Remove item in caterogies
+    const categories = dataState[name].categories;
+    categories.push(data);
+    const obj = Object.assign({}, dataState);
+    obj[name].categories = categories;
+    updateMultiState(obj);
   }
 
   renderForm = ({ fields }) => {
@@ -93,6 +106,33 @@ class MultiSelect extends Component {
     const isData = dataState[name] || false;
     return (
       <div>
+        <Dropdown
+          id="AddPermissionDropdown"
+          open={this.state.open}
+          onToggle={this.onToggleAddPermDD}
+          group
+          style={{ float: 'right' }}
+          pullRight
+          >
+              <Button
+                data-role="toggle"
+                align="end"
+                bottomMargin0
+                aria-haspopup="true"
+              >
+                &#43; Add Categories
+              </Button>
+              {/* <DropdownMenu
+                data-role="menu"
+                aria-label="available permissions"
+                // onToggle={this.onToggleAddPermDD}
+              >
+                <ul>
+                  <li><a href="#">Example Link 1</a></li>
+                  <li><a href="#">Example Link 2</a></li>
+                </ul>
+              </DropdownMenu> */}
+          </Dropdown>
         {fields.map(this.renderSubForm)}
         {
           isData &&
@@ -108,11 +148,10 @@ class MultiSelect extends Component {
 
   renderSubForm = (elem, i, fields) => {
     const data = `${fields.get(i)}`;
-
     return (
       <div key={i}>
-        <Field label={`${fields.get(i)}`} name={`${fields.get(i)}`} id={`${fields.get(i)}`} value={`${fields.get(i)}`} checked="checked" component={Checkbox} />
-        <button type="button" title="Remove" onClick={() => this.onRemove(data, fields, i)}>X</button>
+        <Field className={css.hideInput} label={`${fields.get(i)}`} name={`${fields.get(i)}`} id={`${fields.get(i)}`} value={`${fields.get(i)}`} checked="checked" component={Checkbox} />
+        <Button buttonStyle={'warning'} type="button" title="Remove" onClick={() => this.onRemove(data, fields, i)}>{fields.get(i)} (X)</Button>
       </div>
     );
   }
