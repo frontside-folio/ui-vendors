@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import moment from 'moment-timezone';
 // Folio
 import SearchAndSort from '@folio/stripes-smart-components/lib/SearchAndSort';
 import { filters2cql } from '@folio/stripes-components/lib/FilterGroups';
@@ -206,9 +207,28 @@ class Main extends Component {
     LanguageList: { initialValue: LanguageList }
   });
 
-  create = (ledgerdata) => {
+  create = (data) => {
     const { mutator } = this.props;
-    mutator.records.POST(ledgerdata).then(newLedger => {
+
+    if (data.edi.edi_job.time) {
+      const timeZone = moment.tz.guess();
+      const time = data.edi.edi_job.time;
+      if (data.edi.edi_job.date) {
+        const date = data.edi.edi_job.date;
+        const parseDate = date.split('T');
+        const parseTime = time.split('.');
+        const dateTime = moment.tz(`${parseDate[0]}T${parseTime[0]}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
+        data.edi.edi_job.time = dateTime;
+      } else {
+        const currentDate = moment().format('YYYY-MM-DDThh:mm:ss.ZZ');
+        const parseDate = currentDate.split('T');
+        const parseTime = time.split('.');
+        const dateTime = moment.tz(`${parseDate[0]}T${time}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
+        data.edi.edi_job.time = dateTime;
+      }
+    }
+
+    mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
         _path: `/vendors/view/${newLedger.id}`,
         layer: null

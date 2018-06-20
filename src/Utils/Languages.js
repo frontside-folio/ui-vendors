@@ -1,4 +1,5 @@
 module.exports = [
+  { label: '-- Select Language --', value: '' },
   { label: 'Afar', value: 'aa' },
   { label: 'Abkhazian', value: 'ab' },
   { label: 'Avestan', value: 'ae' },

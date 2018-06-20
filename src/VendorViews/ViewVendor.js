@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import queryString from 'query-string';
+import moment from 'moment-timezone';
 // Folio
 import { AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
 import Pane from '@folio/stripes-components/lib/Pane';
@@ -61,7 +62,17 @@ class ViewVendor extends Component {
     const { parentResources, match: { params: { id } } } = this.props;
     const vendors = (parentResources.records || {}).records || [];
     if (!vendors || vendors.length === 0 || !id) return null;
-    return vendors.find(u => u.id === id);
+    const data = vendors.find(u => u.id === id);
+    const vendors = (((data || {}).edi || {}).edi_job || {}).time || {};
+    // if (!_.isEmpty(data.edi) && !_.isEmpty(data.edi.edi_job)) {
+    //   if (!_.isEmpty(data.edi.edi_job) && data.edi.edi_job.time > 2) {
+    //     const time = data.edi.edi.edi_job.time;
+    //     const parseDate = time.split('T') || null;
+    //     const parseTime = parseDate[1] ? parseDate[1].split('.') : null;
+    //     if (parseTime) data.edi.edi_job.time = parseTime;
+    //   }
+    // }
+    return data;
   }
 
   onToggleSection({ id }) {
@@ -85,6 +96,23 @@ class ViewVendor extends Component {
       delete item.address.primaryAddress;
       return item;
     });
+    if (data.edi.edi_job.time) {
+      const timeZone = moment.tz.guess();
+      const time = data.edi.edi_job.time;
+      if (data.edi.edi_job.date) {
+        const date = data.edi.edi_job.date;
+        const parseDate = date.split('T');
+        const parseTime = time.split('.');
+        const dateTime = moment.tz(`${parseDate[0]}T${parseTime[0]}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
+        data.edi.edi_job.time = dateTime;
+      } else {
+        const currentDate = moment().format('YYYY-MM-DDThh:mm:ss.ZZ');
+        const parseDate = currentDate.split('T');
+        const parseTime = time.split('.');
+        const dateTime = moment.tz(`${parseDate[0]}T${time}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
+        data.edi.edi_job.time = dateTime;
+      }
+    }
     this.props.parentMutator.records.PUT(data).then(() => {
       this.props.onCloseEdit();
     });
