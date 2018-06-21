@@ -63,7 +63,7 @@ class ViewVendor extends Component {
     const vendors = (parentResources.records || {}).records || [];
     if (!vendors || vendors.length === 0 || !id) return null;
     const data = vendors.find(u => u.id === id);
-    const vendors = (((data || {}).edi || {}).edi_job || {}).time || {};
+    // const vendors = (((data || {}).edi || {}).edi_job || {}).time || {};
     // if (!_.isEmpty(data.edi) && !_.isEmpty(data.edi.edi_job)) {
     //   if (!_.isEmpty(data.edi.edi_job) && data.edi.edi_job.time > 2) {
     //     const time = data.edi.edi.edi_job.time;
