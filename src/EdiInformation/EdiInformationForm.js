@@ -53,7 +53,7 @@ class EdiInformationForm extends Component {
     return (
       <Col xs={12}>
         <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSubSection}>
-          {/* <Accordion label="EDI Basic" id="ediBasicSection">
+          <Accordion label="EDI Basic" id="ediBasicSection">
             <Row>
               <Col xs={12} md={6}>
                 <Row>
@@ -136,7 +136,7 @@ class EdiInformationForm extends Component {
                 <Field label="Notes" name="edi.edi_ftp.notes" id="edi_edi_ftp.notes" component={TextArea} fullWidth />
               </Col>
             </Row>
-          </Accordion> */}
+          </Accordion>
           <Accordion label="Scheduling" id="schedulingSection">
             <Row>
               <Col xs={12} md={6}>
