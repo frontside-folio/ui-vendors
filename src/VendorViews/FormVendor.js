@@ -28,12 +28,12 @@ class FormVendor extends Component {
     super(props);
     this.state = {
       sections: {
-        summarySection: true,
+        summarySection: false,
         contactInformationSection: false,
         contactPeopleSection: false,
         agreementsSection: false,
         vendorInformationSection: false,
-        EDIInformationSection: false,
+        EDIInformationSection: true,
         interfaceSection: false,
         accountsSection: false,
       }

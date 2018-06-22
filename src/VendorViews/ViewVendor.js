@@ -22,6 +22,7 @@ import { EdiInformationView } from '../EdiInformation';
 import { InterfaceView } from '../Interface';
 import { AccountsView } from '../Accounts';
 import PaneDetails from '../PaneDetails';
+import FormatTime from '../Utils/FormatTime';
 
 class ViewVendor extends Component {
   static propTypes = {
@@ -63,15 +64,8 @@ class ViewVendor extends Component {
     const vendors = (parentResources.records || {}).records || [];
     if (!vendors || vendors.length === 0 || !id) return null;
     const data = vendors.find(u => u.id === id);
-    // const vendors = (((data || {}).edi || {}).edi_job || {}).time || {};
-    // if (!_.isEmpty(data.edi) && !_.isEmpty(data.edi.edi_job)) {
-    //   if (!_.isEmpty(data.edi.edi_job) && data.edi.edi_job.time > 2) {
-    //     const time = data.edi.edi.edi_job.time;
-    //     const parseDate = time.split('T') || null;
-    //     const parseTime = parseDate[1] ? parseDate[1].split('.') : null;
-    //     if (parseTime) data.edi.edi_job.time = parseTime;
-    //   }
-    // }
+    const time = FormatTime(data, 'get');
+    if (time) data.edi.edi_job.time = time;
     return data;
   }
 
@@ -96,23 +90,10 @@ class ViewVendor extends Component {
       delete item.address.primaryAddress;
       return item;
     });
-    if (data.edi.edi_job.time) {
-      const timeZone = moment.tz.guess();
-      const time = data.edi.edi_job.time;
-      if (data.edi.edi_job.date) {
-        const date = data.edi.edi_job.date;
-        const parseDate = date.split('T');
-        const parseTime = time.split('.');
-        const dateTime = moment.tz(`${parseDate[0]}T${parseTime[0]}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
-        data.edi.edi_job.time = dateTime;
-      } else {
-        const currentDate = moment().format('YYYY-MM-DDThh:mm:ss.ZZ');
-        const parseDate = currentDate.split('T');
-        const parseTime = time.split('.');
-        const dateTime = moment.tz(`${parseDate[0]}T${time}`, timeZone).format('YYYY-MM-DDThh:mm:ss.SSSZ');
-        data.edi.edi_job.time = dateTime;
-      }
-    }
+    // Update time
+    const time = FormatTime(data, 'post');
+    if (time) { data.edi.edi_job.time = time; }
+    // Mutate
     this.props.parentMutator.records.PUT(data).then(() => {
       this.props.onCloseEdit();
     });
