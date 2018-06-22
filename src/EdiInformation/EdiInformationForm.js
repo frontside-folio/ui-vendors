@@ -53,7 +53,7 @@ class EdiInformationForm extends Component {
     return (
       <Col xs={12}>
         <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSubSection}>
-          <Accordion label="EDI Basic" id="ediBasicSection">
+          {/* <Accordion label="EDI Basic" id="ediBasicSection">
             <Row>
               <Col xs={12} md={6}>
                 <Row>
@@ -136,7 +136,7 @@ class EdiInformationForm extends Component {
                 <Field label="Notes" name="edi.edi_ftp.notes" id="edi_edi_ftp.notes" component={TextArea} fullWidth />
               </Col>
             </Row>
-          </Accordion>
+          </Accordion> */}
           <Accordion label="Scheduling" id="schedulingSection">
             <Row>
               <Col xs={12} md={6}>
@@ -148,7 +148,7 @@ class EdiInformationForm extends Component {
                     <Field label="Date" name="edi.edi_job.date" id="edi_edi_job.date" component={Datepicker} />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Time" name="edi.edi_job.time" id="edi_edi_job.time" placeholder="Select Time" timeZone="UTC" component={Timepicker} passThroughValue="Now" />
+                    <Field label="Time" name="edi.edi_job.time" id="edi_edi_job.time" placeholder="Select Time" component={Timepicker} timeZone="UTC" />
                   </Col>
                   <Col xs={12}>
                     <p style={{ fontSize: '.8rem', fontWeight: 'bold' }}>Weekly:</p>

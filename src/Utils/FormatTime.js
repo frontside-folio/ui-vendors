@@ -6,42 +6,34 @@ const FormatTime = (data, type) => {
   const time = ((((data || {}).edi || {}).edi_job || {}).time || {});
   const dateFormat = 'YYYY-MM-DDThh:mm:ss.SSSZ';
   const timezone = moment.tz.guess();
+  const momentCurDate = moment().tz(timezone).format(dateFormat);
 
   if (time.length > 0 && !_.isEmpty(time)) {
     if (type === 'post') {
-      const newDate = (date.length > 0 && !_.isEmpty(date)) ? date : moment().tz(timezone).format(dateFormat);
+      const newDate = (date.length > 0 && !_.isEmpty(date)) ? moment(date).format(dateFormat) : moment().tz(timezone).format(dateFormat);
       const parseDate = newDate.split('T');
-      const convertTime = () => {
-        if (time.toString().includes('T')) {
-          const checkTime = time.split('T');
-          return checkTime[1].split('.');
-        } else {
-          const checkTime = time.split('.');
-          return checkTime[0];
-        }
-      };
-      const dateTime = moment.tz(`${parseDate[0]}T${convertTime()}`, timezone).format(dateFormat);
-      return dateTime.toString();
+      const parseTimeZone = parseDate[1].split('.');
+      const curDate = parseDate[0];
+      const curTimeZone = parseTimeZone[1];
+
+      if (time.toString().includes('T')) {
+        const checkTime = time.split('T');
+        const splitTime = checkTime[1].split('.');
+        const getTime = splitTime[0];
+        const getDate = `${curDate}T${getTime}.${curTimeZone}`;
+        return getDate;
+      } else {
+        const parseTime = time.split('.');
+        const curTime = parseTime[0];
+        const getDate = `${curDate}T${curTime}.${curTimeZone}`;
+        return getDate;
+      }
     }
 
     if (type === 'get') {
-      console.log(time);
-      if (time.toString().includes('T')) {
-        const newTime = moment.tz(time, timezone).format(dateFormat);
-        console.log(newTime);
-        const parseTime = newTime.split('T');
-        console.log(parseTime);
-        console.log(parseTime[1]);
-        return parseTime[1];
-      } else {
-        // If no date make date;
-        const newDate = moment.tz(time, timezone).format(dateFormat);
-        const newTime = moment.tz(`${newDate[0]}T${time}`, timezone).format(dateFormat);
-        console.log(newTime);
-        const parseTime = newTime.split('T');
-        console.log(parseTime[1]);
-        return parseTime[1];
-      }
+      if (!time.toString().includes('T')) return false;
+      const newTime = moment(time).tz(timezone).format('h:mm A.ZZ');
+      return newTime;
     }
     return false;
   }

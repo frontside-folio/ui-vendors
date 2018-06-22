@@ -64,8 +64,11 @@ class ViewVendor extends Component {
     const vendors = (parentResources.records || {}).records || [];
     if (!vendors || vendors.length === 0 || !id) return null;
     const data = vendors.find(u => u.id === id);
+
+    console.log(data.edi.edi_job.time);
     const time = FormatTime(data, 'get');
-    if (time) data.edi.edi_job.time = time;
+    if (time) { data.edi.edi_job.time = time; }
+
     return data;
   }
 

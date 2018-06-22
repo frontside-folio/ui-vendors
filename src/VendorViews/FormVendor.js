@@ -84,7 +84,7 @@ class FormVendor extends Component {
                 <SummaryForm {...this.props} />
                 <br />
               </Accordion>
-              <Accordion label="Contact Information" id="contactInformationSection">
+              {/* <Accordion label="Contact Information" id="contactInformationSection">
                 <ContactInformationForm {...this.props} />
                 <br />
               </Accordion>
@@ -99,7 +99,7 @@ class FormVendor extends Component {
               <Accordion label="Vendor Information" id="vendorInformationSection">
                 <VendorInformationForm {...this.props} />
                 <br />
-              </Accordion>
+              </Accordion> */}
               <Accordion label="EDI Information" id="EDIInformationSection">
                 <EdiInformationForm {...this.props} />
               </Accordion>
