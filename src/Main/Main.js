@@ -112,13 +112,13 @@ class Main extends Component {
       initialValue: {
         paymentMethodDD: [
           { label: '-- Select --', value: '' },
-          { label: 'Cash', value: 'cash' },
-          { label: 'Credit Card/P-Card', value: 'credit_card_p_card' },
-          { label: 'EFT', value: 'eft' },
-          { label: 'Deposit Account', value: 'deposit_account' },
-          { label: 'Physical Check', value: 'physical_check' },
-          { label: 'Bank Draft', value: 'bank_draft' },
-          { label: 'Internal Transfer', value: 'internal transfer' },
+          { label: 'Cash', value: 'Cash' },
+          { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
+          { label: 'EFT', value: 'EFT' },
+          { label: 'Deposit Account', value: 'Deposit Account' },
+          { label: 'Physical Check', value: 'Physical_check' },
+          { label: 'Bank Draft', value: 'Bank Draft' },
+          { label: 'Internal Transfer', value: 'Internal Transfer' },
           { label: 'Other', value: 'other' },
         ],
         vendorEdiCodeDD: [

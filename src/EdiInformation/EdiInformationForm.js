@@ -125,6 +125,9 @@ class EdiInformationForm extends Component {
                     <Field label="FTP Connection Mode" name="edi.edi_ftp.ftp_conn_mode" id="edi_edi_ftp_conn_mode" component={Select} dataOptions={connectionModeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
+                    <Field label="FTP Port" name="edi.edi_ftp.ftp_port" id="edi_edit_ftp_ftp_port" type="text" component={TextField} fullWidth />
+                  </Col>
+                  <Col xs={12}>
                     <Field label="Order Directory" name="edi.edi_ftp.order_directory" id="edi_order_directory" type="text" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
