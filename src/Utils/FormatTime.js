@@ -20,12 +20,14 @@ const FormatTime = (data, type) => {
         const checkTime = time.split('T');
         const splitTime = checkTime[1].split('.');
         const getTime = splitTime[0];
-        const getDate = `${curDate}T${getTime}.${curTimeZone}`;
+        const converTime = getTime.toUpperCase().includes('AM') || getTime.toUpperCase().includes('PM') ? moment(getTime, 'h:mm:ss A').format('HH:mm:ss') : getTime;
+        const getDate = `${curDate}T${converTime}.${curTimeZone}`;
         return getDate;
       } else {
         const parseTime = time.split('.');
         const curTime = parseTime[0];
-        const getDate = `${curDate}T${curTime}.${curTimeZone}`;
+        const converTime = curTime.toUpperCase().includes('AM') || curTime.toUpperCase().includes('PM') ? moment(curTime, 'h:mm:ss A').format('HH:mm:ss') : curTime;
+        const getDate = `${curDate}T${converTime}.${curTimeZone}`;
         return getDate;
       }
     }

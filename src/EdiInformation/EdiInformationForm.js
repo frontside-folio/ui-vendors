@@ -192,7 +192,7 @@ class EdiInformationForm extends Component {
                 <Button>Check Now!</Button>
               </Col>
               <Col xs={12}>
-                <Field label="Notes" name="edi.edi_job.notes" id="edi_job.notes" component={TextArea} fullWidth />
+                <Field label="Notes" name="edi.edi_job.scheduling_notes" id="edi_job.scheduling_notes" component={TextArea} fullWidth />
               </Col>
             </Row>
           </Accordion>
