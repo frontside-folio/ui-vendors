@@ -16,7 +16,6 @@ class EdiInformationView extends React.Component {
     const dataVal = initialValues.edi || false;
     const ediFtp = initialValues.edi ? initialValues.edi.edi_ftp : null;
     const ediScheduling = initialValues.edi ? initialValues.edi.edi_job : null;
-    console.log(ediScheduling);
     if (dataVal) {
       return (
         <div className={css.horizontalLine}>

@@ -28,6 +28,7 @@ class Main extends Component {
   }
 
   static manifest = Object.freeze({
+    initializedFilterConfig: { initialValue: false },
     query: {
       initialValue: {
         query: '',
@@ -207,6 +208,16 @@ class Main extends Component {
     CountryList: { initialValue: CountryList },
     LanguageList: { initialValue: LanguageList }
   });
+
+  componentWillUpdate() {
+    const langFilter = filterConfig.find(group => group.name === 'language');
+    const countryFilter = filterConfig.find(group => group.name === 'country');
+    if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
+      langFilter.values = LanguageList.map(rec => ({ name: rec.label, cql: rec.value }));
+      countryFilter.values = CountryList.map(rec => ({ name: rec.label, cql: rec.value }));
+      this.props.mutator.initializedFilterConfig.replace(true);
+    }
+  }
 
   create = (data) => {
     const { mutator } = this.props;
