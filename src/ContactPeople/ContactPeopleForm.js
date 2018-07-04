@@ -11,6 +11,7 @@ import css from './ContactPeopleForm.css';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
+    dropdownContactCategories: PropTypes.arrayOf(PropTypes.object),
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dropdownCountry: PropTypes.arrayOf(PropTypes.object)
   };

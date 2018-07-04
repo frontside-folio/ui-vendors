@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import moment from 'moment-timezone';
-import FormatTime from '../Utils/FormatTime';
 // Folio
-import SearchAndSort from '@folio/stripes-smart-components/lib/SearchAndSort';
+import SearchAndSort from '@folio/stripes-smart-components/lib/SearchAndSort/';
 import { filters2cql } from '@folio/stripes-components/lib/FilterGroups';
+import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
 import PaneDetails from '../PaneDetails';

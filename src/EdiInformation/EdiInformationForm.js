@@ -8,7 +8,6 @@ import Button from '@folio/stripes-components/lib/Button';
 import TextField from '@folio/stripes-components/lib/TextField';
 import TextArea from '@folio/stripes-components/lib/TextArea';
 import Timepicker from '@folio/stripes-components/lib/Timepicker';
-import moment from 'moment-timezone';
 import Select from '@folio/stripes-components/lib/Select';
 import Checkbox from '@folio/stripes-components/lib/Checkbox';
 import Datepicker from '@folio/stripes-components/lib/Datepicker';
@@ -41,7 +40,7 @@ class EdiInformationForm extends Component {
   }
 
   render() {
-    const { parentResources, initialValues } = this.props;
+    const { parentResources } = this.props;
     const vendorEdiCodeDD = (parentResources.dropdown || {}).vendorEdiCodeDD || [];
     const vendorEdiCodeTypeDD = (parentResources.dropdown || {}).vendorEdiCodeTypeDD || [];
     const libraryEDICodeDD = (parentResources.dropdown || {}).libraryEDICodeDD || [];

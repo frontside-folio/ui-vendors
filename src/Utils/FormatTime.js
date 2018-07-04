@@ -6,7 +6,6 @@ const FormatTime = (data, type) => {
   const time = ((((data || {}).edi || {}).edi_job || {}).time || {});
   const dateFormat = 'YYYY-MM-DDThh:mm:ss.SSSZ';
   const timezone = moment.tz.guess();
-  const momentCurDate = moment().tz(timezone).format(dateFormat);
 
   if (time.length > 0 && !_.isEmpty(time)) {
     if (type === 'post') {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import queryString from 'query-string';
-import moment from 'moment-timezone';
 // Folio
 import { AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
 import Pane from '@folio/stripes-components/lib/Pane';
