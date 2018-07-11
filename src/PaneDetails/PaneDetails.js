@@ -139,7 +139,6 @@ class PaneDetails extends React.Component {
     const lastMenu = initialValues.id ?
       this.getLastMenu('clickable-updatevendor', 'Update vendor') :
       this.getLastMenu('clickable-createnewvendor', 'Create vendor');
-
     return (
       <form id="form-vendor">
         <Pane defaultWidth="100%" firstMenu={firstMenu} lastMenu={lastMenu} paneTitle={paneTitle}>
