@@ -42,7 +42,7 @@ class SummaryForm extends React.Component {
     return (
       <Row key={index}>
         <Col xs={5}>
-          <Field label="AKA" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="AKA*" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={5}>
           <Field label="description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
@@ -65,11 +65,11 @@ class SummaryForm extends React.Component {
     return (
       <Row>
         <Col xs={12}>
-          <Field label="Name" name="name" id="name" validate={[Required]} component={TextField} fullWidth />
+          <Field label="Name*" name="name" id="name" validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={6}>
-          <Field label="Code" name="code" id="code" component={TextField} fullWidth />
-          <Field label="ERP Code" name="erp_code" id="erp_code" component={TextField} fullWidth />
+          <Field label="Code*" name="code" id="code" validate={[Required]} component={TextField} fullWidth />
+          <Field label="Accounting Code" name="erp_code" id="erp_code" component={TextField} fullWidth />
           <Field label="Status" name="vendor_status" id="vendor_status" component={Select} fullWidth dataOptions={statusOptions} />
           <Field label="Default Language" name="language" id="language" component={Select} fullWidth dataOptions={this.props.dropdownLanguages} />
         </Col>

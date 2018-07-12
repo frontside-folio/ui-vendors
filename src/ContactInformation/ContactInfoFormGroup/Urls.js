@@ -25,7 +25,7 @@ class Url extends Component {
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
-          <Field label="URL" name={`${elem}.url.value`} id={`${elem}.url.value`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="URL*" name={`${elem}.url.value`} id={`${elem}.url.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Description" name={`${elem}.url.description`} id={`${elem}.url.description`} component={TextField} fullWidth />
