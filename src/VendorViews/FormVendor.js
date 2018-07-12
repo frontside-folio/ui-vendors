@@ -8,6 +8,7 @@ import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Button from '@folio/stripes-components/lib/Button';
 import IfPermission from '@folio/stripes-components/lib/IfPermission';
 // Local Components
+import HandleErrors from '../Utils/HandleErrors';
 import { SummaryForm } from '../Summary';
 import { ContactInformationForm } from '../ContactInformation';
 import { ContactPeopleForm } from '../ContactPeople';
@@ -16,7 +17,6 @@ import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
-import HandleErrors from '../Utils/HandleErrors';
 
 class FormVendor extends Component {
   static propTypes = {
@@ -26,7 +26,7 @@ class FormVendor extends Component {
     parentResources: PropTypes.object.isRequired,
   }
 
-  constructor(props, context) {
+  constructor(props) {
     super(props);
     this.state = {
       sections: {
@@ -77,7 +77,7 @@ class FormVendor extends Component {
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>
-          <Fields names={['name', 'code']} component={HandleErrors} />
+          <Fields names={['name', 'code', 'addresses']} component={HandleErrors} />
           <Col xs={12} md={8}>
             <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
           </Col>

@@ -14,6 +14,11 @@ import css from './Main.css';
 import LanguageList from '../Utils/Languages';
 import CountryList from '../Utils/Country';
 
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update');
+//   whyDidYouUpdate(React);
+// }
+
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const filterConfig = Filters();
@@ -209,15 +214,15 @@ class Main extends Component {
   });
 
   componentWillUpdate() {
-    // const langFilter = filterConfig.find(group => group.name === 'language');
-    // const countryFilter = filterConfig.find(group => group.name === 'country');
-    // if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
-    //   const langData = [...LanguageList].splice(1, LanguageList.length);
-    //   const countryData = [...CountryList].splice(1, CountryList.length);
-    //   langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
-    //   countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
-    //   this.props.mutator.initializedFilterConfig.replace(true);
-    // }
+    const langFilter = filterConfig.find(group => group.name === 'language');
+    const countryFilter = filterConfig.find(group => group.name === 'country');
+    if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
+      const langData = [...LanguageList].splice(1, LanguageList.length);
+      const countryData = [...CountryList].splice(1, CountryList.length);
+      langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
+      countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
+      this.props.mutator.initializedFilterConfig.replace(true);
+    }
   }
 
   create = (data) => {
@@ -255,7 +260,7 @@ class Main extends Component {
             packageInfo={packageInfo}
             objectName="vendors"
             baseRoute={packageInfo.stripes.route}
-            filterConfig={filterConfig}
+            filterConfig={[]}
             visibleColumns={['Name', 'Code', 'Description', 'Vendor Status']}
             resultsFormatter={resultsFormatter}
             viewRecordComponent={ViewVendor}
@@ -271,10 +276,10 @@ class Main extends Component {
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
             stripes={this.stripes}
-            searchableIndexes={searchableIndexes}
-            selectedIndex={_.get(this.props.resources.query, 'qindex')}
-            searchableIndexesPlaceholder={null}
-            onChangeIndex={this.onChangeIndex}
+            // searchableIndexes={searchableIndexes}
+            // selectedIndex={_.get(this.props.resources.query, 'qindex')}
+            // searchableIndexesPlaceholder={null}
+            // onChangeIndex={this.onChangeIndex}
           />
         }
       </div>
