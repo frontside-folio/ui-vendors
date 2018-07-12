@@ -35,7 +35,7 @@ class AgreementsForm extends Component {
     return (
       <Row key={index}>
         <Col xs={12} md={4}>
-          <Field label="Name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="Name*" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={4}>
           <Field label="Discount %" name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />

@@ -42,7 +42,7 @@ class SummaryForm extends React.Component {
     return (
       <Row key={index}>
         <Col xs={5}>
-          <Field label="AKA" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="AKA*" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={5}>
           <Field label="description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
