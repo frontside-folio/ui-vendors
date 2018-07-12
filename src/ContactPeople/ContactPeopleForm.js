@@ -51,10 +51,10 @@ class ContactPeopleForm extends Component {
           <Field label="Prefix" name={`${elem}.contact_person.prefix`} id={`${elem}.contact_person.perfix`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={5}>
-          <Field label="First Name" name={`${elem}.contact_person.first_name`} id={`${elem}.contact_person.first_name`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="First Name*" name={`${elem}.contact_person.first_name`} id={`${elem}.contact_person.first_name`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={5}>
-          <Field label="Last Name" name={`${elem}.contact_person.last_name`} id={`${elem}.contact_person.last_name`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="Last Name*" name={`${elem}.contact_person.last_name`} id={`${elem}.contact_person.last_name`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
@@ -73,7 +73,7 @@ class ContactPeopleForm extends Component {
           <Field label="Region" name={`${elem}.contact_person.address.stateRegion`} id={`${elem}.contact_person.address.stateRegion`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={4}>
-          <Field label="Country" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={Select} dataOptions={dropdownCountry} fullWidth />
+          <Field label="Country*" name={`${elem}.contact_person.address.country`} id={`${elem}.contact_person.address.country`} validate={[Required]} component={Select} dataOptions={dropdownCountry} fullWidth />
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
@@ -86,7 +86,7 @@ class ContactPeopleForm extends Component {
           <Field label="Area Code" name={`${elem}.contact_person.phone_number.area_code`} id={`${elem}.contact_person.phone_number.area_code`} type="tel" component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={5}>
-          <Field label="Phone Number" name={`${elem}.contact_person.phone_number.phone_number`} id={`${elem}.contact_person.phone_number.phone_number`} type="tel" validate={[Required]} component={TextField} fullWidth />
+          <Field label="Phone Number*" name={`${elem}.contact_person.phone_number.phone_number`} id={`${elem}.contact_person.phone_number.phone_number`} type="tel" validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
@@ -101,7 +101,7 @@ class ContactPeopleForm extends Component {
           <hr style={{ borderColor: '#f0f0f0' }} />
         </Col>
         <Col xs={12} md={6}>
-          <Field label="URL" name={`${elem}.contact_person.url.value`} id={`${elem}.url.value`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="URL*" name={`${elem}.contact_person.url.value`} id={`${elem}.url.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={6}>
           <Field label="URL Description" name={`${elem}.contact_person.url.description`} id={`${elem}.url.description`} component={TextField} fullWidth />
