@@ -49,10 +49,10 @@ class AccountsForm extends Component {
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="name" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
+              <Field label="name*" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Vendor Account Number" name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
+              <Field label="Vendor Account Number*" name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
@@ -61,23 +61,23 @@ class AccountsForm extends Component {
               <Field label="Acct. Payable Sys. No" name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Payment Method" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth />
+              <Field label="Payment Method*" name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth />
             </Col>
           </Row>
         </Col>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label="Account Status" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
+              <Field label="Account Status*" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label="Contact Info" name={`${elem}.contact_info`} id={`${elem}.contact_info`} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Library Code" name={`${elem}.library_code`} id={`${elem}.library_code`} validate={[Required]} component={TextField} fullWidth />
+              <Field label="Library Code*" name={`${elem}.library_code`} id={`${elem}.library_code`} validate={[Required]} component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label="Library EDI Code" name={`${elem}.library_edi_code`} id={`${elem}.library_edi_code`} validate={[Required]} component={TextField} fullWidth />
+              <Field label="Library EDI Code*" name={`${elem}.library_edi_code`} id={`${elem}.library_edi_code`} validate={[Required]} component={TextField} fullWidth />
             </Col>
           </Row>
         </Col>

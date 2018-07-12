@@ -25,7 +25,7 @@ class EmailAddresses extends Component {
     return (
       <Row key={index} className={css.panels}>
         <Col xs={12} md={3}>
-          <Field label="Email Address" name={`${elem}.email.value`} id={`${elem}.email.value`} validate={[Required]} component={TextField} fullWidth />
+          <Field label="Email Address*" name={`${elem}.email.value`} id={`${elem}.email.value`} validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
           <Field label="Description" name={`${elem}.email.description`} id={`${elem}.email.description`} component={TextField} fullWidth />
