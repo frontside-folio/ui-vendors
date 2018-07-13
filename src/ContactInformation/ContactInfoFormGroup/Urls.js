@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import Button from '@folio/stripes-components/lib/Button';
-import TextField from '@folio/stripes-components/lib/TextField';
-import Select from '@folio/stripes-components/lib/Select';
+import { Row, Col, Button, TextField, Select } from '@folio/stripes-components';
 import css from '../ContactInfoFormGroup.css';
 import { Required } from '../../Utils/Validate';
 
