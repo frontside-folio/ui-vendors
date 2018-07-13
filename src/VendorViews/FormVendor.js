@@ -38,11 +38,21 @@ class FormVendor extends Component {
         EDIInformationSection: false,
         interfaceSection: false,
         accountsSection: false,
+      },
+      sectionErrors: {
+        summaryError: false
       }
     };
     this.deleteVendor = this.deleteVendor.bind(this);
     this.onToggleSection = this.onToggleSection.bind(this);
     this.handleExpandAll = this.handleExpandAll.bind(this);
+    this.updateSectionErrors = this.updateSectionErrors.bind(this);
+  }
+
+  updateSectionErrors(obj) {
+    const { sectionErrors } = this.state;
+    console.log(_.isEqual(sectionErrors, obj));
+    this.setState({ sectionErrors: obj });
   }
 
   onToggleSection({ id }) {
@@ -73,11 +83,13 @@ class FormVendor extends Component {
 
   render() {
     const { initialValues } = this.props;
+    const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
+
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>
-          <Fields names={['name', 'code', 'addresses']} component={HandleErrors} />
+          <Fields names={['name', 'code', 'addresses']} component={HandleErrors} data={sectionErrors} updateSectionErrors={this.updateSectionErrors} />
           <Col xs={12} md={8}>
             <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
           </Col>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Col } from '@folio/stripes-components/lib/LayoutGrid';
 
 class HandleErrors extends Component {
   static propTypes = {
-    names: PropTypes.Array
+    names: PropTypes.Array,
+    updateSectionErrors: PropTypes.func,
+    data: PropTypes.object,
   }
 
   constructor(props) {
@@ -13,15 +16,32 @@ class HandleErrors extends Component {
   }
 
   handleData = () => {
-    const { names } = this.props;
+    const { names, updateSectionErrors, data } = this.props;
     if (!names && names.length <= 0) return false;
-    const list = Object.keys(names).map(key => {
+    Object.keys(names).map(key => {
       const indexName = names[key];
       const input = this.props[`${indexName}`].input;
       const meta = this.props[`${indexName}`].meta;
-      return meta.touched && meta.error ? <div key={key} style={{ border: '1px solid red', padding: '5px', color: '#461717', background: '#ff000012', marginBottom: '1px' }}>{input.name} is required</div> : undefined;
+      if (!meta.touched && !meta.error) return false;
+      data.summaryError = (input.name === 'name' || input.name === 'code') || false;
+      return false;
     });
-    return list;
+    return updateSectionErrors(data);
+  }
+
+  isShallowEqual(v, o) {
+    for (const key in v) {
+      if (!(key in o) || v[key] !== o[key]) {
+        return false;
+      }
+    }
+
+    for (const key in o) {
+      if (!(key in v) || v[key] !== o[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   render() {
