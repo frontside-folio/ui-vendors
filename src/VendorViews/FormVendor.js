@@ -17,7 +17,6 @@ import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
-import css from './css/FormVendor.css';
 
 class FormVendor extends Component {
   static propTypes = {
