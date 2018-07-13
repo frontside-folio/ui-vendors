@@ -209,15 +209,15 @@ class Main extends Component {
   });
 
   componentWillUpdate() {
-    // const langFilter = filterConfig.find(group => group.name === 'language');
-    // const countryFilter = filterConfig.find(group => group.name === 'country');
-    // if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
-    //   const langData = [...LanguageList].splice(1, LanguageList.length);
-    //   const countryData = [...CountryList].splice(1, CountryList.length);
-    //   langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
-    //   countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
-    //   this.props.mutator.initializedFilterConfig.replace(true);
-    // }
+    const langFilter = filterConfig.find(group => group.name === 'language');
+    const countryFilter = filterConfig.find(group => group.name === 'country');
+    if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
+      const langData = [...LanguageList].splice(1, LanguageList.length);
+      const countryData = [...CountryList].splice(1, CountryList.length);
+      langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
+      countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
+      this.props.mutator.initializedFilterConfig.replace(true);
+    }
   }
 
   create = (data) => {
