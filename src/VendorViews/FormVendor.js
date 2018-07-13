@@ -86,7 +86,6 @@ class FormVendor extends Component {
     // Errors
     const summeryError = sectionErrors.summaryError ? <em style={{ color: 'red' }}>Required fields!</em> : '';
 
-
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>

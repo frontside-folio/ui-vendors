@@ -1,3 +1,23 @@
+// import React, { Component } from 'react';
+// import _ from 'lodash';
+// import PropTypes from 'prop-types';
+
+// export default const handleData = () => {
+//     const { names, updateSectionErrors, data } = this.props;
+//     if (!names && names.length <= 0) return false;
+//     Object.keys(names).map(key => {
+//       const indexName = names[key];
+//       const input = this.props[`${indexName}`].input;
+//       const meta = this.props[`${indexName}`].meta;
+//       if (input.name === 'name' || input.name === 'code') {
+//         data.summaryError = (meta.touched && meta.error) || false;
+//       }
+
+//       return data;
+//     });
+//     return updateSectionErrors(data);
+//   }
+
 import React, { Component } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
