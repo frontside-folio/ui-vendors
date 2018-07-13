@@ -17,6 +17,7 @@ import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
+import css from './css/FormVendor.css';
 
 class FormVendor extends Component {
   static propTypes = {
@@ -50,8 +51,6 @@ class FormVendor extends Component {
   }
 
   updateSectionErrors(obj) {
-    const { sectionErrors } = this.state;
-    console.log(_.isEqual(sectionErrors, obj));
     this.setState({ sectionErrors: obj });
   }
 
@@ -85,6 +84,9 @@ class FormVendor extends Component {
     const { initialValues } = this.props;
     const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
+    // Errors
+    const summeryError = sectionErrors.summaryError ? <em style={{ color: 'red' }}>Required fields!</em> : '';
+
 
     return (
       <div id="form-add-new-vendor">
@@ -95,7 +97,7 @@ class FormVendor extends Component {
           </Col>
           <Col xs={12} md={8}>
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-              <Accordion label="Summary" id="summarySection">
+              <Accordion label="Summary" id="summarySection" displayWhenClosed={summeryError} displayWhenOpen={summeryError}>
                 <SummaryForm {...this.props} />
                 <br />
               </Accordion>

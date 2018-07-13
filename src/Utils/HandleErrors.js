@@ -22,26 +22,13 @@ class HandleErrors extends Component {
       const indexName = names[key];
       const input = this.props[`${indexName}`].input;
       const meta = this.props[`${indexName}`].meta;
-      if (!meta.touched && !meta.error) return false;
-      data.summaryError = (input.name === 'name' || input.name === 'code') || false;
-      return false;
+      if (input.name === 'name' || input.name === 'code') {
+        data.summaryError = (meta.touched && meta.error) || false;
+      }
+
+      return data;
     });
     return updateSectionErrors(data);
-  }
-
-  isShallowEqual(v, o) {
-    for (const key in v) {
-      if (!(key in o) || v[key] !== o[key]) {
-        return false;
-      }
-    }
-
-    for (const key in o) {
-      if (!(key in v) || v[key] !== o[key]) {
-        return false;
-      }
-    }
-    return true;
   }
 
   render() {
