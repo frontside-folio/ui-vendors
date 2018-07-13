@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import AddressView from '@folio/stripes-components/lib/structures/AddressFieldGroup/AddressView';
-import KeyValue from '@folio/stripes-components/lib/KeyValue';
+import { AddressView, Row, Col, KeyValue } from '@folio/stripes-components';
 import css from '../ContactInformationView.css';
 import parseCategories from '../../Utils/Category';
 
