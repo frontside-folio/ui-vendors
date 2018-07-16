@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { MultiColumnList, Row, Col, KeyValue } from '@folio/stripes-components';
 import css from './SummaryView.css';
+
 class SummaryView extends React.Component {
   static propTypes = {
     initialValues: PropTypes.object,

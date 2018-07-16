@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import queryString from 'query-string';
 // Folio
-import { AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
-import Pane from '@folio/stripes-components/lib/Pane';
-import PaneMenu from '@folio/stripes-components/lib/PaneMenu';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import Icon from '@folio/stripes-components/lib/Icon';
-import IconButton from '@folio/stripes-components/lib/IconButton';
-import IfPermission from '@folio/stripes-components/lib/IfPermission';
-import Layer from '@folio/stripes-components/lib/Layer';
+import { Pane, PaneMenu, Row, Col, Icon, IconButton, IfPermission, Layer, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components';
 // Local Components
 import { SummaryView } from '../Summary';
 import { ContactInformationView } from '../ContactInformation';
