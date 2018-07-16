@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import Pane from '@folio/stripes-components/lib/Pane';
-import PaneMenu from '@folio/stripes-components/lib/PaneMenu';
-import Button from '@folio/stripes-components/lib/Button';
+import { Pane, PaneMenu, Button } from '@folio/stripes-components';
 import stripesForm from '@folio/stripes-form';
 import { FormVendor } from '../VendorViews';
 

@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
-import { Accordion } from '@folio/stripes-components/lib/Accordion';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import Button from '@folio/stripes-components/lib/Button';
-import TextField from '@folio/stripes-components/lib/TextField';
-import TextArea from '@folio/stripes-components/lib/TextArea';
-import Select from '@folio/stripes-components/lib/Select';
-import Checkbox from '@folio/stripes-components/lib/Checkbox';
+import { Accordion, Row, Col, Button, TextField, TextArea, Select, Checkbox } from '@folio/stripes-components';
+
 import TogglePassword from '../Utils/TogglePassword';
 
 class InterfaceForm extends Component {
