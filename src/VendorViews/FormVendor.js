@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { Fields } from 'redux-form';
 import { IfPermission, Button, Row, Col, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components';
 // Local Components
 import { SummaryForm } from '../Summary';
@@ -11,7 +12,8 @@ import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
-// import HandleErrors from '../Utils/HandleErrors';
+import HandleErrors from '../Utils/HandleErrors';
+
 
 class FormVendor extends Component {
   static propTypes = {
@@ -33,11 +35,21 @@ class FormVendor extends Component {
         EDIInformationSection: false,
         interfaceSection: false,
         accountsSection: false,
+      },
+      sectionErrors: {
+        summaryErr: false,
+        contactInfoErr: false
       }
     };
     this.deleteVendor = this.deleteVendor.bind(this);
     this.onToggleSection = this.onToggleSection.bind(this);
     this.handleExpandAll = this.handleExpandAll.bind(this);
+    this.updateSectionErrors = this.updateSectionErrors.bind(this);
+
+  }
+
+  updateSectionErrors(obj) {
+    this.setState({ sectionErrors: obj });
   }
 
   onToggleSection({ id }) {
@@ -68,21 +80,28 @@ class FormVendor extends Component {
 
   render() {
     const { initialValues } = this.props;
+    const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
+    // Errors
+    const summaryErr = sectionErrors.summaryErr.include(false) ? <em style={{ color: 'red' }}>Required fields!</em> : null;
+    const contactInfoErr = sectionErrors.contactInfoErr ? <em style={{ color: 'red' }}>Required fields!</em> : null;
+
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>
-          {/* <Fields names={['name', 'code']} component={HandleErrors} /> */}
+          <Col xs={12} md={8}>
+            <Fields names={['name', 'code', 'addresses']} component={HandleErrors} data={sectionErrors} updateSectionErrors={this.updateSectionErrors} />
+          </Col>
           <Col xs={12} md={8}>
             <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
           </Col>
           <Col xs={12} md={8}>
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-              <Accordion label="Summary" id="summarySection">
+              <Accordion label="Summary" id="summarySection" displayWhenClosed={summaryErr} displayWhenOpen={summaryErr}>
                 <SummaryForm {...this.props} />
                 <br />
               </Accordion>
-              <Accordion label="Contact Information" id="contactInformationSection">
+              <Accordion label="Contact Information" id="contactInformationSection" displayWhenClosed={contactInfoErr} displayWhenOpen={contactInfoErr}>
                 <ContactInformationForm {...this.props} />
                 <br />
               </Accordion>
@@ -121,8 +140,8 @@ class FormVendor extends Component {
           </Col>
         </Row>
       </div>
+
     );
   }
 }
-
 export default FormVendor;
