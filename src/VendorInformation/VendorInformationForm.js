@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { Accordion } from '@folio/stripes-components/lib/Accordion';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import TextField from '@folio/stripes-components/lib/TextField';
-
-import Select from '@folio/stripes-components/lib/Select';
-import Checkbox from '@folio/stripes-components/lib/Checkbox';
+import { Select, Checkbox, TextField, Accordion, Row, Col } from '@folio/stripes-components';
 import css from './VendorInformationForm.css';
 
 class VendorInformationForm extends Component {

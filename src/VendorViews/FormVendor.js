@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-// import { Fields } from 'redux-form';
-// Folio
-import { AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components/lib/Accordion';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import Button from '@folio/stripes-components/lib/Button';
-import IfPermission from '@folio/stripes-components/lib/IfPermission';
+import { IfPermission, Button, Row, Col, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components';
 // Local Components
 import { SummaryForm } from '../Summary';
 import { ContactInformationForm } from '../ContactInformation';
