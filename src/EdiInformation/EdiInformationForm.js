@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Field } from 'redux-form';
-import { AccordionSet, Accordion } from '@folio/stripes-components/lib/Accordion';
-import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
-import Button from '@folio/stripes-components/lib/Button';
-import TextField from '@folio/stripes-components/lib/TextField';
-import TextArea from '@folio/stripes-components/lib/TextArea';
-import Timepicker from '@folio/stripes-components/lib/Timepicker';
-import Select from '@folio/stripes-components/lib/Select';
-import Checkbox from '@folio/stripes-components/lib/Checkbox';
-import Datepicker from '@folio/stripes-components/lib/Datepicker';
+import { Row, Col, Button, TextField, TextArea, Timepicker, Select, Checkbox, Datepicker, AccordionSet, Accordion } from '@folio/stripes-components/';
 import css from './EdiInformationForm.css';
 import TogglePassword from '../Utils/TogglePassword';
 
