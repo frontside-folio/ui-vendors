@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row } from '@folio/stripes-components/lib/LayoutGrid';
-import Icon from '@folio/stripes-components/lib/Icon';
+import { Row, Icon } from '@folio/stripes-components';
 import { AddressInfoView, PhoneNumbersView, EmailView, UrlsView } from './ContactInfoViewGroup';
 
 class ContactInformationView extends Component {
@@ -15,7 +14,6 @@ class ContactInformationView extends Component {
 
   render() {
     const { initialValues, parentResources } = this.props;
-    // const dropdownCategories = (parentResources.dropdown || {}).dropdownCategories || [];
     const dropdownCategories = (parentResources.dropdown || {}).categoriesDD || [];
 
     if (!initialValues) {
