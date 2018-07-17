@@ -1,7 +1,5 @@
-import React, { Component, PureComponent } from 'react';
-import _ from 'lodash';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Col } from '@folio/stripes-components/lib/LayoutGrid';
 
 class HandleErrors extends Component {
   static propTypes = {
@@ -21,13 +19,15 @@ class HandleErrors extends Component {
         const indexName = names[key];
         const input = props[`${indexName}`].input;
         const meta = props[`${indexName}`].meta;
+        
         // Summary Error
         if (input.name === 'name' || input.name === 'code') {
           summaryArr[key] = (meta.touched && meta.error) || false;
-          return summaryArr;
+          data.summaryErr = !summaryArr.every(isAllFalse);
         }
-        // Contact Error
-        if (input.name === 'addresses') {
+        // Contact Info Error, loop throught each section
+        const isContactSection = input.name === 'addresses' || input.name === 'phone_numbers' || input.name === 'email' || input.name === 'urls';
+        if (isContactSection) {
           if ((meta.error) && meta.error.length > 0) {
             const addMetaErr = meta.error;
             Object.keys(addMetaErr).map(chkey => {
@@ -35,17 +35,21 @@ class HandleErrors extends Component {
               return addressArr;
             });
           }
+          data.contactInfoErr = !addressArr.every(isAllFalse) || addressArr.length > 0;
         }
+        // Contact People, Agreements, Accounts Error
+        if (input.name === 'contacts') data.contactPeopleErr = ((meta.error) && meta.error.length > 0) || false;
+        if (input.name === 'agreements') data.agreementsErr = ((meta.error) && meta.error.length > 0) || false;
+        if (input.name === 'accounts') data.accountsErr = ((meta.error) && meta.error.length > 0) || false;
+        // Return data
+        return data;
       });
-      // Check each array, if all contains false.
-      data.summaryErr = !summaryArr.every(isAllFalse);
-      data.contactInfoErr = !addressArr.every(isAllFalse);
     }
+    // Update state
     if (data !== state) {
       updateSectionErrors(data);
       return { ...data };
     }
-    console.warn('handle errors failed to update');
     return false;
   }
 
@@ -55,7 +59,7 @@ class HandleErrors extends Component {
   }
 
   render() {
-    return (<Col xs={12} md={8}>Error handling enabled!</Col>);
+    return false;
   }
 }
 

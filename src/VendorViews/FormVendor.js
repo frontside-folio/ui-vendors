@@ -38,14 +38,16 @@ class FormVendor extends Component {
       },
       sectionErrors: {
         summaryErr: false,
-        contactInfoErr: false
+        contactInfoErr: false,
+        contactPeopleErr: false,
+        agreementsErr: false,
+        accountsErr: false,
       }
     };
     this.deleteVendor = this.deleteVendor.bind(this);
     this.onToggleSection = this.onToggleSection.bind(this);
     this.handleExpandAll = this.handleExpandAll.bind(this);
     this.updateSectionErrors = this.updateSectionErrors.bind(this);
-
   }
 
   updateSectionErrors(obj) {
@@ -83,14 +85,19 @@ class FormVendor extends Component {
     const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
     // Errors
-    const summaryErr = sectionErrors.summaryErr ? <em style={{ color: 'red' }}>Required fields!</em> : null;
-    const contactInfoErr = sectionErrors.contactInfoErr ? <em style={{ color: 'red' }}>Required fields!</em> : null;
+    const arrSections = ['name', 'code', 'addresses', 'phone_numbers', 'email', 'urls', 'contacts', 'agreements', 'accounts'];
+    const message = <em style={{ color: 'red' }}>Required fields!</em>;
+    const summaryErr = sectionErrors.summaryErr ? message : null;
+    const contactInfoErr = sectionErrors.contactInfoErr ? message : null;
+    const contactPeopleErr = sectionErrors.contactPeopleErr ? message : null;
+    const agreementsErr = sectionErrors.agreementsErr ? message : null;
+    const accountsErr = sectionErrors.accountsErr ? message : null;
 
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>
           <Col xs={12} md={8}>
-            <Fields names={['name', 'code', 'addresses']} component={HandleErrors} data={sectionErrors} updateSectionErrors={this.updateSectionErrors} />
+            <Fields names={arrSections} component={HandleErrors} data={sectionErrors} updateSectionErrors={this.updateSectionErrors} />
           </Col>
           <Col xs={12} md={8}>
             <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
@@ -105,11 +112,11 @@ class FormVendor extends Component {
                 <ContactInformationForm {...this.props} />
                 <br />
               </Accordion>
-              <Accordion label="Contact People" id="contactPeopleSection">
+              <Accordion label="Contact People" id="contactPeopleSection" displayWhenClosed={contactPeopleErr} displayWhenOpen={contactPeopleErr}>
                 <ContactPeopleForm {...this.props} />
                 <br />
               </Accordion>
-              <Accordion label="Agreements" id="agreementsSection">
+              <Accordion label="Agreements" id="agreementsSection" displayWhenClosed={agreementsErr} displayWhenOpen={agreementsErr}>
                 <AgreementsForm {...this.props} />
                 <br />
               </Accordion>
@@ -123,7 +130,7 @@ class FormVendor extends Component {
               <Accordion label="Interface" id="interfaceSection">
                 <InterfaceForm {...this.props} />
               </Accordion>
-              <Accordion label="Accounts" id="accountsSection">
+              <Accordion label="Accounts" id="accountsSection" displayWhenClosed={accountsErr} displayWhenOpen={accountsErr}>
                 <AccountsForm {...this.props} />
               </Accordion>
             </AccordionSet>

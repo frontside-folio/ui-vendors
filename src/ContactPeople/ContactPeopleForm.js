@@ -88,7 +88,7 @@ class ContactPeopleForm extends Component {
           <hr style={{ borderColor: '#f0f0f0' }} />
         </Col>
         <Col xs={12} md={6}>
-          <Field label="Email Address" name={`${elem}.contact_person.email.value`} id={`${elem}.contact_person.email.value`} type="email" validate={[Required]} component={TextField} fullWidth />
+          <Field label="Email Address*" name={`${elem}.contact_person.email.value`} id={`${elem}.contact_person.email.value`} type="email" validate={[Required]} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={6}>
           <Field label="Description" name={`${elem}.contact_person.email.description`} id={`${elem}.contact_person.email.description`} component={TextField} fullWidth />
