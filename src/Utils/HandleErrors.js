@@ -26,6 +26,7 @@ class HandleErrors extends Component {
       });
     }
     // Update parent state
+    console.log(data !== state.data);
     if (data !== state.data) {
       console.log(data);
       updateSectionErrors(data);

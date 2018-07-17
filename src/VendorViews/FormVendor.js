@@ -83,7 +83,7 @@ class FormVendor extends Component {
     const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
     // Errors
-    const summaryErr = sectionErrors.summaryErr.include(false) ? <em style={{ color: 'red' }}>Required fields!</em> : null;
+    const summaryErr = sectionErrors.summaryErr ? <em style={{ color: 'red' }}>Required fields!</em> : null;
     const contactInfoErr = sectionErrors.contactInfoErr ? <em style={{ color: 'red' }}>Required fields!</em> : null;
 
     return (
