@@ -1,11 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Component } from 'react';
 
 class HandleErrors extends Component {
-  static propTypes = {
-    names: PropTypes.any.isRequired,
-  }
-
   static getDerivedStateFromProps(props, state) {
     const { names, updateSectionErrors, data } = props;
     const isAllFalse = item => item === false;
@@ -19,7 +14,7 @@ class HandleErrors extends Component {
         const indexName = names[key];
         const input = props[`${indexName}`].input;
         const meta = props[`${indexName}`].meta;
-        
+
         // Summary Error
         if (input.name === 'name' || input.name === 'code') {
           summaryArr[key] = (meta.touched && meta.error) || false;
