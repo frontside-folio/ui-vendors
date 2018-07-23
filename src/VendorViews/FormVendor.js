@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Fields } from 'redux-form';
-import { IfPermission, Button, Row, Col, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components';
+import { IfPermission, Button, Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes-components';
 // Local Components
 import { SummaryForm } from '../Summary';
 import { ContactInformationForm } from '../ContactInformation';
@@ -13,7 +13,7 @@ import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
 import HandleErrors from '../Utils/HandleErrors';
-
+import css from './css/FormVendor.css';
 
 class FormVendor extends Component {
   static propTypes = {
@@ -86,7 +86,7 @@ class FormVendor extends Component {
     const showDeleteButton = initialValues.id || false;
     // Errors
     const arrSections = ['name', 'code', 'addresses', 'phone_numbers', 'email', 'urls', 'contacts', 'agreements', 'accounts'];
-    const message = <em style={{ color: 'red' }}>Required fields!</em>;
+    const message = <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}><Icon icon="validation-error" size="medium" />Required fields!</em>;
     const summaryErr = sectionErrors.summaryErr ? message : null;
     const contactInfoErr = sectionErrors.contactInfoErr ? message : null;
     const contactPeopleErr = sectionErrors.contactPeopleErr ? message : null;
