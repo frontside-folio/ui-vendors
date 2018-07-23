@@ -171,7 +171,8 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "why-did-you-update": "^0.1.1"
   },
   "dependencies": {
     "@folio/stripes-form": "^0.8.2",
@@ -188,8 +189,7 @@
     "react-router-dom": "^4.1.1",
     "redux-form": "^7.3.0",
     "style-loader": "^0.20.1",
-    "uuid": "^3.1.0",
-    "why-did-you-update": "^0.1.1"
+    "uuid": "^3.1.0"
   },
   "peerDependencies": {
     "@folio/stripes-connect": "^3.1.1",

@@ -14,11 +14,6 @@ import css from './Main.css';
 import LanguageList from '../Utils/Languages';
 import CountryList from '../Utils/Country';
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const {whyDidYouUpdate} = require('why-did-you-update');
-//   whyDidYouUpdate(React);
-// }
-
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const filterConfig = Filters();
