@@ -255,7 +255,7 @@ class Main extends Component {
             packageInfo={packageInfo}
             objectName="vendors"
             baseRoute={packageInfo.stripes.route}
-            filterConfig={[]}
+            filterConfig={filterConfig}
             visibleColumns={['Name', 'Code', 'Description', 'Vendor Status']}
             resultsFormatter={resultsFormatter}
             viewRecordComponent={ViewVendor}
@@ -271,10 +271,10 @@ class Main extends Component {
             parentMutator={this.props.mutator}
             detailProps={this.props.stripes}
             stripes={this.stripes}
-            // searchableIndexes={searchableIndexes}
-            // selectedIndex={_.get(this.props.resources.query, 'qindex')}
-            // searchableIndexesPlaceholder={null}
-            // onChangeIndex={this.onChangeIndex}
+            searchableIndexes={searchableIndexes}
+            selectedIndex={_.get(this.props.resources.query, 'qindex')}
+            searchableIndexesPlaceholder={null}
+            onChangeIndex={this.onChangeIndex}
           />
         }
       </div>
