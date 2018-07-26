@@ -139,7 +139,7 @@ class FormVendor extends Component {
                 <Col xs={12}>
                   {
                     showDeleteButton &&
-                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>Remove</Button>
+                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>Delete - &nbsp; <strong><i>{this.props.initialValues.name}</i></strong></Button>
                   }
                 </Col>
               </Row>
