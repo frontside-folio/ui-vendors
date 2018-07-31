@@ -5,8 +5,8 @@
     "@folio/stripes-connect": "/Users/arvind/Sites/stripes/stripes-connect",
     "@folio/stripes-core": "/Users/arvind/Sites/stripes/stripes-core",
     "@folio/stripes-logger": "/Users/arvind/Sites/stripes/stripes-logger",
-    "@folio/finance": "/Users/arvind/Sites/ui-finance",
-    "@folio/orders": "/Users/arvind/Sites/ui-orders",
-    "@folio/receiving": "/Users/arvind/Sites/ui-receiving"
+    "@folio/finance": "/Users/arvind/Sites/stripes/ui-finance",
+    "@folio/orders": "/Users/arvind/Sites/stripes/ui-orders",
+    "@folio/receiving": "/Users/arvind/Sites/stripes/ui-receiving"
   }
 }
