@@ -1,4 +1,5 @@
 {
+  "meta.title": "Vendor",
   "search": "Suche",
   "resultCount": "Gefunden {count, number} {count, plural, one {Aufzeichnung} other {Aufzeichnungen}}",
 
