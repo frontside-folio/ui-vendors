@@ -2,8 +2,8 @@
   "configFile": "stripes.config.js.local",
   "port": 8081,
   "aliases": {
-    "@folio/finance": "/Users/arvind/Sites/stripes/ui-finance",
-    "@folio/orders": "/Users/arvind/Sites/stripes/ui-orders",
-    "@folio/receiving": "/Users/arvind/Sites/stripes/ui-receiving"
+    "@folio/finance": "/Users/arvind/Sites/workspace/ui-finance",
+    "@folio/orders": "/Users/arvind/Sites/workspace/ui-orders",
+    "@folio/receiving": "/Users/arvind/Sites/workspace/ui-receiving"
   }
 }
