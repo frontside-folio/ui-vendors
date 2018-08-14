@@ -14,7 +14,6 @@
   "stripes": {
     "type": "app",
     "displayName": "ui-vendors.meta.title",
-    "moduleName": "Vendors",
     "route": "/vendors",
     "home": "/vendors",
     "hasSettings": true,
