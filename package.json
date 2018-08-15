@@ -13,8 +13,7 @@
   },
   "stripes": {
     "type": "app",
-    "displayName": "ui-vendor.meta.title",
-    "moduleName": "Vendors",
+    "displayName": "ui-vendors.meta.title",
     "route": "/vendors",
     "home": "/vendors",
     "hasSettings": true,
