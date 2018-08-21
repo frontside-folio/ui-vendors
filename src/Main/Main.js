@@ -10,7 +10,6 @@ import packageInfo from '../../package';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
-import css from './Main.css';
 import LanguageList from '../Utils/Languages';
 import CountryList from '../Utils/Country';
 
@@ -219,7 +218,7 @@ class Main extends Component {
     LanguageList: { initialValue: LanguageList }
   });
 
-  componentWillUpdate() {
+  static getDerivedStateFromProps(props) {
     const langFilter = filterConfig.find(group => group.name === 'language');
     const countryFilter = filterConfig.find(group => group.name === 'country');
     if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
@@ -227,7 +226,7 @@ class Main extends Component {
       const countryData = [...CountryList].splice(1, CountryList.length);
       langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
       countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
-      this.props.mutator.initializedFilterConfig.replace(true);
+      props.mutator.initializedFilterConfig.replace(true);
     }
   }
 
@@ -258,13 +257,14 @@ class Main extends Component {
       'Description': data => _.get(data, ['description'], ''),
       'Vendor Status': data => _.toString(_.get(data, ['vendor_status'], ''))
     };
-    const getRecords = (this.props.resources || {}).records || [];
-    return (<SearchAndSort
+
+    return (
+      <SearchAndSort
         packageInfo={packageInfo}
         objectName="vendors"
         baseRoute={packageInfo.stripes.route}
         filterConfig={filterConfig}
-        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns :['Name', 'Code', 'Description', 'Vendor Status']}
+        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Vendor Status']}
         resultsFormatter={resultsFormatter}
         viewRecordComponent={ViewVendor}
         onCreate={this.create}
