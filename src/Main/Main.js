@@ -10,7 +10,6 @@ import packageInfo from '../../package';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
-import css from './Main.css';
 import LanguageList from '../Utils/Languages';
 import CountryList from '../Utils/Country';
 
@@ -26,6 +25,8 @@ class Main extends Component {
     stripes: PropTypes.object,
     onSelectRow: PropTypes.func,
     onComponentWillUnmount: PropTypes.func,
+    visibleColumns: PropTypes.arrayOf(PropTypes.string),
+    disableRecordCreation: PropTypes.bool,
     showSingleResult: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
     browseOnly: PropTypes.bool,
   }
@@ -217,7 +218,7 @@ class Main extends Component {
     LanguageList: { initialValue: LanguageList }
   });
 
-  componentWillUpdate() {
+  static getDerivedStateFromProps(props) {
     const langFilter = filterConfig.find(group => group.name === 'language');
     const countryFilter = filterConfig.find(group => group.name === 'country');
     if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
@@ -225,7 +226,7 @@ class Main extends Component {
       const countryData = [...CountryList].splice(1, CountryList.length);
       langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
       countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
-      this.props.mutator.initializedFilterConfig.replace(true);
+      props.mutator.initializedFilterConfig.replace(true);
     }
   }
 
@@ -249,49 +250,45 @@ class Main extends Component {
   }
 
   render() {
-    const { onSelectRow, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
+    const { onSelectRow, disableRecordCreation, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
       'Description': data => _.get(data, ['description'], ''),
       'Vendor Status': data => _.toString(_.get(data, ['vendor_status'], ''))
     };
-    const getRecords = (this.props.resources || {}).records || [];
+
     return (
-      <div style={{ width: '100%' }} className={css.panepadding}>
-        {
-          getRecords &&
-          <SearchAndSort
-            packageInfo={packageInfo}
-            objectName="vendors"
-            baseRoute={packageInfo.stripes.route}
-            filterConfig={filterConfig}
-            visibleColumns={['Name', 'Code', 'Description', 'Vendor Status']}
-            resultsFormatter={resultsFormatter}
-            viewRecordComponent={ViewVendor}
-            onCreate={this.create}
-            editRecordComponent={PaneDetails}
-            newRecordInitialValues={{}}
-            initialResultCount={INITIAL_RESULT_COUNT}
-            resultCountIncrement={RESULT_COUNT_INCREMENT}
-            finishedResourceName="perms"
-            viewRecordPerms="vendor.item.get"
-            newRecordPerms="vendor.item.post,login.item.post"
-            parentResources={this.props.resources}
-            parentMutator={this.props.mutator}
-            detailProps={this.props.stripes}
-            stripes={this.stripes}
-            searchableIndexes={searchableIndexes}
-            selectedIndex={_.get(this.props.resources.query, 'qindex')}
-            searchableIndexesPlaceholder={null}
-            onChangeIndex={this.onChangeIndex}
-            onSelectRow={onSelectRow}
-            onComponentWillUnmount={onComponentWillUnmount}
-            browseOnly={browseOnly}
-            showSingleResult={showSingleResult}
-          />
-        }
-      </div>
+      <SearchAndSort
+        packageInfo={packageInfo}
+        objectName="vendors"
+        baseRoute={packageInfo.stripes.route}
+        filterConfig={filterConfig}
+        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Vendor Status']}
+        resultsFormatter={resultsFormatter}
+        viewRecordComponent={ViewVendor}
+        onCreate={this.create}
+        editRecordComponent={PaneDetails}
+        newRecordInitialValues={{}}
+        initialResultCount={INITIAL_RESULT_COUNT}
+        resultCountIncrement={RESULT_COUNT_INCREMENT}
+        finishedResourceName="perms"
+        viewRecordPerms="vendor.item.get"
+        newRecordPerms="vendor.item.post,login.item.post"
+        parentResources={this.props.resources}
+        parentMutator={this.props.mutator}
+        detailProps={this.props.stripes}
+        stripes={this.stripes}
+        searchableIndexes={searchableIndexes}
+        selectedIndex={_.get(this.props.resources.query, 'qindex')}
+        searchableIndexesPlaceholder={null}
+        onChangeIndex={this.onChangeIndex}
+        onSelectRow={onSelectRow}
+        disableRecordCreation={disableRecordCreation}
+        onComponentWillUnmount={onComponentWillUnmount}
+        browseOnly={browseOnly}
+        showSingleResult={showSingleResult}
+      />
     );
   }
 }
