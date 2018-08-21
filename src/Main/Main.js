@@ -23,7 +23,16 @@ class Main extends Component {
   static propTypes = {
     mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
-    stripes: PropTypes.object
+    stripes: PropTypes.object,
+    onSelectRow: PropTypes.func,
+    onComponentWillUnmount: PropTypes.func,
+    showSingleResult: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
+    browseOnly: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    showSingleResult: true,
+    browseOnly: false,
   }
 
   static manifest = Object.freeze({
@@ -240,6 +249,7 @@ class Main extends Component {
   }
 
   render() {
+    const { onSelectRow, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
     const resultsFormatter = {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
@@ -275,6 +285,10 @@ class Main extends Component {
             selectedIndex={_.get(this.props.resources.query, 'qindex')}
             searchableIndexesPlaceholder={null}
             onChangeIndex={this.onChangeIndex}
+            onSelectRow={onSelectRow}
+            onComponentWillUnmount={onComponentWillUnmount}
+            browseOnly={browseOnly}
+            showSingleResult={showSingleResult}
           />
         }
       </div>
