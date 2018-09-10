@@ -3,4 +3,4 @@
 ## 1.0.0
 
 * UI crud for vendors
-* Implement SearchAndSort Filters
+* Implement SearchAndSort Filters 
