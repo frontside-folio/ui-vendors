@@ -1,3 +1,6 @@
 # Change history for ui-vendors
 
-## 0.1.0 (IN PROGRESS)
+## 1.0.0
+
+* UI crud for vendors
+* Implement SearchAndSort Filters
