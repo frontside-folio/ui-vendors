@@ -23,7 +23,7 @@ class SummaryForm extends React.Component {
         </Col>
         <Col xs={12}>
           {fields.length === 0 &&
-            <div><em>- Please add vendors -</em></div>
+            <div><em>- Please add alternative names -</em></div>
           }
           {fields.map(this.renderSubFields)}
         </Col>
