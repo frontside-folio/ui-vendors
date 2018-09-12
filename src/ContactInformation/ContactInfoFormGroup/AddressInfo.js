@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { Field, getFormValues } from 'redux-form';
 import { MultiSelection, Row, Col, Button, TextField, Select } from '@folio/stripes-components';
 import css from '../ContactInfoFormGroup.css';
@@ -12,10 +13,10 @@ class AddressInfo extends Component {
     dropdownCountry: PropTypes.arrayOf(PropTypes.object),
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      dispatch: PropTypes.func,
-      change: PropTypes.func,
       store: PropTypes.func
-    })
+    }),
+    dispatch: PropTypes.func,
+    change: PropTypes.func,
   };
 
   constructor(props) {
@@ -26,26 +27,23 @@ class AddressInfo extends Component {
     this.selectedValues = this.selectedValues.bind(this);
   }
 
-  onChangeSelect = (e, elem, fields) => {
-    const { dispatch, change, stripes: { store } } = this.props;
-    const formValues = getFormValues('FormVendor')(store.getState());
-    console.log(formValues[`${elem}`]);
-    dispatch(change(`${elem}.categories`, 'arvind'));
+  onChangeSelect = (e, elem, propertyName) => {
+    const { dispatch, change } = this.props;
+    dispatch(change(`${elem}.${propertyName}`, e));
   }
 
   onRemoveSelect = () => {
   }
 
-  selectedValues = (elem) => {
+  selectedValues = (index, fields, propertyName) => {
     const { stripes: { store } } = this.props;
     const formValues = getFormValues('FormVendor')(store.getState());
-    console.info(formValues[elem]);
-    return [{ label: 'test', value: 'quer' }];
+    const currValues = formValues[fields.name][index][propertyName];
+    return currValues;
   }
 
   renderSubAddress = (elem, index, fields) => {
-    const { dropdownCategories, dropdownLanguages, dropdownCountry, stripes: { store } } = this.props;
-
+    const { dropdownCategories, dropdownLanguages, dropdownCountry } = this.props;
     return (
       <Row key={index} className={css.panels}>
         <br />
@@ -71,7 +69,7 @@ class AddressInfo extends Component {
           <Field label="Default Language" name={`${elem}.language`} id={`${elem}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <MultiSelection label="Categories" name={`${elem}.categories`} dataOptions={dropdownCategories} onChange={(e) => this.onChangeSelect(e, elem, fields)} onRemove={this.onRemoveSelect} style={{ height: '80px' }} value={this.selectedValues(`${elem}.categories`)} />
+          <MultiSelection label="Categories" name={`${elem}.categories`} dataOptions={dropdownCategories} onChange={(e) => this.onChangeSelect(e, elem, 'categories')} style={{ height: '80px' }} value={this.selectedValues(index, fields, 'categories')} />
         </Col>
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">Remove</Button>
