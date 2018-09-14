@@ -28,8 +28,8 @@ class FormVendor extends Component {
     this.state = {
       sections: {
         summarySection: false,
-        contactInformationSection: true,
-        contactPeopleSection: false,
+        contactInformationSection: false,
+        contactPeopleSection: true,
         agreementsSection: false,
         vendorInformationSection: false,
         EDIInformationSection: false,
@@ -106,23 +106,18 @@ class FormVendor extends Component {
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
               <Accordion label="Summary" id="summarySection" displayWhenClosed={summaryErr} displayWhenOpen={summaryErr}>
                 <SummaryForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Contact Information" id="contactInformationSection" displayWhenClosed={contactInfoErr} displayWhenOpen={contactInfoErr}>
                 <ContactInformationForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Contact People" id="contactPeopleSection" displayWhenClosed={contactPeopleErr} displayWhenOpen={contactPeopleErr}>
                 <ContactPeopleForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Agreements" id="agreementsSection" displayWhenClosed={agreementsErr} displayWhenOpen={agreementsErr}>
                 <AgreementsForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Vendor Information" id="vendorInformationSection">
                 <VendorInformationForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="EDI Information" id="EDIInformationSection">
                 <EdiInformationForm {...this.props} />

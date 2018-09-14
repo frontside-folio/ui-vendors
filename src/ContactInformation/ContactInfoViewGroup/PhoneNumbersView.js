@@ -44,7 +44,7 @@ class ContactInformationView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <h4>Phone Numbers</h4>
+        <div className={css.subHeadings}>Phone Numbers</div>
         { dataVal.map(this.getPhoneNumbers) }
       </Col>
     );

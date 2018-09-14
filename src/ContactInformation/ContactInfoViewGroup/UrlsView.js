@@ -52,7 +52,7 @@ class ContactInformationView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <h4>Url(s)</h4>
+        <div className={css.subHeadings}>Url(s)</div>
         {dataVal.map(this.getUrls)}
       </Col>
     );

@@ -1,1 +1,8 @@
 /* SummaryForm */
+.subHeadings {
+  color: rgba(0,0,0,.62);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1em auto;
+  max-width: 50rem;
+}

@@ -41,7 +41,7 @@ class ContactPeopleForm extends Component {
     return (
       <Row key={index}>
         <Col xs={12}>
-          <h4>Name</h4>
+          <div className={css.subHeadings}>Name</div>
         </Col>
         <Col xs={12} md={2}>
           <Field label="Prefix" name={`${elem}.contact_person.prefix`} id={`${elem}.contact_person.perfix`} component={TextField} fullWidth />
@@ -54,7 +54,7 @@ class ContactPeopleForm extends Component {
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
-          <h4>Address</h4>
+          <div className={css.subHeadings}>Address</div>
         </Col>
         <Col xs={12} md={4}>
           <Field label="Address 1" name={`${elem}.contact_person.address.addressLine1`} id={`${elem}.contact_person.address.addressLine1`} component={TextField} fullWidth />
@@ -73,7 +73,7 @@ class ContactPeopleForm extends Component {
         </Col>
         <Col xs={12}>
           <hr style={{ borderColor: '#f0f0f0' }} />
-          <h4>Contacts</h4>
+          <div className={css.subHeadings}>Contacts</div>
         </Col>
         <Col xs={12} md={2}>
           <Field label="Country Code" name={`${elem}.contact_person.phone_number.country_code`} id={`${elem}.contact_person.phone_number.country_code`} type="tel" component={TextField} fullWidth />

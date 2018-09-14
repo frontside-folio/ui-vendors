@@ -231,7 +231,6 @@ class Main extends Component {
   }
 
   create = (data) => {
-    debugger;
     const { mutator } = this.props;
     // Convert time
     const time = FormatTime(data, 'post');

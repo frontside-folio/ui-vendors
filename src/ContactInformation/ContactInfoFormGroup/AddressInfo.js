@@ -74,7 +74,6 @@ class AddressInfo extends Component {
         <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
           <Button onClick={() => fields.remove(index)} buttonStyle="danger">Remove</Button>
         </Col>
-        <br />
       </Row>
     );
   }
@@ -88,7 +87,7 @@ class AddressInfo extends Component {
             <div><em>- Please add address info -</em></div>
           }
           {fields.length !== 0 &&
-            <h6>Address Info</h6>
+            <div className={css.subHeadings}>Address Info</div>
           }
         </Col>
         <Col xs={12}>

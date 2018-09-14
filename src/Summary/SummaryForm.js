@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes-components';
 import { Required } from '../Utils/Validate';
+import css from './SummaryView.css';
 
 class SummaryForm extends React.Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class SummaryForm extends React.Component {
     return (
       <Row>
         <Col xs={6}>
-          <h6>Alternative Names</h6>
+          <div className={css.subHeadings}>Alternative Names</div>
         </Col>
         <Col xs={12}>
           {fields.length === 0 &&
@@ -74,7 +75,6 @@ class SummaryForm extends React.Component {
         </Col>
         <Col xs={12}>
           <FieldArray label="Vendor Names" name="aliases" id="aliases" component={this.renderList} />
-          <br />
         </Col>
       </Row>
     );

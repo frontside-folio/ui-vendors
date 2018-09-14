@@ -5,3 +5,11 @@
   border-radius: 2px;
   border-bottom: 2px solid #e3e3e3;
 }
+
+.subHeadings {
+  color: rgba(0,0,0,.62);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1em auto;
+  max-width: 50rem;
+}

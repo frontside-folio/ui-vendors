@@ -51,7 +51,7 @@ class Url extends Component {
             <div><em>- Please add URL -</em></div>
           }
           {fields.length !== 0 &&
-            <h6>URL(s)</h6>
+            <div className={css.subHeadings}>URL(s)</div>
           }
         </Col>
         <Col xs={12}>
