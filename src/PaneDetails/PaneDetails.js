@@ -30,12 +30,13 @@ class PaneDetails extends React.Component {
     this.getCountryList = this.getCountryList.bind(this);
     this.getLanguageList = this.getLanguageList.bind(this);
   }
+
   getAddFirstMenu() {
     const { onCancel } = this.props;
     return (
       <PaneMenu>
-        <button id="clickable-closenewvendordialog" onClick={onCancel} title="close" aria-label="Close New Vendor Dialog">
-          <span style={{ fontSize: '30px', color: '#999', lineHeight: '18px' }} >&times;</span>
+        <button type="button" id="clickable-closenewvendordialog" onClick={onCancel} title="close" aria-label="Close New Vendor Dialog">
+          <span style={{ fontSize: '30px', color: '#999', lineHeight: '18px' }}>&times;</span>
         </button>
       </PaneMenu>
     );
@@ -133,7 +134,11 @@ class PaneDetails extends React.Component {
   render() {
     const { initialValues } = this.props;
     const firstMenu = this.getAddFirstMenu();
-    const paneTitle = initialValues.id ? <span>Edit: {_.get(initialValues, ['name'], '')} </span> : 'Create Vendor';
+    const paneTitle = initialValues.id ? (
+      <span>
+        {`Edit: ${_.get(initialValues, ['name'], '')}`}
+      </span>
+    ) : 'Create Vendor';
     const lastMenu = initialValues.id ?
       this.getLastMenu('clickable-updatevendor', 'Update vendor') :
       this.getLastMenu('clickable-createnewvendor', 'Create vendor');

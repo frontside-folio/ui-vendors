@@ -86,7 +86,12 @@ class FormVendor extends Component {
     const showDeleteButton = initialValues.id || false;
     // Errors
     const arrSections = ['name', 'code', 'addresses', 'phone_numbers', 'email', 'urls', 'contacts', 'agreements', 'accounts'];
-    const message = <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}><Icon icon="validation-error" size="medium" />Required fields!</em>;
+    const message = (
+      <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
+        <Icon icon="validation-error" size="medium" />
+        Required fields!
+      </em>
+    );
     const summaryErr = sectionErrors.summaryErr ? message : null;
     const contactInfoErr = sectionErrors.contactInfoErr ? message : null;
     const contactPeopleErr = sectionErrors.contactPeopleErr ? message : null;
@@ -139,7 +144,10 @@ class FormVendor extends Component {
                 <Col xs={12}>
                   {
                     showDeleteButton &&
-                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>Delete - &nbsp; <strong><i>{this.props.initialValues.name}</i></strong></Button>
+                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>
+                      Delete - &nbsp;
+                      <strong><i>{this.props.initialValues.name}</i></strong>
+                    </Button>
                   }
                 </Col>
               </Row>
