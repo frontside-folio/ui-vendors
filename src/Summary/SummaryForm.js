@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes-components';
 import { Required } from '../Utils/Validate';
-import css from './SummaryView.css';
+import css from './SummaryForm.css';
 
 class SummaryForm extends React.Component {
   static propTypes = {
@@ -37,17 +37,19 @@ class SummaryForm extends React.Component {
 
   renderSubFields = (elem, index, fields) => {
     return (
-      <Row key={index}>
-        <Col xs={5}>
-          <Field label="Alias*" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
-        </Col>
-        <Col xs={5}>
-          <Field label="description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
-        </Col>
-        <Col xs={1}>
-          <Button onClick={() => fields.remove(index)} buttonStyle="danger" style={{ marginTop: '23px' }}>Remove</Button>
-        </Col>
-      </Row>
+      <div key={index} className={css.panels}>
+        <Row>
+          <Col xs={5}>
+            <Field label="Alias*" name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth />
+          </Col>
+          <Col xs={5}>
+            <Field label="description" name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
+          </Col>
+          <Col xs={1}>
+            <Button onClick={() => fields.remove(index)} buttonStyle="danger" style={{ marginTop: '23px' }}>Remove</Button>
+          </Col>
+        </Row>
+      </div>
     );
   }
 

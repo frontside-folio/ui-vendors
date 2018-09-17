@@ -1,7 +1,7 @@
 /* ContactInformationform */
 .panels {
   background: var(--panel-bg-color);
-  padding: var(--panel-padding);
+  padding: 1.2rem 1.2rem 0;
   border-radius: var(--panel-radius);
   border-bottom: var(--panel-border-bottom);
 }
@@ -10,5 +10,5 @@
   color: var(--subHeading-color);
   font-size: var(--subHeading-font-size);
   font-weight: var(--subHeading-font-weight);
-  margin: var(--subHeading-margin);
+  margin: .3rem auto 1em;
 }
