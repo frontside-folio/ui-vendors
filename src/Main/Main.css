@@ -1,4 +1,19 @@
-/* ContactPeopleForm.css */
+/* Main.css */
+:root {
+  /* Panels */
+  --panel-bg-color: #efefef63;
+  --panel-padding: 1rem 1.2rem 0;
+  --panel-radius: 4px;
+  --panel-border-bottom: 2px solid #e3e3e3;
+  /* Sub heading */
+  --subHeading-color: rgba(0,0,0,.62);
+  --subHeading-font-size: 18px;
+  --subHeading-font-weight: 600;
+  --subHeading-margin: 1em auto;
+}
+
+
+
 .panels {
   background: var(--panel-bg-color);
   padding: var(--panel-padding);
@@ -19,4 +34,3 @@
   font-weight: var(--subHeading-font-weight);
   margin: var(--subHeading-margin);
 }
-`

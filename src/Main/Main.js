@@ -12,6 +12,7 @@ import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
 import LanguageList from '../Utils/Languages';
 import CountryList from '../Utils/Country';
+import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
@@ -235,7 +236,6 @@ class Main extends Component {
     // Convert time
     const time = FormatTime(data, 'post');
     if (time) { data.edi.edi_job.time = time; }
-
     mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
         _path: `/vendors/view/${newLedger.id}`,
