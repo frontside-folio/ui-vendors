@@ -20,9 +20,9 @@ class TogglePassword extends Component {
   }
 
   togglePassword() {
-    this.setState({
-      showPassword: !this.state.showPassword,
-    });
+    this.setState(({ showPassword }) => ({
+      showPassword: !showPassword
+    }));
   }
 
   render() {

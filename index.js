@@ -29,7 +29,7 @@ class Vendors extends Component {
         <Switch>
           <Route
             path={`${this.props.match.path}`}
-            render={props => <this.connectedApp {...this.props} />}
+            render={() => <this.connectedApp {...this.props} />}
           />
         </Switch>
       </div>

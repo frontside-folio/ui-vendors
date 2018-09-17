@@ -97,17 +97,20 @@ class ViewVendor extends Component {
     const { location } = this.props;
     const initialValues = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
-    const lastMenu = (<PaneMenu>
-      <IfPermission perm="vendor.item.put">
-        <IconButton
-          icon="edit"
-          id="clickable-editvendor"
-          style={{ visibility: !initialValues ? 'hidden' : 'visible' }}
-          onClick={this.props.onEdit}
-          href={this.props.editLink}
-          title="Edit Vendor"
-        />
-      </IfPermission> </PaneMenu>);
+    const lastMenu = (
+      <PaneMenu>
+        <IfPermission perm="vendor.item.put">
+          <IconButton
+            icon="edit"
+            id="clickable-editvendor"
+            style={{ visibility: !initialValues ? 'hidden' : 'visible' }}
+            onClick={this.props.onEdit}
+            href={this.props.editLink}
+            title="Edit Vendor"
+          />
+        </IfPermission>
+      </PaneMenu>
+    );
 
     if (!initialValues) {
       return (
