@@ -42,10 +42,10 @@ class AgreementsForm extends Component {
           <Col xs={12} md={4}>
             <Field label="URL" name={`${elem}.reference_url`} id={`${elem}.reference_url`} type="text" component={TextField} fullWidth />
           </Col>
-          <Col xs={12} md={10}>
+          <Col xs={12}>
             <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
           </Col>
-          <Col xs={12} md={2} style={{ textAlign: 'right' }}>
+          <Col xs={12} style={{ textAlign: 'right' }}>
             <Button onClick={() => fields.remove(index)} buttonStyle="danger">
               Remove
             </Button>

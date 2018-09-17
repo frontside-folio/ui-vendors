@@ -51,71 +51,46 @@ class InterfaceForm extends Component {
       <div key={index} className={css.panels}>
         <Row>
           <Col xs={12} md={6}>
-            <Row>
-              <Col xs={12}>
-                <Field label="Name" name={`${elem}.name`} id={`${elem}.name`} component={TextField} fullWidth />
-              </Col>
-              <Col xs={12}>
-                <Field label="URL" name={`${elem}.uri`} id={`${elem}.uri`} component={TextArea} fullWidth />
-              </Col>
-            </Row>
+            <Field label="Name" name={`${elem}.name`} id={`${elem}.name`} component={TextField} fullWidth />
           </Col>
           <Col xs={12} md={6}>
-            <Row>
-              <Col xs={12}>
-                <Field label="Username" name={`${elem}.username`} id={`${elem}.username`} component={TextField} fullWidth />
-              </Col>
-              <Col xs={12}>
-                <TogglePassword name={`${elem}.password`} id={`${elem}.password`} buttonID={`${elem}.button`} />
-              </Col>
-              <Col xs={12}>
-                <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
-              </Col>
-            </Row>
+            <Field label="URL" name={`${elem}.uri`} id={`${elem}.uri`} type="url" component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Username" name={`${elem}.username`} id={`${elem}.username`} component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={6}>
+            <TogglePassword name={`${elem}.password`} id={`${elem}.password`} buttonID={`${elem}.button`} />
           </Col>
           <Col xs={12}>
-            <Col xs={12}>
-              <Accordion label="Statistics" open={this.state.open}>
-                <Row>
-                  <Col xs={12}>
-                    <Row>
-                      <Col xs={12}>
-                        <Field label="Available" name={`${elem}.available`} id={`${elem}.available`} component={Checkbox} />
-                      </Col>
-                      <Col xs={12}>
-                        <Field label="Delivery Method" name={`${elem}.delivery_method`} id={`${elem}.delivery_method`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
-                      </Col>
-                      <Col xs={12}>
-                        <Field label="Stattictics Format" name={`${elem}.statistics_format`} id={`${elem}.statistics_format`} component={Select} fullWidth dataOptions={formatDD} />
-                      </Col>
-                      <Col xs={12}>
-                        <Field label="Locally Stored" name={`${elem}.locally_stored`} id={`${elem}.locally_stored`} component={TextField} fullWidth />
-                      </Col>
-                      <Col xs={12}>
-                        <Field label="Online Location" name={`${elem}.online_location`} id={`${elem}.online_location`} component={TextField} fullWidth />
-                      </Col>
-                      <Col xs={12}>
-                        <Field label="Statistics Notes" name={`${elem}.statistics_notes`} id={`${elem}.statistics_notes`} component={TextArea} fullWidth />
-                      </Col>
-                      <Col xs={12} style={{ textAlign: 'right' }}>
-                        <Button onClick={() => fields.remove(index)} buttonStyle="danger">
-                          Remove
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Accordion>
-            </Col>
+            <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
           </Col>
-          {
-            rowCount &&
-            <div style={{ width: '100%' }}>
-              <br />
-              <hr />
-              <br />
-            </div>
-          }
+          <Col xs={12}>
+            <div className={css.subHeadings}>Statistics</div>
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Available" name={`${elem}.available`} id={`${elem}.available`} component={Checkbox} />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Delivery Method" name={`${elem}.delivery_method`} id={`${elem}.delivery_method`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Stattictics Format" name={`${elem}.statistics_format`} id={`${elem}.statistics_format`} component={Select} fullWidth dataOptions={formatDD} />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Locally Stored" name={`${elem}.locally_stored`} id={`${elem}.locally_stored`} component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Online Location" name={`${elem}.online_location`} id={`${elem}.online_location`} component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={6}>
+            <Field label="Statistics Notes" name={`${elem}.statistics_notes`} id={`${elem}.statistics_notes`} component={TextArea} fullWidth />
+          </Col>
+          <Col xs={12} style={{ textAlign: 'right' }}>
+            <Button onClick={() => fields.remove(index)} buttonStyle="danger">
+              Remove
+            </Button>
+          </Col>
         </Row>
       </div>
     );

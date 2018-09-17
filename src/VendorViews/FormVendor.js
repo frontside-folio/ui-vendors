@@ -29,11 +29,11 @@ class FormVendor extends Component {
       sections: {
         summarySection: false,
         contactInformationSection: false,
-        contactPeopleSection: true,
+        contactPeopleSection: false,
         agreementsSection: false,
         vendorInformationSection: false,
         EDIInformationSection: false,
-        interfaceSection: false,
+        interfaceSection: true,
         accountsSection: false,
       },
       sectionErrors: {

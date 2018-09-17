@@ -41,6 +41,7 @@ class SummaryView extends React.Component {
         <Col xs={12} className={css.rowHeader}>
           <div className={css.subHeadings}>Alternative Names</div>
           <MultiColumnList contentData={initialValues.aliases} columnWidths={columnWidths} columnMapping={columnMapping} />
+          <br />
         </Col>
       </Row>
     );
