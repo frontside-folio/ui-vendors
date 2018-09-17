@@ -35,7 +35,7 @@ class ContactPeopleForm extends Component {
   }
 
   renderSubCreateContact = (elem, index, fields) => {
-    const { dropdownLanguages, dropdownCountry } = this.props;q
+    const { dropdownLanguages, dropdownCountry } = this.props;
     return (
       <Col xs={12} key={index} className={css.panels}>
         <Row>
