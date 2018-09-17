@@ -1,15 +1,14 @@
 /* ContactInformationform */
 .panels {
-  background: #efefef63;
-  padding: 1rem .5rem .5rem;
-  border-radius: 2px;
-  border-bottom: 2px solid #e3e3e3;
+  background: var(--panel-bg-color);
+  padding: var(--panel-padding);
+  border-radius: var(--panel-radius);
+  border-bottom: var(--panel-border-bottom);
 }
 
 .subHeadings {
-  color: rgba(0,0,0,.62);
-  font-size: 18px;
-  font-weight: 600;
-  margin: 1em auto;
-  max-width: 50rem;
+  color: var(--subHeading-color);
+  font-size: var(--subHeading-font-size);
+  font-weight: var(--subHeading-font-weight);
+  margin: var(--subHeading-margin);
 }
