@@ -6,4 +6,3 @@ module.exports = [
   { label: 'German', value: 'de' },
   { label: 'Chinese', value: 'zh' }
 ];
-

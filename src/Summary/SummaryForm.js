@@ -82,4 +82,3 @@ class SummaryForm extends React.Component {
 }
 
 export default SummaryForm;
-
