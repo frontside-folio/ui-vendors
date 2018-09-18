@@ -85,7 +85,7 @@ class FormVendor extends Component {
     const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
     // Errors
-    const arrSections = ['name', 'code', 'addresses', 'phone_numbers', 'email', 'urls', 'contacts', 'agreements', 'accounts'];
+    const arrSections = ['name', 'code', 'status', 'addresses', 'phone_numbers', 'email', 'urls', 'contacts', 'agreements', 'accounts'];
     const message = (
       <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
         <Icon icon="validation-error" size="medium" />
@@ -111,23 +111,18 @@ class FormVendor extends Component {
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
               <Accordion label="Summary" id="summarySection" displayWhenClosed={summaryErr} displayWhenOpen={summaryErr}>
                 <SummaryForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Contact Information" id="contactInformationSection" displayWhenClosed={contactInfoErr} displayWhenOpen={contactInfoErr}>
                 <ContactInformationForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Contact People" id="contactPeopleSection" displayWhenClosed={contactPeopleErr} displayWhenOpen={contactPeopleErr}>
                 <ContactPeopleForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Agreements" id="agreementsSection" displayWhenClosed={agreementsErr} displayWhenOpen={agreementsErr}>
                 <AgreementsForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="Vendor Information" id="vendorInformationSection">
                 <VendorInformationForm {...this.props} />
-                <br />
               </Accordion>
               <Accordion label="EDI Information" id="EDIInformationSection">
                 <EdiInformationForm {...this.props} />

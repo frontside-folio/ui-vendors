@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { Select, Checkbox, TextField, Accordion, Row, Col } from '@folio/stripes-components';
+import { Select, Checkbox, TextField, AccordionSet, Accordion, Row, Col } from '@folio/stripes-components';
 import css from './VendorInformationForm.css';
 
 class VendorInformationForm extends Component {
@@ -76,19 +76,21 @@ class VendorInformationForm extends Component {
         <Col xs={12}>
           <Col xs={12}>
             <br />
-            <Accordion label="Tax" id="taxSection" open={this.state.subSections.taxSection}>
-              <Row>
-                <Col xs={12} md={4}>
-                  <Field label="Tax ID" name="tax_id" id="tax_id" component={TextField} fullWidth />
-                </Col>
-                <Col xs={12} md={4}>
-                  <Field label="Tax Percentage" name="tax_percentage" id="tax_percentage" type="number" component={TextField} fullWidth />
-                </Col>
-                <Col xs={12} md={4} style={{ paddingTop: '20px' }}>
-                  <Field label="Liable for VAT" name="liable_for_vat" id="liable_for_vat" component={Checkbox} inline={false} />
-                </Col>
-              </Row>
-            </Accordion>
+            <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSection}>
+              <Accordion label="Tax" id="taxSection">
+                <Row>
+                  <Col xs={12} md={4}>
+                    <Field label="Tax ID" name="tax_id" id="tax_id" component={TextField} fullWidth />
+                  </Col>
+                  <Col xs={12} md={4}>
+                    <Field label="Tax Percentage" name="tax_percentage" id="tax_percentage" type="number" component={TextField} fullWidth />
+                  </Col>
+                  <Col xs={12} md={4} style={{ paddingTop: '20px' }}>
+                    <Field label="Liable for VAT" name="liable_for_vat" id="liable_for_vat" component={Checkbox} inline={false} />
+                  </Col>
+                </Row>
+              </Accordion>
+            </AccordionSet>
           </Col>
         </Col>
       </Row>

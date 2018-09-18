@@ -58,7 +58,7 @@ class AddressInfoView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <h4>Address</h4>
+        <div className={css.subHeadings}>Address</div>
         {dataVal.map(this.getAddress)}
       </Col>
     );

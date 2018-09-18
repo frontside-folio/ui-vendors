@@ -21,7 +21,7 @@ class EdiInformationView extends React.Component {
           {dataVal &&
             <Row>
               <Col xs={12}>
-                <h4 className={css.title}>EDI Basic</h4>
+                <div className={css.subHeadings}>EDI Basic</div>
               </Col>
               <Col xs={3}>
                 <KeyValue label="Vendor EDI Code" value={_.get(dataVal, ['vendor_edi_code'], '')} />
@@ -76,7 +76,7 @@ class EdiInformationView extends React.Component {
           {ediFtp &&
             <Row>
               <Col xs={12}>
-                <h4 className={css.title}>FTP Details</h4>
+                <div className={css.subHeadings}>FTP Details</div>
               </Col>
               <Col xs={3}>
                 <KeyValue label="EDI FTP" value={_.get(ediFtp, ['ftp_format'])} />
@@ -116,7 +116,7 @@ class EdiInformationView extends React.Component {
           {ediScheduling &&
             <Row>
               <Col xs={12}>
-                <h4 className={css.title}>Scheduling</h4>
+                <div className={css.subHeadings}>Scheduling</div>
               </Col>
               <Col xs={3}>
                 <KeyValue label="Schedule EDI">

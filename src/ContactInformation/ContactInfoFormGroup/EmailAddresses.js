@@ -53,7 +53,7 @@ class EmailAddresses extends Component {
         }
         {fields.length !== 0 &&
           <Col xs={6}>
-            <h6>Email Address</h6>
+            <div className={css.subHeadings}>Email Address</div>
           </Col>
         }
         <Col xs={12}>

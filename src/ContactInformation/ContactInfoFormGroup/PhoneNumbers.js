@@ -56,7 +56,7 @@ class PhoneNumbers extends Component {
         }
         {fields.length !== 0 &&
           <Col xs={6}>
-            <h6>Phone Number</h6>
+            <div className={css.subHeadings}>Phone Number</div>
           </Col>
         }
         <Col xs={12}>

@@ -14,7 +14,7 @@ class SummaryView extends React.Component {
     const dataVal = initialValues || [];
     const columnWidths = { 'value': '50%', 'description': '50%' };
     const columnMapping = {
-      'value': 'name',
+      'value': 'Alias',
       'description': 'description'
     };
 
@@ -39,8 +39,9 @@ class SummaryView extends React.Component {
           <KeyValue label="Description" value={_.get(dataVal, 'description', '')} />
         </Col>
         <Col xs={12} className={css.rowHeader}>
-          <h4>Alternative Names</h4>
+          <div className={css.subHeadings}>Alternative Names</div>
           <MultiColumnList contentData={initialValues.aliases} columnWidths={columnWidths} columnMapping={columnMapping} />
+          <br />
         </Col>
       </Row>
     );

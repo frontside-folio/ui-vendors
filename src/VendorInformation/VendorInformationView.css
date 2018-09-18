@@ -1,4 +1,7 @@
 /* ContactPeopleView.css */
-.horizontalLine hr, .title {
-  margin-bottom: 13px;
+.subHeadings {
+  color: var(--subHeading-color);
+  font-size: var(--subHeading-font-size);
+  font-weight: var(--subHeading-font-weight);
+  margin: .3rem auto 1em;
 }

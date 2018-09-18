@@ -35,7 +35,7 @@ class AgreementsView extends React.Component {
           <KeyValue label="Notes" value={_.get(val, ['notes'], '')} />
         </Col>
         <Col xs={12}>
-          <h4 className={css.title}>Statistics</h4>
+          <div className={css.subHeadings}>Statistics</div>
         </Col>
         <Col xs={3}>
           {/* label="Available"  */}

@@ -67,7 +67,7 @@ class VendorInformationView extends React.Component {
             <hr />
           </Col>
           <Col xs={12}>
-            <h4 className={css.title}>Tax</h4>
+            <div className={css.subHeadings}>Tax</div>
           </Col>
           <Col xs={3}>
             <KeyValue label="Tax ID" value={_.get(dataVal, ['tax_id'], '')} />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { Row, Col, Button, TextField, TextArea } from '@folio/stripes-components';
 import { Required } from '../Utils/Validate';
+import css from './AgreementsForm.css';
 
 class AgreementsForm extends Component {
   constructor(props) {
@@ -30,25 +31,27 @@ class AgreementsForm extends Component {
 
   renderSubForm = (elem, index, fields) => {
     return (
-      <Row key={index}>
-        <Col xs={12} md={4}>
-          <Field label="Name*" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
-        </Col>
-        <Col xs={12} md={4}>
-          <Field label="Discount %" name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
-        </Col>
-        <Col xs={12} md={4}>
-          <Field label="URL" name={`${elem}.reference_url`} id={`${elem}.reference_url`} type="text" component={TextField} fullWidth />
-        </Col>
-        <Col xs={12} md={10}>
-          <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
-        </Col>
-        <Col xs={12} md={2} style={{ textAlign: 'right' }}>
-          <Button onClick={() => fields.remove(index)} buttonStyle="danger">
-            Remove
-          </Button>
-        </Col>
-      </Row>
+      <div key={index} className={css.panels}>
+        <Row key={index}>
+          <Col xs={12} md={4}>
+            <Field label="Name*" name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={4}>
+            <Field label="Discount %" name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
+          </Col>
+          <Col xs={12} md={4}>
+            <Field label="URL" name={`${elem}.reference_url`} id={`${elem}.reference_url`} type="text" component={TextField} fullWidth />
+          </Col>
+          <Col xs={12}>
+            <Field label="Notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
+          </Col>
+          <Col xs={12} style={{ textAlign: 'right' }}>
+            <Button onClick={() => fields.remove(index)} buttonStyle="danger">
+              Remove
+            </Button>
+          </Col>
+        </Row>
+      </div>
     );
   }
 
