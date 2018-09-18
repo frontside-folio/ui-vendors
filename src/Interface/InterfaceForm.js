@@ -1,7 +1,8 @@
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
-import { Accordion, Row, Col, Button, TextField, TextArea, Select, Checkbox } from '@folio/stripes-components';
+import { Row, Col, Button, TextField, TextArea, Select, Checkbox } from '@folio/stripes-components';
 import TogglePassword from '../Utils/TogglePassword';
 import css from './InterfaceForm.css';
 
@@ -16,9 +17,6 @@ class InterfaceForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      open: true
-    };
     this.renderForm = this.renderForm.bind(this);
     this.renderSubForm = this.renderSubForm.bind(this);
   }
@@ -43,7 +41,6 @@ class InterfaceForm extends Component {
 
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const rowCount = (fields.length - 1) !== index;
     const formatDD = (parentResources.dropdown || {}).formatDD || [];
     const deliveryMethodDD = (parentResources.dropdown || {}).deliveryMethodDD || [];
 

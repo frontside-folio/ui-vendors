@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Field, getFormValues } from 'redux-form';
 import { MultiSelection, Row, Col, Button, TextField, Select } from '@folio/stripes-components';
 import css from '../ContactInfoFormGroup.css';
