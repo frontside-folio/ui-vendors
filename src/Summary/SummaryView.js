@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { MultiColumnList, Row, Col, KeyValue } from '@folio/stripes-components';
 import css from './SummaryView.css';
+import LanguageLookup from '../Utils/LanguageLookup.js';
 
 class SummaryView extends React.Component {
   static propTypes = {
@@ -17,6 +18,7 @@ class SummaryView extends React.Component {
       'value': 'Alias',
       'description': 'description'
     };
+    const getLanguage = LanguageLookup(_.get(dataVal, 'language', ''));
 
     return (
       <Row>
@@ -33,7 +35,7 @@ class SummaryView extends React.Component {
           <KeyValue label="Vendor Status" value={_.get(dataVal, 'vendor_status', '')} />
         </Col>
         <Col xs={4}>
-          <KeyValue label="Default Language" value={_.get(dataVal, 'language', '')} />
+          <KeyValue label="Default Language" value={getLanguage} />
         </Col>
         <Col xs={12}>
           <KeyValue label="Description" value={_.get(dataVal, 'description', '')} />
