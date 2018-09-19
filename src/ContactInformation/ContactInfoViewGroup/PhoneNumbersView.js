@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Row, Col, KeyValue } from '@folio/stripes-components';
 import css from '../ContactInformationView.css';
 import parseCategories from '../../Utils/Category';
+import LanguageLookup from '../../Utils/LanguageLookup';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
@@ -20,6 +21,8 @@ class ContactInformationView extends React.Component {
     const rowCount = (this.props.dataVal.length - 1) !== key;
     const categories = val.categories && this.props.dropdownCategories ? parseCategories(val.categories, this.props.dropdownCategories) : null;
     const phonenumber = `${_.get(val, 'phone_number.country_code', '')} ${_.get(val, 'phone_number.area_code', '')} ${_.get(val, 'phone_number.phone_number', '')}`;
+    const getLanguage = LanguageLookup(_.get(val, 'language', ''));
+
     return (
       <Row key={key}>
         <Col xs={5}>
@@ -29,7 +32,7 @@ class ContactInformationView extends React.Component {
           <KeyValue label="Categories" value={categories} />
         </Col>
         <Col xs={3}>
-          <KeyValue label="Language" value={_.get(val, 'language', '')} />
+          <KeyValue label="Language" value={getLanguage} />
         </Col>
         {rowCount &&
           <div style={{ width: '100%' }}>
