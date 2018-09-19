@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Row, Col, KeyValue } from '@folio/stripes-components';
 import css from '../ContactInformationView.css';
 import parseCategories from '../../Utils/Category';
-import LanguageLookup from '../../Utils/LanguageLookup.js';
+import LanguageLookup from '../../Utils/LanguageLookup';
 
 class ContactInformationView extends React.Component {
   static propTypes = {
