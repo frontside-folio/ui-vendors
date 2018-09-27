@@ -4,6 +4,7 @@ import _ from 'lodash';
 import queryString from 'query-string';
 // Folio
 import { Pane, PaneMenu, Row, Col, Icon, IconButton, IfPermission, Layer, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes-components';
+import { withTags } from '@folio/stripes-smart-components/lib/Tags';
 // Local Components
 import { SummaryView } from '../Summary';
 import { ContactInformationView } from '../ContactInformation';
@@ -30,6 +31,9 @@ class ViewVendor extends Component {
     parentMutator: PropTypes.object.isRequired,
     editLink: PropTypes.string,
     paneWidth: PropTypes.string.isRequired,
+    notesToggle: PropTypes.func,
+    tagsToggle: PropTypes.func,
+    tagsEnabled: PropTypes.bool
   }
 
   constructor(props) {
@@ -94,11 +98,29 @@ class ViewVendor extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, tagsEnabled } = this.props;
     const initialValues = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
+    const tags = ((initialValues && initialValues.tags) || {}).tagList || [];
     const lastMenu = (
       <PaneMenu>
+        {
+          tagsEnabled &&
+            <IconButton
+              icon="tag"
+              title="showTags"
+              id="clickable-show-tags"
+              onClick={this.props.tagsToggle}
+              badgeCount={tags.length}
+              aria-label="showTags"
+            />
+        }
+        <IconButton
+          icon="comment"
+          id="clickable-show-notes"
+          onClick={this.props.notesToggle}
+          aria-label="showNotes"
+        />
         <IfPermission perm="vendor.item.put">
           <IconButton
             icon="edit"
@@ -164,4 +186,4 @@ class ViewVendor extends Component {
   }
 }
 
-export default ViewVendor;
+export default withTags(ViewVendor);
