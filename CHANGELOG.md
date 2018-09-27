@@ -1,6 +1,7 @@
 # Change history for ui-vendors
 
-## 1.1.0 (IN PROGRESS)
+## 1.1.1 (IN PROGRESS)
+* Added tags, ref: UIV-27.
 * Update mismatch languages in email section, phone number section, url section, summary section. ref: UIV-23.
 * Add styling on field array in Contact People, Agreements, Interface and Accounts. Fixes UIV-7.
 * Update sub-heading styling. Fixes UIV-6.
