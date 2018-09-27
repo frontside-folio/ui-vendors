@@ -14,7 +14,7 @@ class PhoneNumbers extends Component {
       store: PropTypes.func
     }),
     dispatch: PropTypes.func,
-    change: PropTypes.func,
+    change: PropTypes.func
   };
 
   constructor(props) {

@@ -1,6 +1,7 @@
 # Change history for ui-vendors
 
 ## 1.1.1 (IN PROGRESS)
+* Moved Sans code field into summary, UIV-21
 * Converted category dropdown to multi select for contact infomartion and contact people. Ref: UIV-4.
 * Fixed vendor status error highlight. Ref: UIV-12.
 * Fixed Agreements discount display. Ref: UIV-3.
