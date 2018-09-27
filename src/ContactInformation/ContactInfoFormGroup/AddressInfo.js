@@ -22,16 +22,12 @@ class AddressInfo extends Component {
     super(props);
     this.renderSubAddress = this.renderSubAddress.bind(this);
     this.onChangeSelect = this.onChangeSelect.bind(this);
-    this.onRemoveSelect = this.onRemoveSelect.bind(this);
     this.selectedValues = this.selectedValues.bind(this);
   }
 
   onChangeSelect = (e, elem, propertyName) => {
     const { dispatch, change } = this.props;
     dispatch(change(`${elem}.${propertyName}`, e));
-  }
-
-  onRemoveSelect = () => {
   }
 
   selectedValues = (index, fields, propertyName) => {
