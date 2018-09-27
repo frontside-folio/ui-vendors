@@ -1,6 +1,8 @@
 # Change history for ui-vendors
 
 ## 1.1.1 (IN PROGRESS)
+* Updated Vendor EDI Code and Library EDI Code component type to TextField. Ref: UIV-5.
+* Update component UIV-5
 * Added tags, ref: UIV-27.
 * Update mismatch languages in email section, phone number section, url section, summary section. ref: UIV-23.
 * Add styling on field array in Contact People, Agreements, Interface and Accounts. Fixes UIV-7.

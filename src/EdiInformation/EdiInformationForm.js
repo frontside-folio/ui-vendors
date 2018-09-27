@@ -49,13 +49,13 @@ class EdiInformationForm extends Component {
               <Col xs={12} md={6}>
                 <Row>
                   <Col xs={12}>
-                    <Field label="Vendor EDI Code" name="edi.vendor_edi_code" id="vendor_edi_code" component={Select} dataOptions={vendorEdiCodeDD} fullWidth />
+                    <Field label="Vendor EDI Code" name="edi.vendor_edi_code" id="vendor_edi_code" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
                     <Field label="Vendor EDI Code Type" name="edi.vendor_edi_type" id="vendor_edi_type" component={Select} dataOptions={vendorEdiCodeTypeDD} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label="Library EDI Code" name="edi.lib_edi_code" id="lib_edi_code" component={Select} dataOptions={libraryEDICodeDD} fullWidth />
+                    <Field label="Library EDI Code" name="edi.lib_edi_code" id="lib_edi_code" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
                     <Field label="Library EDI Type" name="edi.lib_edi_type" id="lib_edi_type" component={Select} dataOptions={libraryEdiCodeTypeDD} fullWidth />
