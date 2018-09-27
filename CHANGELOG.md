@@ -1,7 +1,7 @@
 # Change history for ui-vendors
 
 ## 1.1.1 (IN PROGRESS)
-* Converted category dropdown to multi select. Ref: UIV-4.
+* Converted category dropdown to multi select for contact infomartion and contact people. Ref: UIV-4.
 * Fixed vendor status error highlight. Ref: UIV-12.
 * Fixed Agreements discount display. Ref: UIV-3.
 * Changed field name ERP code to Accounting Code. UIV-2
