@@ -1,6 +1,7 @@
 # Change history for ui-vendors
 
 ## 1.1.1 (IN PROGRESS)
+* Changed field name ERP code to Accounting Code. UIV-2
 * Updated Vendor EDI Code and Library EDI Code component type to TextField. Ref: UIV-5.
 * Update component UIV-5
 * Added tags, ref: UIV-27.

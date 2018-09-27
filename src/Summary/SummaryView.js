@@ -29,7 +29,7 @@ class SummaryView extends React.Component {
           <KeyValue label="Code" value={_.get(dataVal, 'code', '')} />
         </Col>
         <Col xs={4}>
-          <KeyValue label="ERP Code" value={_.get(dataVal, ['erp_code'], '')} />
+          <KeyValue label="Accounting Code" value={_.get(dataVal, ['erp_code'], '')} />
         </Col>
         <Col xs={4}>
           <KeyValue label="Vendor Status" value={_.get(dataVal, 'vendor_status', '')} />
