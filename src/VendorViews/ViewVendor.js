@@ -31,9 +31,9 @@ class ViewVendor extends Component {
     parentMutator: PropTypes.object.isRequired,
     editLink: PropTypes.string,
     paneWidth: PropTypes.string.isRequired,
-    notesToggle: PropTypes.func,
-    tagsToggle: PropTypes.func,
-    tagsEnabled: PropTypes.bool
+    // notesToggle: PropTypes.func,
+    // tagsToggle: PropTypes.func,
+    // tagsEnabled: PropTypes.bool
   }
 
   constructor(props) {
@@ -101,10 +101,10 @@ class ViewVendor extends Component {
     const { location, tagsEnabled } = this.props;
     const initialValues = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
-    const tags = ((initialValues && initialValues.tags) || {}).tagList || [];
+    // const tags = ((initialValues && initialValues.tags) || {}).tagList || [];
     const lastMenu = (
       <PaneMenu>
-        {
+        {/* {
           tagsEnabled &&
             <IconButton
               icon="tag"
@@ -120,7 +120,7 @@ class ViewVendor extends Component {
           id="clickable-show-notes"
           onClick={this.props.notesToggle}
           aria-label="showNotes"
-        />
+        /> */}
         <IfPermission perm="vendor.item.put">
           <IconButton
             icon="edit"
