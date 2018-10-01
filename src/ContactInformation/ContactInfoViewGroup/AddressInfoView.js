@@ -42,9 +42,6 @@ class AddressInfoView extends React.Component {
         <Col xs={4}>
           <KeyValue label="Categories" value={categories} />
         </Col>
-        <Col xs={3}>
-          <KeyValue label="San Code" value={_.get(val, 'san_code', '')} />
-        </Col>
         {rowCount &&
           <div style={{ width: '100%' }}>
             <hr />

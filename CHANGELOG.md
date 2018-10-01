@@ -1,6 +1,15 @@
 # Change history for ui-vendors
 
-## 1.1.0 (IN PROGRESS)
+## 1.1.1 (IN PROGRESS)
+* Removed tags and notes. ref: UIV-27.
+* Moved Sans code field into summary, UIV-21
+* Converted category dropdown to multi select for contact infomartion and contact people. Ref: UIV-4.
+* Fixed vendor status error highlight. Ref: UIV-12.
+* Fixed Agreements discount display. Ref: UIV-3.
+* Changed field name ERP code to Accounting Code. UIV-2
+* Updated Vendor EDI Code and Library EDI Code component type to TextField. Ref: UIV-5.
+* Update component UIV-5
+* Added tags, ref: UIV-27.
 * Update mismatch languages in email section, phone number section, url section, summary section. ref: UIV-23.
 * Add styling on field array in Contact People, Agreements, Interface and Accounts. Fixes UIV-7.
 * Update sub-heading styling. Fixes UIV-6.

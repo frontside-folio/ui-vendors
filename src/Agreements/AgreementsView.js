@@ -22,7 +22,7 @@ class AgreementsView extends React.Component {
           <KeyValue label="Name" value={_.get(val, 'name')} />
         </Col>
         <Col xs={3}>
-          <KeyValue label="Discount" value={_.get(val, 'name')} />
+          <KeyValue label="Discount" value={_.get(val, 'discount')} />
         </Col>
         <Col xs={3}>
           <KeyValue label="Reference URL" value={_.get(val, 'reference_url')} />

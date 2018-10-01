@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes-components';
-import { Field, FieldArray } from 'redux-form';
+import { Field, FieldArray, getFormValues } from 'redux-form';
+import { MultiSelection, Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes-components';
 import { Required } from '../Utils/Validate';
 import css from './ContactPeopleForm.css';
 
@@ -9,13 +9,32 @@ class ContactPeopleForm extends Component {
   static propTypes = {
     dropdownContactCategories: PropTypes.arrayOf(PropTypes.object),
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
-    dropdownCountry: PropTypes.arrayOf(PropTypes.object)
+    dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+    stripes: PropTypes.shape({
+      store: PropTypes.func
+    }),
+    dispatch: PropTypes.func,
+    change: PropTypes.func
   };
 
   constructor(props) {
     super(props);
     this.renderCreateContact = this.renderCreateContact.bind(this);
     this.renderSubCreateContact = this.renderSubCreateContact.bind(this);
+    this.onChangeSelect = this.onChangeSelect.bind(this);
+    this.selectedValues = this.selectedValues.bind(this);
+  }
+
+  onChangeSelect = (e, elem, propertyName) => {
+    const { dispatch, change } = this.props;
+    dispatch(change(`${elem}.${propertyName}`, e));
+  }
+
+  selectedValues = (index, fields, propertyName) => {
+    const { stripes: { store } } = this.props;
+    const formValues = getFormValues('FormVendor')(store.getState());
+    const currValues = formValues[fields.name][index][propertyName];
+    return currValues;
   }
 
   renderCreateContact = ({ fields }) => {
@@ -108,7 +127,7 @@ class ContactPeopleForm extends Component {
             <Field label="Default Language" name={`${elem}.contact_person.language`} id={`${elem}.contact_person.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
           </Col>
           <Col xs={12} md={3}>
-            <Field label="Category" name={`${elem}.categories`} id={`${elem}.categories`} component={Select} fullWidth style={{ height: '80px' }} dataOptions={this.props.dropdownContactCategories} multiple />
+            <MultiSelection label="Categories" name={`${elem}.categories`} dataOptions={this.props.dropdownContactCategories} onChange={(e) => this.onChangeSelect(e, elem, 'categories')} style={{ height: '80px' }} value={this.selectedValues(index, fields, 'categories')} />
           </Col>
           <Col xs={12} md={6}>
             <Field label="Notes" name={`${elem}.contact_person.notes`} id={`${elem}.contact_person.notes`} component={TextArea} style={{ height: '79px' }} fullWidth />

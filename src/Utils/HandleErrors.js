@@ -16,7 +16,7 @@ class HandleErrors extends Component {
         const meta = props[`${indexName}`].meta;
 
         // Summary Error
-        if (input.name === 'name' || input.name === 'code' || input.name === 'status') {
+        if (input.name === 'name' || input.name === 'code' || input.name === 'vendor_status') {
           summaryArr[key] = (meta.touched && meta.error) || false;
           data.summaryErr = !summaryArr.every(isAllFalse);
         }
